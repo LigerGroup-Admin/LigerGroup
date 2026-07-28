@@ -16,18 +16,14 @@ type SiteHeaderProps = {
   announcement?: React.ReactNode;
 };
 
-export function SiteHeader({
-  brand,
-  nav,
-  cta,
-  light = false,
-  announcement,
-}: SiteHeaderProps) {
+export function SiteHeader({ brand, nav, cta, announcement }: SiteHeaderProps) {
   return (
     <>
-      {announcement ? <div className="site-announcement">{announcement}</div> : null}
-      <header className={`site-header ${light ? "site-header--light" : ""}`}>
-        <BrandMark brand={brand} light={light} framed />
+      {announcement ? (
+        <div className="site-announcement ink-field">{announcement}</div>
+      ) : null}
+      <header className="site-header">
+        <BrandMark brand={brand} framed />
 
         <nav className="site-header__desktop" aria-label="Main navigation">
           {nav.map((item) => (
@@ -38,9 +34,9 @@ export function SiteHeader({
         </nav>
 
         {cta ? (
-          <Link href={cta.href} className="site-header__cta">
+          <Link href={cta.href} className="poster-button site-header__cta">
             {cta.label}
-            <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden="true" />
+            <ArrowUpRight size={16} strokeWidth={2.2} aria-hidden="true" />
           </Link>
         ) : null}
 

@@ -1,0 +1,269 @@
+/* Liger Group — Night Series frontispiece */
+
+.group-page {
+  --ink-1: #1c2b52;
+  --ink-2: #d3a04a;
+  --ink-3: #5a7191;
+  --ink-deep: #0d152b;
+  --display: var(--font-anton), "Arial Narrow", sans-serif;
+  --body: var(--font-archivo), "Helvetica Neue", sans-serif;
+
+  min-height: 100vh;
+  background: var(--ink-deep);
+  color: var(--stock);
+}
+
+.group-hero {
+  position: relative;
+  display: flex;
+  min-height: max(30rem, min(calc(100svh - 5.5rem), 58rem));
+  flex-direction: column;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.group-hero__scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+
+.group-hero__scene svg {
+  width: 100%;
+  height: 100%;
+}
+
+.group-nav {
+  display: flex;
+  min-height: 5.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4vw;
+  border-bottom: 2px solid color-mix(in srgb, var(--stock) 24%, transparent);
+}
+
+.group-nav .brand-mark {
+  color: var(--stock);
+}
+
+.group-nav__meta {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: color-mix(in srgb, var(--stock) 72%, transparent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.group-hero__copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 4vw clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.group-hero h1 {
+  max-width: 62rem;
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(3.4rem, 8.6vw, 8.6rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  text-shadow: 0.28rem 0.28rem 0 var(--ink-deep);
+}
+
+.group-hero__intro {
+  max-width: 34rem;
+  margin: 1.75rem 0 0;
+  color: color-mix(in srgb, var(--stock) 86%, transparent);
+  font-size: clamp(0.92rem, 1.25vw, 1.05rem);
+  line-height: 1.7;
+}
+
+.group-caption {
+  border-top: 3px solid var(--ink-deep);
+}
+
+/* Gold is a light ink — deep text on it */
+.group-page .ink-field--2 {
+  color: var(--ink-deep);
+}
+
+.group-caption__link {
+  position: relative;
+}
+
+.group-caption__link::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.3rem;
+  left: 0;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: right;
+  background: currentColor;
+  content: "";
+  transition: transform 220ms ease;
+}
+
+.group-caption__link:hover::after,
+.group-caption__link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.group-caption__count {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.group-caption__count span {
+  display: grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 2px solid currentColor;
+  place-items: center;
+}
+
+/* The series rack — three posters, one group */
+.group-series {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  padding: clamp(2.5rem, 5vw, 4.5rem) 4vw clamp(3rem, 6vw, 5rem);
+}
+
+.group-poster {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid var(--stock);
+  background: var(--stock);
+  color: var(--poster-ink);
+  transition: transform 220ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.group-poster:hover,
+.group-poster:focus-visible {
+  transform: translate(-0.3rem, -0.3rem);
+  box-shadow: 0.55rem 0.55rem 0 var(--poster-accent);
+}
+
+.group-poster__scene {
+  position: relative;
+  height: clamp(11rem, 17vw, 16rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.group-poster__scene svg {
+  width: 100%;
+  height: 100%;
+}
+
+.group-poster__scene::after {
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  content: "";
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.group-poster__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+  border-top: 3px solid var(--poster-ink);
+}
+
+.group-poster__series {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--poster-accent-deep, var(--poster-accent));
+}
+
+.group-poster h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 2.8vw, 2.7rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.group-poster p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.group-poster__imperative {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 3px solid var(--poster-accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.group-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 4vw 1.4rem;
+  border-top: 2px solid color-mix(in srgb, var(--stock) 24%, transparent);
+  color: color-mix(in srgb, var(--stock) 66%, transparent);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 980px) {
+  .group-series {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+
+  .group-poster__scene {
+    height: 13rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .group-nav {
+    min-height: 4.75rem;
+  }
+
+  .group-nav__meta span:first-child {
+    display: none;
+  }
+
+  .group-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}

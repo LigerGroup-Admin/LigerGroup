@@ -4,6 +4,8 @@ import Link from "next/link";
 import { ArrowRight, Award, Check, ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { PosterScene } from "@/components/poster-scene";
+import { LearnScene } from "@/components/scenes";
 
 export const metadata: Metadata = {
   title: "LigerLearn | Corporate capability and leadership advisory",
@@ -57,54 +59,49 @@ const practices = [
 
 export default function LearnHomePage() {
   return (
-    <div className="learn-page">
+    <div className="learn-page poster-page">
       <SiteHeader
         brand="learn"
-        light
         nav={[
           { label: "What we solve", href: "#work" },
           { label: "How we work", href: "#approach" },
           { label: "One Force", href: "/learn/one-force" },
           { label: "Leadership", href: "#leadership" },
         ]}
+        cta={{ label: "Start a conversation", href: "#conversation" }}
       />
 
       <main id="main-content">
-        <section className="learn-hero">
+        <section className="learn-hero poster-sheet" aria-label="LigerLearn">
+          <PosterScene className="learn-hero__scene">
+            <LearnScene />
+          </PosterScene>
           <div className="learn-hero__copy reveal">
-            <p className="eyebrow">Corporate capability · Leadership advisory</p>
+            <p className="hero-chip">
+              Series No. 03 · Corporate capability · Leadership advisory
+            </p>
             <h1>
-              We start with your business problem.
+              We start with your
               <br />
-              The programme follows from that.
+              business problem.
             </h1>
-            <p>
+            <p className="learn-hero__intro">
               LigerLearn works with Nigerian and African organisations to build
               the leadership, commercial capability, and workforce alignment
-              their strategy demands.
+              their strategy demands. The programme follows from the problem.
             </p>
-            <div>
-              <Link href="#work" className="text-link">
-                Explore our work
-                <ArrowRight size={15} aria-hidden="true" />
-              </Link>
-              <span>Performance before programmes.</span>
-            </div>
-          </div>
-          <div className="learn-hero__image reveal reveal--2">
-            <Image
-              src="/images/learn/boardroom.jpg"
-              alt="Senior professionals collaborating in a boardroom"
-              fill
-              priority
-              sizes="(max-width: 900px) 100vw, 45vw"
-            />
-            <div>
-              <span>LigerLearn / Lagos</span>
-              <span>Capability that moves with the business</span>
-            </div>
           </div>
         </section>
+
+        <div className="caption-bar ink-field ink-field--1 learn-hero__caption">
+          <p className="caption-bar__imperative">
+            Performance before programmes.
+          </p>
+          <Link href="#work" className="poster-button poster-button--warm">
+            Explore our work
+            <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
 
         <section className="learn-trust" aria-label="Selected organisations">
           <p>Selected organisations our team has worked with</p>
@@ -115,9 +112,9 @@ export default function LearnHomePage() {
           </div>
         </section>
 
-        <section className="learn-position">
-          <p className="eyebrow">The standard we hold</p>
-          <blockquote className="display-type">
+        <section className="learn-position ink-field ink-field--2">
+          <p className="series-label">The standard we hold</p>
+          <blockquote>
             If the intervention cannot connect to revenue, retention,
             performance, risk, or succession, it is not yet well designed.
           </blockquote>
@@ -129,10 +126,10 @@ export default function LearnHomePage() {
         </section>
 
         <section className="learn-practices" id="work">
-          <div className="learn-section-heading">
-            <p className="eyebrow">What we solve</p>
-            <h2 className="display-type">Capability for consequential moments.</h2>
-          </div>
+          <p className="series-label">No. 01 · What we solve</p>
+          <h2 className="poster-display">
+            Capability for consequential moments.
+          </h2>
           <div className="learn-practices__grid">
             {practices.map((practice) => (
               <article key={practice.number}>
@@ -144,13 +141,14 @@ export default function LearnHomePage() {
           </div>
         </section>
 
-        <section className="learn-approach" id="approach">
+        <section className="learn-approach ink-field ink-field--1" id="approach">
           <div className="learn-approach__intro">
-            <p className="eyebrow">How we work</p>
-            <h2 className="display-type">Rigour before theatre.</h2>
+            <p className="series-label">No. 02 · How we work</p>
+            <h2 className="poster-display">Rigour before theatre.</h2>
             <p>
               Our four-stage method keeps the intervention close to the business
-              problem—and makes accountability visible throughout.
+              problem—and makes accountability visible throughout. Four
+              switchbacks, one summit.
             </p>
           </div>
           <div className="learn-approach__steps">
@@ -172,10 +170,9 @@ export default function LearnHomePage() {
         </section>
 
         <section className="learn-one-force">
-          <div className="learn-one-force__index">OF / 01</div>
           <div>
-            <p className="eyebrow">One Force · Post-merger integration</p>
-            <h2 className="display-type">
+            <p className="series-label">One Force · Post-merger integration</p>
+            <h2 className="poster-display">
               Two organisations have signed. Has the workforce joined?
             </h2>
           </div>
@@ -184,7 +181,7 @@ export default function LearnHomePage() {
               A focused diagnostic and leadership intervention for insurance
               organisations navigating the human reality of a merger.
             </p>
-            <Link href="/learn/one-force" className="button button--light">
+            <Link href="/learn/one-force" className="poster-button">
               View the One Force overview
               <ArrowRight size={17} aria-hidden="true" />
             </Link>
@@ -192,17 +189,17 @@ export default function LearnHomePage() {
         </section>
 
         <section className="learn-leadership" id="leadership">
-          <div className="learn-leadership__image">
+          <div className="duotone">
             <Image
               src="/images/learn/femi.jpg"
               alt="Obafemi Oshinowo, Founding Partner of LigerLearn"
-              fill
-              sizes="(max-width: 800px) 92vw, 38vw"
+              width={640}
+              height={800}
             />
           </div>
           <div className="learn-leadership__copy">
-            <p className="eyebrow">Leadership</p>
-            <h2 className="display-type">Obafemi Oshinowo</h2>
+            <p className="series-label">No. 03 · Leadership</p>
+            <h2 className="poster-display">Obafemi Oshinowo</h2>
             <p className="learn-leadership__role">Founding Partner</p>
             <div className="learn-leadership__credentials">
               <span>
@@ -232,25 +229,30 @@ export default function LearnHomePage() {
           </div>
         </section>
 
-        <section className="learn-conversation">
+        <section
+          className="learn-conversation ink-field ink-field--3"
+          id="conversation"
+        >
           <div>
-            <p className="eyebrow">Start with the problem</p>
-            <h2 className="display-type">
+            <p className="series-label">Start with the problem</p>
+            <h2 className="poster-display">
               If performance is not where it needs to be, we would like to
               understand why.
             </h2>
           </div>
           <div>
-            {[
-              "A clear, senior conversation",
-              "No pre-packaged programme pitch",
-              "A practical recommendation—even if it is not us",
-            ].map((item) => (
-              <p key={item}>
-                <Check size={16} aria-hidden="true" /> {item}
-              </p>
-            ))}
-            <a href="mailto:support@ligerlearn.org" className="button button--learn">
+            <div className="learn-conversation__list">
+              {[
+                "A clear, senior conversation",
+                "No pre-packaged programme pitch",
+                "A practical recommendation—even if it is not us",
+              ].map((item) => (
+                <p key={item}>
+                  <Check size={16} aria-hidden="true" /> {item}
+                </p>
+              ))}
+            </div>
+            <a href="mailto:support@ligerlearn.org" className="poster-button">
               Start a conversation
               <ArrowRight size={17} aria-hidden="true" />
             </a>
@@ -260,7 +262,6 @@ export default function LearnHomePage() {
 
       <SiteFooter
         brand="learn"
-        light
         statement="Serious capability work begins with a serious business question."
         email="support@ligerlearn.org"
       />

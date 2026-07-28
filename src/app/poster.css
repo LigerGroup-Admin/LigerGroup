@@ -1,0 +1,692 @@
+/*
+  Poster series primitives — shared grammar for all four brands.
+  Each brand root sets: --ink-1 (sky swath), --ink-2 (warm accent),
+  --ink-3 (support), --ink-deep (text ink), --display, --body.
+  Cream stock and grain come from :root.
+*/
+
+.brand-root {
+  display: contents;
+}
+
+.poster-page {
+  background: var(--stock);
+  color: var(--ink-deep);
+  font-family: var(--body);
+}
+
+.poster-page ::selection {
+  background: var(--ink-2);
+  color: var(--stock);
+}
+
+.poster-page :focus-visible {
+  outline: 3px solid var(--ink-2);
+  outline-offset: 3px;
+}
+
+.poster-page .brand-mark {
+  color: var(--ink-deep);
+}
+
+.ink-field .brand-mark {
+  color: inherit;
+}
+
+/* Display type — blocky poster caps */
+.poster-display {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+/*
+  Hero series chip — the stamped label over a scene. It carries its own ink
+  plate so it stays legible wherever the scene crops behind it; the plain
+  .series-label is for plates where the ground is already flat.
+*/
+.hero-chip {
+  display: inline-block;
+  margin: 0 0 1.2rem;
+  padding: 0.5rem 0.85rem;
+  background: var(--ink-deep);
+  color: var(--stock);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+/* Caption caps — labels, nav, series numbers */
+.caption-caps {
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Series plate label: "No. 02 — The Programme" */
+.series-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.4rem;
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.series-label::after {
+  flex: 1;
+  height: 3px;
+  max-width: 4.5rem;
+  background: currentColor;
+  content: "";
+}
+
+/* Ink fields — silkscreened areas with paper grain */
+.ink-field {
+  position: relative;
+  isolation: isolate;
+  color: var(--stock);
+}
+
+.ink-field::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: var(--grain);
+  content: "";
+  mix-blend-mode: overlay;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.ink-field--1 { background-color: var(--ink-1); }
+.ink-field--2 { background-color: var(--ink-2); }
+.ink-field--3 { background-color: var(--ink-3); }
+.ink-field--deep { background-color: var(--ink-deep); }
+
+/* Buttons — flat ink, clipped corner when active */
+.poster-button {
+  display: inline-flex;
+  min-height: 3.4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 0.85rem 1.6rem;
+  border: 2px solid var(--ink-deep);
+  background: var(--ink-deep);
+  color: var(--stock);
+  font-family: var(--body);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: clip-path 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.poster-button:hover,
+.poster-button:focus-visible {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.9rem), calc(100% - 0.9rem) 100%, 0 100%);
+}
+
+.poster-button--warm {
+  border-color: var(--ink-2);
+  background: var(--ink-2);
+  color: var(--ink-deep);
+}
+
+.poster-button--outline {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+
+.poster-button--stock {
+  border-color: var(--stock);
+  background: var(--stock);
+  color: var(--ink-deep);
+}
+
+/* Text link — thick underline rule */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 3px solid var(--ink-2);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+/* Caption bar — the imperative strip beneath a scene or plate */
+.caption-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  padding: 1.4rem 4vw;
+}
+
+.caption-bar__imperative {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Announcement strip */
+.site-announcement {
+  display: flex;
+  min-height: 2.6rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.55rem 1.25rem;
+  background: var(--ink-2);
+  color: var(--ink-deep);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.site-announcement a {
+  margin-left: 0.55rem;
+  border-bottom: 2px solid currentColor;
+}
+
+/* Header — poster margin top bar */
+.site-header {
+  position: relative;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) auto minmax(10rem, 1fr);
+  min-height: 5rem;
+  align-items: center;
+  padding: 0 4vw;
+  border-bottom: 3px solid var(--ink-deep);
+  background: var(--stock);
+  color: var(--ink-deep);
+}
+
+.site-header__desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.2rem, 2.5vw, 2.6rem);
+}
+
+.site-header__link {
+  position: relative;
+  padding: 0.35rem 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.site-header__link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: right;
+  background: var(--ink-2);
+  content: "";
+  transition: transform 200ms ease;
+}
+
+.site-header__link:hover::after,
+.site-header__link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.site-header__cta {
+  justify-self: end;
+  min-height: 2.9rem;
+  padding: 0 1.2rem;
+}
+
+.site-header__mobile {
+  display: none;
+  justify-self: end;
+}
+
+.site-header__mobile summary {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  cursor: pointer;
+  list-style: none;
+  place-items: center;
+}
+
+.site-header__mobile summary::-webkit-details-marker {
+  display: none;
+}
+
+.site-header__mobile .menu-close,
+.site-header__mobile[open] .menu-open {
+  display: none;
+}
+
+.site-header__mobile[open] .menu-close {
+  display: block;
+}
+
+.site-header__mobile nav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 4vw 2rem;
+  border-bottom: 3px solid var(--ink-deep);
+  background: var(--stock);
+  color: var(--ink-deep);
+}
+
+.site-header__mobile nav > a {
+  padding: 0.95rem 0;
+  border-bottom: 2px solid var(--stock-deep);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.site-header__mobile .site-header__mobile-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.85rem;
+  padding: 1rem;
+  border: 0;
+  background: var(--ink-deep);
+  color: var(--stock);
+}
+
+/* Footer — the poster's bottom margin */
+.site-footer {
+  color: var(--stock);
+}
+
+.site-footer__main {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.6fr) 1.4fr;
+  align-items: end;
+  gap: 2.5rem;
+  padding: clamp(3.5rem, 7vw, 6.5rem) 4vw clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.site-footer__main .brand-mark {
+  color: inherit;
+}
+
+.site-footer__statement {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2rem, 4.6vw, 4.4rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+.site-footer__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 3px solid var(--ink-2);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.site-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 4vw;
+  padding: 1.2rem 0 1.4rem;
+  border-top: 2px solid color-mix(in srgb, var(--stock) 30%, transparent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.site-footer__bottom > div {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Lead forms — part of the same sheet */
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  border: 3px solid var(--ink-deep);
+  background: var(--stock);
+  color: var(--ink-deep);
+}
+
+.lead-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lead-form input:not([type="checkbox"]),
+.lead-form textarea,
+.lead-form select {
+  width: 100%;
+  min-height: 3.35rem;
+  padding: 0 0.9rem;
+  border: 2px solid var(--ink-deep);
+  border-radius: 0;
+  outline: none;
+  background: white;
+  color: var(--ink-deep);
+  font-family: var(--body);
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.lead-form input::placeholder,
+.lead-form textarea::placeholder {
+  color: #5c584c;
+}
+
+.lead-form textarea {
+  min-height: 8rem;
+  padding-top: 0.9rem;
+  resize: vertical;
+}
+
+.lead-form input:focus,
+.lead-form textarea:focus,
+.lead-form select:focus {
+  border-color: var(--ink-2);
+  box-shadow: 3px 3px 0 var(--ink-2);
+}
+
+.lead-form__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.lead-form .lead-form__consent {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  align-items: start;
+  gap: 0.7rem;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.55;
+  text-transform: none;
+}
+
+.lead-form__consent input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.15rem 0 0;
+  accent-color: var(--ink-deep);
+}
+
+.lead-form .poster-button {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.lead-form__hp {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.form-status {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 3px solid;
+}
+
+.form-status--success {
+  border-color: #2c5d3f;
+  background: #e6eedd;
+  color: #24492f;
+}
+
+.form-status--error {
+  border-color: #8f3226;
+  background: #f4e2d8;
+  color: #7c2b1f;
+}
+
+.form-status strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.form-status p {
+  margin: 0;
+  font-size: 0.68rem;
+  line-height: 1.55;
+}
+
+/* FAQ — field-notes style */
+.poster-faq details {
+  border-top: 3px solid var(--ink-deep);
+}
+
+.poster-faq details:last-child {
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.poster-faq summary {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  list-style: none;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.poster-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.poster-faq summary svg {
+  flex: 0 0 auto;
+  transition: transform 180ms ease;
+}
+
+.poster-faq details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.poster-faq details p {
+  max-width: 42rem;
+  margin: -0.4rem 0 1.6rem;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+/* Duotone photo treatment */
+.duotone {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink-1);
+}
+
+.duotone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.12) brightness(1.02);
+  mix-blend-mode: screen;
+}
+
+.duotone::after {
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  content: "";
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Poster sheet — hero carries the WPA margin frame */
+.poster-sheet {
+  position: relative;
+}
+
+.poster-sheet::after {
+  position: absolute;
+  z-index: 2;
+  inset: clamp(0.7rem, 1.4vw, 1.2rem);
+  border: 2px solid color-mix(in srgb, var(--stock) 55%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+/* Scene — layered hero landscape */
+.scene {
+  position: relative;
+  overflow: hidden;
+}
+
+.scene svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.scene::after {
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  content: "";
+  mix-blend-mode: overlay;
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+/* Entrance */
+@keyframes rise-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.reveal {
+  animation: rise-in 700ms both cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.reveal--2 {
+  animation-delay: 120ms;
+}
+
+.reveal--3 {
+  animation-delay: 220ms;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+    min-height: 4.6rem;
+  }
+
+  .site-header__desktop,
+  .site-header > .site-header__cta {
+    display: none;
+  }
+
+  .site-header__mobile {
+    display: block;
+  }
+
+  .site-footer__main {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+@media (max-width: 600px) {
+  .lead-form__split {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .caption-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .caption-bar .poster-button {
+    width: 100%;
+  }
+}

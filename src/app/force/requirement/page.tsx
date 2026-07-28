@@ -18,17 +18,18 @@ export default async function RequirementPage({
   const { form } = await searchParams;
 
   return (
-    <main id="main-content" className="force-requirement">
+    <main id="main-content" className="force-requirement poster-page">
       <header>
         <BrandMark brand="force" href="/force" framed />
         <Link href="/force">
-          <ArrowLeft size={16} aria-hidden="true" /> Back to LigerForce
+          <ArrowLeft size={16} aria-hidden="true" />
+          <span>Back to LigerForce</span>
         </Link>
       </header>
-      <section>
+      <section className="force-requirement__grid">
         <div className="force-requirement__intro">
-          <p className="eyebrow">For ready-to-move founders</p>
-          <h1>Tell us what good support looks like.</h1>
+          <p className="series-label">For ready-to-move founders</p>
+          <h1 className="poster-display">Tell us what good support looks like.</h1>
           <p>
             Share the role, the outcome, and the working pattern. We will review
             it and respond with the most useful next step.
@@ -106,7 +107,7 @@ export default async function RequirementPage({
             <input type="checkbox" name="consent" required />
             <span>I agree that LigerForce may contact me about this requirement.</span>
           </label>
-          <button className="button button--force" type="submit">
+          <button className="poster-button" type="submit">
             Submit my requirement
             <ArrowRight size={17} aria-hidden="true" />
           </button>

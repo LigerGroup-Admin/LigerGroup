@@ -18,17 +18,18 @@ export default async function OneForcePage({
   const { form } = await searchParams;
 
   return (
-    <main id="main-content" className="one-force-page">
+    <main id="main-content" className="one-force-page poster-page">
       <header>
-        <BrandMark brand="learn" light href="/learn" framed />
+        <BrandMark brand="learn" href="/learn" framed />
         <Link href="/learn">
-          <ArrowLeft size={16} aria-hidden="true" /> Back to LigerLearn
+          <ArrowLeft size={16} aria-hidden="true" />
+          <span>Back to LigerLearn</span>
         </Link>
       </header>
 
-      <section className="one-force-hero">
-        <p className="eyebrow">One Force · Post-merger integration</p>
-        <h1 className="display-type">
+      <section className="one-force-hero ink-field ink-field--2">
+        <p className="series-label">One Force · Post-merger integration</p>
+        <h1 className="poster-display">
           A merger does not create one workforce. Leadership does.
         </h1>
         <p>
@@ -36,17 +37,20 @@ export default async function OneForcePage({
           cultural, behavioural, and performance friction that persists after
           the transaction closes.
         </p>
-        <a href="#overview" className="button button--light">
+        <a href="#overview" className="poster-button poster-button--stock">
           Get the One Force overview
           <ArrowRight size={17} aria-hidden="true" />
         </a>
       </section>
 
       <section className="one-force-problem">
-        <p className="eyebrow">The integration gap</p>
-        <h2 className="display-type">
-          The structure changes on paper. The organisation changes in behaviour.
-        </h2>
+        <div>
+          <p className="series-label">The integration gap</p>
+          <h2 className="poster-display">
+            The structure changes on paper. The organisation changes in
+            behaviour.
+          </h2>
+        </div>
         <div>
           <p>
             Teams carry inherited loyalties, habits, status signals, and ways of
@@ -62,12 +66,10 @@ export default async function OneForcePage({
         </div>
       </section>
 
-      <section className="one-force-signals">
-        <div>
-          <p className="eyebrow">What we examine</p>
-          <h2 className="display-type">Four signals of one operating force.</h2>
-        </div>
-        <div>
+      <section className="one-force-signals ink-field ink-field--1">
+        <p className="series-label">What we examine</p>
+        <h2 className="poster-display">Four signals of one operating force.</h2>
+        <div className="one-force-signals__grid">
           {[
             ["01", "Leadership alignment", "Do leaders tell the same story and reinforce the same priorities?"],
             ["02", "Decision clarity", "Are authority, escalation, and accountability understood across legacy lines?"],
@@ -85,13 +87,15 @@ export default async function OneForcePage({
 
       <section className="one-force-overview" id="overview">
         <div>
-          <p className="eyebrow">The executive overview</p>
-          <h2 className="display-type">Take the framework into your next leadership conversation.</h2>
+          <p className="series-label">The executive overview</p>
+          <h2 className="poster-display">
+            Take the framework into your next leadership conversation.
+          </h2>
           <p>
             Request the One Force overview. Femi will follow up personally within
             two business days if the context is a fit.
           </p>
-          <div>
+          <div className="one-force-overview__list">
             <span>
               <Check size={15} aria-hidden="true" /> Diagnostic questions
             </span>
@@ -152,7 +156,7 @@ export default async function OneForcePage({
               this request.
             </span>
           </label>
-          <button type="submit" className="button button--learn">
+          <button type="submit" className="poster-button">
             Send me the overview
             <ArrowRight size={17} aria-hidden="true" />
           </button>

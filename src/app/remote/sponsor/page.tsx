@@ -18,17 +18,18 @@ export default async function SponsorPage({
   const { form } = await searchParams;
 
   return (
-    <main id="main-content" className="remote-sponsor-page">
+    <main id="main-content" className="remote-sponsor-page poster-page">
       <header>
         <BrandMark brand="remote" href="/remote" framed />
         <Link href="/remote">
-          <ArrowLeft size={16} aria-hidden="true" /> Back to LigerRemote
+          <ArrowLeft size={16} aria-hidden="true" />
+          <span>Back to LigerRemote</span>
         </Link>
       </header>
-      <section>
+      <section className="remote-sponsor-page__grid">
         <div className="remote-sponsor-page__intro">
-          <p className="eyebrow">Corporate and institutional sponsorship</p>
-          <h1 className="display-type">Fund a pathway, not just a place.</h1>
+          <p className="series-label">Corporate and institutional sponsorship</p>
+          <h1 className="poster-display">Fund a pathway, not just a place.</h1>
           <p>
             Sponsor cohort places for ambitious African professionals and receive
             a clear account of participation, completion, work-readiness, and
@@ -107,7 +108,7 @@ export default async function SponsorPage({
               about this request.
             </span>
           </label>
-          <button className="button button--remote" type="submit">
+          <button className="poster-button" type="submit">
             Send me the sponsor pack
             <ArrowRight size={17} aria-hidden="true" />
           </button>

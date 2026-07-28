@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Manrope } from "next/font/google";
+import { Anton, Archivo, Instrument_Serif, Manrope } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -12,6 +12,19 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   weight: "400",
   style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const anton = Anton({
+  variable: "--font-anton",
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
   display: "swap",
 });
@@ -39,7 +52,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} ${instrumentSerif.variable}`}>
+    <html
+      lang="en"
+      className={`${manrope.variable} ${instrumentSerif.variable} ${anton.variable} ${archivo.variable}`}
+    >
       <body>
         <a className="skip-link" href="#main-content">
           Skip to content

@@ -1,0 +1,562 @@
+/* LigerRemote — Lagos Dawn */
+
+.remote-root {
+  --ink-1: #1f4d92;
+  --ink-2: #e39b2d;
+  --ink-3: #175e57;
+  --ink-deep: #122840;
+  --display: var(--font-staatliches), "Arial Narrow", sans-serif;
+  --body: var(--font-work-sans), "Helvetica Neue", sans-serif;
+}
+
+/* Marigold is a light ink — deep text on it */
+.remote-root .ink-field--2 {
+  color: var(--ink-deep);
+}
+
+/* Hero — the dawn sheet */
+.remote-hero {
+  position: relative;
+  display: flex;
+  /* leaves room for announcement + header + the imperative caption bar */
+  min-height: max(24rem, min(calc(100svh - 14.5rem), 52rem));
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--stock);
+}
+
+.remote-hero__scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+
+.remote-hero__scene svg {
+  width: 100%;
+  height: 100%;
+}
+
+.remote-hero__copy {
+  padding: clamp(2.5rem, 5vw, 4.5rem) 4vw clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.remote-hero h1 {
+  max-width: 56rem;
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.7rem, 5.9vw, 5.9rem);
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-shadow: 0.26rem 0.26rem 0 var(--ink-deep);
+}
+
+.remote-hero__intro {
+  max-width: 36rem;
+  margin: 1.6rem 0 0;
+  color: color-mix(in srgb, var(--stock) 90%, transparent);
+  font-size: clamp(0.92rem, 1.3vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.remote-hero__caption {
+  border-top: 3px solid var(--ink-deep);
+}
+
+.remote-hero__caption .caption-bar__imperative {
+  color: var(--stock);
+}
+
+.remote-hero__proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  color: color-mix(in srgb, var(--stock) 88%, transparent);
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.remote-hero__proof span {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* No. 01 — Is this you */
+.remote-fit {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  align-items: center;
+  gap: 6vw;
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+/* Proof strip — three stamped plates under the caption bar */
+.remote-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.remote-facts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 2.5vw, 2.5rem);
+  border-right: 3px solid var(--ink-deep);
+}
+
+.remote-facts > div:last-child {
+  border-right: 0;
+}
+
+.remote-facts span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #47566b;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.remote-facts strong {
+  font-family: var(--display);
+  font-size: clamp(1.15rem, 2vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.remote-fit h2 {
+  max-width: 30rem;
+  font-size: clamp(2.6rem, 4.6vw, 4.6rem);
+}
+
+.remote-fit__lede {
+  max-width: 30rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.remote-fit__list {
+  border-top: 3px solid var(--ink-deep);
+}
+
+.remote-fit__list > div {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  align-items: start;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.remote-fit__list svg {
+  margin-top: 0.15rem;
+  color: var(--ink-1);
+}
+
+.remote-fit__list p {
+  max-width: 39rem;
+  margin: 0;
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* No. 02 — The programme, drenched cobalt */
+.remote-programme {
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw clamp(3.5rem, 6vw, 6rem);
+}
+
+.remote-programme .series-label {
+  color: var(--ink-2);
+}
+
+.remote-programme__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: end;
+  gap: 4vw;
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.remote-programme h2 {
+  font-size: clamp(3rem, 6.4vw, 6.4rem);
+}
+
+.remote-programme__intro > p {
+  max-width: 34rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--stock) 84%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.remote-programme__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 3px solid color-mix(in srgb, var(--stock) 55%, transparent);
+}
+
+.remote-programme__steps article {
+  position: relative;
+  min-height: 20rem;
+  padding: 1.75rem 2rem 2.5rem 0;
+  border-right: 3px solid color-mix(in srgb, var(--stock) 55%, transparent);
+}
+
+.remote-programme__steps article + article {
+  padding-left: 2rem;
+}
+
+.remote-programme__steps article:last-child {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.remote-programme__number {
+  margin-bottom: 3.2rem;
+  font-family: var(--display);
+  font-size: clamp(3rem, 5vw, 4.6rem);
+  line-height: 1;
+  color: var(--ink-2);
+}
+
+.remote-programme__meta {
+  margin: 0 0 0.7rem;
+  color: color-mix(in srgb, var(--stock) 78%, transparent);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.remote-programme__steps h3 {
+  margin: 0 0 1rem;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.remote-programme__steps article p:last-child {
+  max-width: 24rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--stock) 86%, transparent);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.remote-programme__cta {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 3rem;
+}
+
+/* No. 03 — Graduate stories */
+.remote-stories {
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.remote-stories__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.remote-stories h2 {
+  max-width: 36rem;
+  font-size: clamp(2.6rem, 4.8vw, 4.8rem);
+}
+
+.remote-stories__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.remote-story {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.62fr) 1fr;
+  border: 3px solid var(--ink-deep);
+  background: white;
+}
+
+.remote-story .duotone {
+  min-height: 16rem;
+}
+
+.remote-story > div:last-child {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-left: 3px solid var(--ink-deep);
+}
+
+.remote-story blockquote {
+  margin: 0 0 auto;
+  font-size: clamp(1.02rem, 1.5vw, 1.25rem);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.remote-story p {
+  margin: 1.8rem 0 0.2rem;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.remote-story span {
+  color: #4c5a6b;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Sponsor band — teal field */
+.remote-sponsor {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: end;
+  gap: 5vw;
+  padding: clamp(4rem, 7vw, 7rem) 4vw;
+}
+
+.remote-sponsor .series-label {
+  color: var(--ink-2);
+}
+
+.remote-sponsor h2 {
+  max-width: 34rem;
+  font-size: clamp(2.6rem, 5.2vw, 5.2rem);
+}
+
+.remote-sponsor > div:last-child p {
+  max-width: 34rem;
+  margin: 0 0 2rem;
+  color: color-mix(in srgb, var(--stock) 86%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* No. 04 — Apply */
+.remote-apply {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 0.72fr);
+  gap: 7vw;
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.remote-apply__intro {
+  position: sticky;
+  top: 3rem;
+  align-self: start;
+}
+
+.remote-apply h2 {
+  max-width: 32rem;
+  font-size: clamp(2.8rem, 5.6vw, 5.6rem);
+}
+
+.remote-apply__intro > p {
+  max-width: 34rem;
+  margin: 1.75rem 0 2rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.remote-apply__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.remote-apply__meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.remote-apply__meta span::before {
+  width: 1.6rem;
+  height: 3px;
+  background: var(--ink-2);
+  content: "";
+}
+
+/* No. 05 — FAQ */
+.remote-faq {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  gap: 6vw;
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.remote-faq h2 {
+  font-size: clamp(2.4rem, 4.4vw, 4.4rem);
+}
+
+/* Sponsor page */
+.remote-sponsor-page {
+  min-height: 100vh;
+}
+
+.remote-sponsor-page > header {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4vw;
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.remote-sponsor-page > header > a:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.remote-sponsor-page__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 0.72fr);
+  align-items: start;
+  gap: 7vw;
+  padding: clamp(4rem, 8vw, 8rem) 4vw;
+}
+
+.remote-sponsor-page__intro {
+  position: sticky;
+  top: 3rem;
+}
+
+.remote-sponsor-page__intro h1 {
+  max-width: 36rem;
+  font-size: clamp(2.9rem, 6vw, 6rem);
+}
+
+.remote-sponsor-page__intro > p {
+  max-width: 36rem;
+  margin: 1.75rem 0 2rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.remote-sponsor-page__intro span {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.remote-sponsor-page__intro span svg {
+  color: var(--ink-1);
+}
+
+.remote-sponsor-page__intro > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+@media (max-width: 980px) {
+  .remote-hero {
+    min-height: 34rem;
+  }
+
+  .remote-fit,
+  .remote-apply,
+  .remote-faq,
+  .remote-sponsor,
+  .remote-sponsor-page__grid,
+  .remote-programme__intro {
+    grid-template-columns: 1fr;
+  }
+
+  .remote-stories__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .remote-apply__intro,
+  .remote-sponsor-page__intro {
+    position: static;
+  }
+
+  .remote-programme__steps {
+    grid-template-columns: 1fr;
+  }
+
+  .remote-programme__steps article,
+  .remote-programme__steps article + article {
+    min-height: auto;
+    padding: 1.5rem 0 2.25rem;
+    border-right: 0;
+    border-bottom: 3px solid color-mix(in srgb, var(--stock) 55%, transparent);
+  }
+
+  .remote-programme__steps article:last-child {
+    border-bottom: 0;
+  }
+
+  .remote-programme__number {
+    margin-bottom: 1.6rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .remote-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .remote-facts > div {
+    border-right: 0;
+    border-bottom: 3px solid var(--ink-deep);
+  }
+
+  .remote-facts > div:last-child {
+    border-bottom: 0;
+  }
+
+  .remote-story {
+    grid-template-columns: 1fr;
+  }
+
+  .remote-story .duotone {
+    min-height: 15rem;
+  }
+
+  .remote-story > div:last-child {
+    border-top: 3px solid var(--ink-deep);
+    border-left: 0;
+  }
+
+  .remote-sponsor-page > header > a:last-child span {
+    display: none;
+  }
+}

@@ -7,11 +7,12 @@ import {
   ChevronDown,
   Clock3,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
+import { PosterScene } from "@/components/poster-scene";
+import { RemoteScene } from "@/components/scenes";
 
 export const metadata: Metadata = {
   title: "LigerRemote | Build a career the world can hire",
@@ -51,7 +52,7 @@ export default async function RemoteHomePage({
   const { form } = await searchParams;
 
   return (
-    <div className="remote-page">
+    <div className="remote-page poster-page">
       <SiteHeader
         brand="remote"
         nav={[
@@ -70,63 +71,68 @@ export default async function RemoteHomePage({
       />
 
       <main id="main-content">
-        <section className="remote-hero">
+        <section className="remote-hero poster-sheet" aria-label="LigerRemote">
+          <PosterScene className="remote-hero__scene">
+            <RemoteScene />
+          </PosterScene>
           <div className="remote-hero__copy reveal">
-            <p className="eyebrow">Built for African professionals</p>
+            <p className="hero-chip">
+              Series No. 01 · Built for African professionals
+            </p>
             <h1>
-              Turn what you know into a remote career the world can hire.
+              Turn what you know
+              <br />
+              into a career
+              <br />
+              that travels.
             </h1>
             <p className="remote-hero__intro">
               A practical accelerator, supervised work experience, and a
               credible route into global teams—built around how remote work
               actually happens.
             </p>
-            <div className="remote-hero__actions">
-              <Link href="#apply" className="button button--remote">
-                Apply for the next cohort
-                <ArrowRight size={17} aria-hidden="true" />
-              </Link>
-              <Link href="#programme" className="text-link">
-                See the full journey
-              </Link>
-            </div>
-            <div className="remote-hero__proof" aria-label="Programme features">
-              <span>
-                <Clock3 size={15} aria-hidden="true" /> 4-week accelerator
-              </span>
-              <span>
-                <ShieldCheck size={15} aria-hidden="true" /> Supervised experience
-              </span>
-            </div>
           </div>
+        </section>
 
-          <div className="remote-hero__visual reveal reveal--2">
-            <div className="remote-hero__image">
-              <Image
-                src="/images/remote/hero.jpg"
-                alt="A professional working confidently at her laptop"
-                fill
-                priority
-                sizes="(max-width: 900px) 92vw, 44vw"
-              />
-            </div>
-            <div className="remote-hero__note">
-              <Sparkles size={17} aria-hidden="true" />
-              <span>
-                Not another online course.
-                <strong>A work-readiness system.</strong>
-              </span>
-            </div>
-            <span className="remote-hero__caption">Lagos · Remote · Global</span>
+        <div className="caption-bar ink-field ink-field--1 remote-hero__caption">
+          <p className="caption-bar__imperative">Go remote. Start in Lagos.</p>
+          <Link href="#apply" className="poster-button poster-button--warm">
+            Apply for the next cohort
+            <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
+
+        <section className="remote-facts" aria-label="Programme facts">
+          <div>
+            <span>
+              <Clock3 size={14} aria-hidden="true" /> The training
+            </span>
+            <strong>4-week accelerator</strong>
+          </div>
+          <div>
+            <span>
+              <ShieldCheck size={14} aria-hidden="true" /> The proof
+            </span>
+            <strong>Supervised real work</strong>
+          </div>
+          <div>
+            <span>
+              <Check size={14} aria-hidden="true" /> The cost to apply
+            </span>
+            <strong>No payment required</strong>
           </div>
         </section>
 
         <section className="remote-fit" id="fit">
-          <div className="remote-section-heading">
-            <p className="eyebrow">This is for you if</p>
-            <h2 className="display-type">
+          <div>
+            <p className="series-label">No. 01 · Is this you</p>
+            <h2 className="poster-display remote-fit__h2">
               You have ability. What you need is a credible bridge.
             </h2>
+            <p className="remote-fit__lede">
+              The accelerator is built for people who can already do the
+              work—and need the proof, structure, and route to show it.
+            </p>
           </div>
           <div className="remote-fit__list">
             {[
@@ -136,17 +142,19 @@ export default async function RemoteHomePage({
               "You are ready to practise in real working conditions—not just watch videos.",
             ].map((item) => (
               <div key={item}>
-                <Check size={18} strokeWidth={2} aria-hidden="true" />
+                <Check size={20} strokeWidth={2.4} aria-hidden="true" />
                 <p>{item}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="remote-programme" id="programme">
+        <section className="remote-programme ink-field ink-field--1" id="programme">
           <div className="remote-programme__intro">
-            <p className="eyebrow">How the pathway works</p>
-            <h2 className="display-type">From potential to proof.</h2>
+            <div>
+              <p className="series-label">No. 02 · How the pathway works</p>
+              <h2 className="poster-display">From potential to proof.</h2>
+            </div>
             <p>
               The programme is deliberately practical. Every stage gives you
               evidence that you can communicate, execute, and deliver inside a
@@ -165,25 +173,33 @@ export default async function RemoteHomePage({
               </article>
             ))}
           </div>
-          <Link href="#apply" className="button button--remote">
-            Apply for the next cohort
-            <ArrowRight size={17} aria-hidden="true" />
-          </Link>
+          <div className="remote-programme__cta">
+            <Link href="#apply" className="poster-button poster-button--warm">
+              Apply for the next cohort
+              <ArrowRight size={17} aria-hidden="true" />
+            </Link>
+          </div>
         </section>
 
         <section className="remote-stories" id="stories">
           <div className="remote-stories__heading">
-            <p className="eyebrow">Graduate stories</p>
-            <h2 className="display-type">Confidence, backed by capability.</h2>
+            <div>
+              <p className="series-label">No. 03 · Graduate stories</p>
+              <h2 className="poster-display">
+                Confidence, backed by capability.
+              </h2>
+            </div>
           </div>
           <div className="remote-stories__grid">
-            <article className="remote-story remote-story--lead">
-              <Image
-                src="/images/remote/joy.jpeg"
-                alt="Joy Agbadu, LigerRemote graduate"
-                width={400}
-                height={400}
-              />
+            <article className="remote-story">
+              <div className="duotone">
+                <Image
+                  src="/images/remote/joy.jpeg"
+                  alt="Joy Agbadu, LigerRemote graduate"
+                  width={400}
+                  height={400}
+                />
+              </div>
               <div>
                 <blockquote>
                   “The programme pushed me outside my comfort zone and changed
@@ -194,12 +210,14 @@ export default async function RemoteHomePage({
               </div>
             </article>
             <article className="remote-story">
-              <Image
-                src="/images/remote/omolola.jpeg"
-                alt="Omolola Akinola, LigerRemote graduate"
-                width={400}
-                height={400}
-              />
+              <div className="duotone">
+                <Image
+                  src="/images/remote/omolola.jpeg"
+                  alt="Omolola Akinola, LigerRemote graduate"
+                  width={400}
+                  height={400}
+                />
+              </div>
               <div>
                 <blockquote>
                   “I left with clearer direction, stronger confidence, and a
@@ -212,17 +230,19 @@ export default async function RemoteHomePage({
           </div>
         </section>
 
-        <section className="remote-sponsor" id="sponsors">
+        <section className="remote-sponsor ink-field ink-field--3" id="sponsors">
           <div>
-            <p className="eyebrow">For employers and institutions</p>
-            <h2 className="display-type">Sponsor the next wave of global talent.</h2>
+            <p className="series-label">For employers and institutions</p>
+            <h2 className="poster-display">
+              Sponsor the next wave of global talent.
+            </h2>
           </div>
           <div>
             <p>
               Fund cohort places, create meaningful workforce impact, and get a
               clear view of the outcomes your sponsorship makes possible.
             </p>
-            <Link href="/remote/sponsor" className="button button--light">
+            <Link href="/remote/sponsor" className="poster-button poster-button--stock">
               Request the sponsor pack
               <ArrowRight size={17} aria-hidden="true" />
             </Link>
@@ -231,16 +251,16 @@ export default async function RemoteHomePage({
 
         <section className="remote-apply" id="apply">
           <div className="remote-apply__intro">
-            <p className="eyebrow">Start here</p>
-            <h2 className="display-type">Your next chapter could be remote.</h2>
+            <p className="series-label">No. 04 · Start here</p>
+            <h2 className="poster-display">Your next chapter could be remote.</h2>
             <p>
               Tell us a little about yourself. We will send the full application
               and next cohort details to your inbox.
             </p>
             <div className="remote-apply__meta">
-              <span>01 · Takes under 3 minutes</span>
-              <span>02 · No payment required</span>
-              <span>03 · Your answers stay private</span>
+              <span>Takes under 3 minutes</span>
+              <span>No payment required</span>
+              <span>Your answers stay private</span>
             </div>
           </div>
           <form className="lead-form" action="/api/submissions" method="post">
@@ -298,7 +318,7 @@ export default async function RemoteHomePage({
                 can unsubscribe at any time.
               </span>
             </label>
-            <button className="button button--remote" type="submit">
+            <button className="poster-button" type="submit">
               Continue my application
               <ArrowRight size={17} aria-hidden="true" />
             </button>
@@ -307,10 +327,10 @@ export default async function RemoteHomePage({
 
         <section className="remote-faq" id="faqs">
           <div>
-            <p className="eyebrow">Good questions</p>
-            <h2 className="display-type">Before you apply.</h2>
+            <p className="series-label">No. 05 · Good questions</p>
+            <h2 className="poster-display">Before you apply.</h2>
           </div>
-          <div>
+          <div className="poster-faq">
             {[
               {
                 q: "Do I need previous remote-work experience?",

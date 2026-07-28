@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ArrowDown,
-  ArrowRight,
-  Check,
-  Clock3,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight, Check, Clock3, ShieldCheck } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
+import { PosterScene } from "@/components/poster-scene";
+import { ForceScene } from "@/components/scenes";
 
 export const metadata: Metadata = {
   title: "LigerForce | Managed remote talent",
@@ -43,7 +39,7 @@ export default async function ForceHomePage({
   const { form } = await searchParams;
 
   return (
-    <div className="force-page">
+    <div className="force-page poster-page">
       <SiteHeader
         brand="force"
         nav={[
@@ -55,31 +51,37 @@ export default async function ForceHomePage({
       />
 
       <main id="main-content">
-        <section className="force-hero">
-          <div className="force-hero__index" aria-hidden="true">
-            LF / 01
-          </div>
+        <section className="force-hero poster-sheet" aria-label="LigerForce">
+          <PosterScene className="force-hero__scene">
+            <ForceScene />
+          </PosterScene>
           <div className="force-hero__copy reveal">
-            <p className="eyebrow">Remote talent without the uncertainty</p>
+            <p className="hero-chip">
+              Series No. 02 · Remote talent without the uncertainty
+            </p>
             <h1>
               Managed.
               <br />
-              Vetted. Accountable.
+              Vetted.
+              <br />
+              Accountable.
             </h1>
-            <p>
+            <p className="force-hero__intro">
               You set the brief. We find, prepare, and manage the person—so
               adding remote capacity does not add another management problem.
             </p>
-            <Link href="#book" className="button button--force">
-              Book a 20-minute call
-              <ArrowRight size={17} aria-hidden="true" />
-            </Link>
           </div>
-          <a className="force-hero__scroll" href="#how">
-            How the model works
-            <ArrowDown size={15} aria-hidden="true" />
-          </a>
         </section>
+
+        <div className="caption-bar ink-field ink-field--deep force-hero__caption">
+          <p className="caption-bar__imperative">
+            Add capacity. Not complexity.
+          </p>
+          <Link href="#book" className="poster-button poster-button--warm">
+            Book a 20-minute call
+            <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
 
         <section className="force-facts" aria-label="Service facts">
           <div>
@@ -97,10 +99,10 @@ export default async function ForceHomePage({
         </section>
 
         <section className="force-how" id="how">
-          <div className="force-section-heading">
-            <p className="eyebrow">A clearer way to hire remotely</p>
-            <h2>Not a marketplace. A managed relationship.</h2>
-          </div>
+          <p className="series-label">No. 01 · A clearer way to hire remotely</p>
+          <h2 className="poster-display">
+            Not a marketplace. A managed relationship.
+          </h2>
           <div className="force-how__steps">
             {steps.map((step) => (
               <article key={step.number}>
@@ -112,9 +114,9 @@ export default async function ForceHomePage({
           </div>
         </section>
 
-        <section className="force-managed" id="managed">
+        <section className="force-managed ink-field ink-field--2" id="managed">
           <div className="force-managed__statement">
-            <p className="eyebrow">We know what you are thinking</p>
+            <p className="series-label">No. 02 · We know what you are thinking</p>
             <h2>
               “I have tried a remote freelancer before. It created more work,
               not less.”
@@ -147,14 +149,14 @@ export default async function ForceHomePage({
           </div>
         </section>
 
-        <section className="force-case" id="case-study">
+        <section className="force-case ink-field ink-field--1" id="case-study">
           <div className="force-case__label">
             <span>Case study / Local Insights</span>
             <span>Managed operations support</span>
           </div>
           <div className="force-case__content">
-            <p className="eyebrow">What the model looks like in practice</p>
-            <h2>
+            <p className="series-label">No. 03 · The model in practice</p>
+            <h2 className="poster-display">
               Dependable delivery capacity, without building another hiring
               function.
             </h2>
@@ -183,10 +185,8 @@ export default async function ForceHomePage({
         </section>
 
         <section className="force-included">
-          <div>
-            <p className="eyebrow">Built into every placement</p>
-            <h2>Less uncertainty. Fewer loose ends.</h2>
-          </div>
+          <p className="series-label">Built into every placement</p>
+          <h2 className="poster-display">Less uncertainty. Fewer loose ends.</h2>
           <div className="force-included__list">
             {[
               "Role-specific vetting",
@@ -206,8 +206,8 @@ export default async function ForceHomePage({
 
         <section className="force-book" id="book">
           <div className="force-book__intro">
-            <p className="eyebrow">One useful conversation</p>
-            <h2>Tell us where work is getting stuck.</h2>
+            <p className="series-label">No. 04 · One useful conversation</p>
+            <h2 className="poster-display">Tell us where work is getting stuck.</h2>
             <p>
               In 20 minutes we will establish whether the LigerForce model fits
               the role you need. If it does not, we will say so.
@@ -279,16 +279,16 @@ export default async function ForceHomePage({
                 I agree that LigerForce may contact me about this requirement.
               </span>
             </label>
-            <button className="button button--force" type="submit">
+            <button className="poster-button" type="submit">
               Book my 20-minute call
               <ArrowRight size={17} aria-hidden="true" />
             </button>
           </form>
         </section>
 
-        <section className="force-ready">
+        <section className="force-ready ink-field ink-field--3">
           <p>Already know exactly what you need?</p>
-          <Link href="/force/requirement" className="text-link">
+          <Link href="/force/requirement" className="poster-button">
             Submit a requirement
             <ArrowRight size={15} aria-hidden="true" />
           </Link>
@@ -297,7 +297,6 @@ export default async function ForceHomePage({
 
       <SiteFooter
         brand="force"
-        light
         statement="Remote talent should create capacity—not complexity."
         email="hello@ligerforce.com"
       />

@@ -21,7 +21,7 @@ export const brands: Record<BrandKey, Brand> = {
     description:
       "A Lagos-based group building talent, deploying capability, and transforming organisational performance.",
     path: "/",
-    accent: "#b89243",
+    accent: "#d3a04a",
   },
   remote: {
     key: "remote",
@@ -32,7 +32,7 @@ export const brands: Record<BrandKey, Brand> = {
     description:
       "Practical training, real-world testing, and a credible pathway into global remote work.",
     path: "/remote",
-    accent: "#0d7377",
+    accent: "#1f4d92",
   },
   force: {
     key: "force",
@@ -43,7 +43,7 @@ export const brands: Record<BrandKey, Brand> = {
     description:
       "Reliable remote professionals without the hiring uncertainty or management overhead.",
     path: "/force",
-    accent: "#1b4f72",
+    accent: "#2f5241",
   },
   learn: {
     key: "learn",
@@ -54,7 +54,7 @@ export const brands: Record<BrandKey, Brand> = {
     description:
       "Corporate capability, leadership advisory, and executive search grounded in business outcomes.",
     path: "/learn",
-    accent: "#7b2d3e",
+    accent: "#6e2639",
   },
 };
 

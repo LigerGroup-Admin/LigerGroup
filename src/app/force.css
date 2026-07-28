@@ -1,0 +1,491 @@
+/* LigerForce — Workshop Green */
+
+.force-root {
+  --ink-1: #2f5241;
+  --ink-2: #b5482f;
+  --ink-3: #c98e3f;
+  --ink-deep: #1f2b26;
+  --display: var(--font-alfa-slab), "Rockwell", serif;
+  --body: var(--font-public-sans), "Helvetica Neue", sans-serif;
+}
+
+/* Brick fields need cream text, not graphite */
+.force-root .poster-button--warm {
+  color: var(--stock);
+}
+
+/* Ochre is a light ink — deep text on it */
+.force-root .ink-field--3 {
+  color: var(--ink-deep);
+}
+
+.force-root .poster-display {
+  letter-spacing: 0.01em;
+  line-height: 1.04;
+}
+
+/* Hero */
+.force-hero {
+  position: relative;
+  display: flex;
+  /* leaves room for header + the imperative caption bar */
+  min-height: max(22rem, min(calc(100svh - 11.75rem), 52rem));
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--stock);
+}
+
+.force-hero__scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+
+.force-hero__scene svg {
+  width: 100%;
+  height: 100%;
+}
+
+.force-hero__copy {
+  padding: clamp(2.5rem, 5vw, 4.5rem) 4vw clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.force-hero h1 {
+  max-width: 54rem;
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 5.2vw, 5.2rem);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.04;
+  text-transform: uppercase;
+  text-shadow: 0.26rem 0.26rem 0 var(--ink-deep);
+}
+
+.force-hero__intro {
+  max-width: 35rem;
+  margin: 1.6rem 0 0;
+  color: color-mix(in srgb, var(--stock) 90%, transparent);
+  font-size: clamp(0.92rem, 1.3vw, 1.06rem);
+  line-height: 1.7;
+}
+
+.force-hero__caption {
+  border-top: 3px solid var(--stock);
+}
+
+/* Service facts — three stamped plates */
+.force-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.force-facts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: clamp(1.75rem, 3.5vw, 3rem) clamp(1.25rem, 2.5vw, 2.5rem);
+  border-right: 3px solid var(--ink-deep);
+}
+
+.force-facts > div:last-child {
+  border-right: 0;
+}
+
+.force-facts span {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #47554d;
+}
+
+.force-facts strong {
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 1.9vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+/* No. 01 — How it works */
+.force-how {
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.force-how h2,
+.force-included h2,
+.force-book h2 {
+  max-width: 40rem;
+  font-size: clamp(2.3rem, 4.4vw, 4.4rem);
+}
+
+.force-how__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.force-how__steps article {
+  border: 3px solid var(--ink-deep);
+  background: white;
+}
+
+.force-how__steps article > span {
+  display: block;
+  padding: 0.85rem 1.4rem;
+  border-bottom: 3px solid var(--ink-deep);
+  background: var(--ink-1);
+  color: var(--stock);
+  font-family: var(--display);
+  font-size: 1.5rem;
+}
+
+.force-how__steps h3 {
+  margin: 1.3rem 1.4rem 0.7rem;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.force-how__steps p {
+  margin: 0 1.4rem 1.5rem;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+/* No. 02 — The objection, brick drenched */
+.force-managed {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6vw;
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.force-managed .series-label {
+  color: var(--ink-3);
+}
+
+.force-managed__statement h2 {
+  max-width: 30rem;
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3.6vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.18;
+}
+
+.force-managed__answers > div {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr;
+  gap: 1.2rem;
+  padding: 1.5rem 0;
+  border-bottom: 3px solid color-mix(in srgb, var(--stock) 45%, transparent);
+}
+
+.force-managed__answers > div:first-child {
+  padding-top: 0;
+}
+
+.force-managed__answers > div:last-child {
+  border-bottom: 0;
+}
+
+.force-managed__answers span {
+  font-family: var(--display);
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--ink-3);
+}
+
+.force-managed__answers p {
+  margin: 0;
+  color: color-mix(in srgb, var(--stock) 90%, transparent);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.force-managed__answers strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--stock);
+  font-size: 0.95rem;
+}
+
+/* No. 03 — Case study, green field */
+.force-case {
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.force-case .series-label {
+  color: var(--ink-3);
+}
+
+.force-case__label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid color-mix(in srgb, var(--stock) 45%, transparent);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--stock) 80%, transparent);
+}
+
+.force-case__content h2 {
+  max-width: 44rem;
+  font-size: clamp(2.1rem, 4vw, 3.9rem);
+}
+
+.force-case__content > p:last-child {
+  max-width: 40rem;
+  margin: 1.6rem 0 0;
+  color: color-mix(in srgb, var(--stock) 86%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.force-case__flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.force-case__flow > div {
+  flex: 1 1 12rem;
+  padding: 1.3rem 1.5rem 1.5rem;
+  border: 3px solid var(--stock);
+}
+
+.force-case__flow > div span {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--ink-3);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.force-case__flow > div strong {
+  font-family: var(--display);
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.force-case__flow svg {
+  align-self: center;
+  flex: 0 0 auto;
+  color: var(--ink-3);
+}
+
+/* Built into every placement */
+.force-included {
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.force-included__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.force-included__list > div {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 4.2rem;
+  padding: 0 1.2rem;
+  border: 3px solid var(--ink-deep);
+  background: white;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.force-included__list svg {
+  flex: 0 0 auto;
+  color: var(--ink-2);
+}
+
+/* No. 04 — Book the call */
+.force-book {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 0.75fr);
+  gap: 7vw;
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+  border-top: 3px solid var(--ink-deep);
+}
+
+.force-book__intro {
+  position: sticky;
+  top: 3rem;
+  align-self: start;
+}
+
+.force-book__intro > p:not(.series-label) {
+  max-width: 34rem;
+  margin: 1.75rem 0 2rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.force-book__intro > div {
+  display: flex;
+  gap: 1.75rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.force-book__intro > div span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.force-book__intro svg {
+  color: var(--ink-2);
+}
+
+/* Ready band */
+.force-ready {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: clamp(2rem, 4vw, 3rem) 4vw;
+}
+
+.force-ready p {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+  text-transform: uppercase;
+}
+
+/* Requirement page */
+.force-requirement {
+  min-height: 100vh;
+}
+
+.force-requirement > header {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4vw;
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.force-requirement > header > a:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.force-requirement__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(22rem, 0.75fr);
+  align-items: start;
+  gap: 7vw;
+  padding: clamp(4rem, 8vw, 8rem) 4vw;
+}
+
+.force-requirement__intro {
+  position: sticky;
+  top: 3rem;
+}
+
+.force-requirement__intro h1 {
+  max-width: 34rem;
+  font-size: clamp(2.4rem, 4.8vw, 4.8rem);
+}
+
+.force-requirement__intro > p {
+  max-width: 34rem;
+  margin: 1.75rem 0 2rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.force-requirement__intro > span {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.force-requirement__intro > span svg {
+  color: var(--ink-2);
+}
+
+@media (max-width: 980px) {
+  .force-hero {
+    min-height: 32rem;
+  }
+
+  .force-managed,
+  .force-book,
+  .force-requirement__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .force-book__intro,
+  .force-requirement__intro {
+    position: static;
+  }
+
+  .force-how__steps,
+  .force-included__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .force-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .force-facts > div {
+    border-right: 0;
+    border-bottom: 3px solid var(--ink-deep);
+  }
+
+  .force-facts > div:last-child {
+    border-bottom: 0;
+  }
+
+  .force-how__steps,
+  .force-included__list {
+    grid-template-columns: 1fr;
+  }
+
+  .force-requirement > header > a:last-child span {
+    display: none;
+  }
+}
