@@ -1,13 +1,7 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { Alfa_Slab_One, Marcellus, Staatliches } from "next/font/google";
 import { BrandMark } from "@/components/brand-mark";
-import { PosterScene } from "@/components/poster-scene";
-import {
-  ForceScene,
-  GroupScene,
-  LearnScene,
-  RemoteScene,
-} from "@/components/scenes";
+import { ForceScene, LearnScene, RemoteScene } from "@/components/scenes";
 
 const staatliches = Staatliches({ weight: "400", subsets: ["latin"], display: "swap" });
 const alfaSlab = Alfa_Slab_One({ weight: "400", subsets: ["latin"], display: "swap" });
@@ -67,10 +61,7 @@ const series = [
 export default function GroupHomePage() {
   return (
     <main id="main-content" className="group-page poster-page">
-      <section className="group-hero poster-sheet">
-        <PosterScene className="group-hero__scene">
-          <GroupScene />
-        </PosterScene>
+      <section className="group-hero poster-sheet ink-field ink-field--1">
         <nav className="group-nav" aria-label="Liger Group navigation">
           <BrandMark brand="group" framed />
           <div className="group-nav__meta">
