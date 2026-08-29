@@ -35,8 +35,3 @@ alter table public.submissions enable row level security;
 -- privileges are granted. Authenticated admin policies are added with the role
 -- and site-permission migration once the first admin accounts are provisioned.
 revoke all on public.submissions from anon, authenticated;
-
--- RLS is bypassed for service_role, but base table GRANTs are still required.
-grant select, insert, update, delete on public.submissions to service_role;
-alter default privileges in schema public
-  grant select, insert, update, delete on tables to service_role;
