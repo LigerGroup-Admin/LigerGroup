@@ -236,7 +236,7 @@ export default async function RemoteHomePage({
               />
               <div>
                 <p>Wonder Hagan</p>
-                <span>LigerRemote graduate, placed at Local Insights (UK)</span>
+                <span>LigerRemote graduate, placed at a UK client</span>
               </div>
             </article>
             <article className="remote-story">
@@ -247,7 +247,7 @@ export default async function RemoteHomePage({
               />
               <div>
                 <p>Ruth Adjetey</p>
-                <span>LigerRemote graduate, placed at a US company</span>
+                <span>LigerRemote graduate, placed at a US client</span>
               </div>
             </article>
           </div>
