@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
 import { PosterScene } from "@/components/poster-scene";
 import { RemoteScene } from "@/components/scenes";
+import { VideoTestimonial } from "@/components/video-testimonial";
 
 export const metadata: Metadata = {
   title: "LigerRemote | Build a career the world can hire",
@@ -225,6 +226,28 @@ export default async function RemoteHomePage({
                 </blockquote>
                 <p>Omolola Akinola</p>
                 <span>Service Delivery Expert · LigerRemote graduate</span>
+              </div>
+            </article>
+            <article className="remote-story">
+              <VideoTestimonial
+                src="/videos/remote/wonder-hagan-testimonial.mp4"
+                ariaLabel="Wonder Hagan, LigerRemote graduate, video testimonial with captions"
+                className="duotone remote-story__video"
+              />
+              <div>
+                <p>Wonder Hagan</p>
+                <span>LigerRemote graduate, placed at Local Insights (UK)</span>
+              </div>
+            </article>
+            <article className="remote-story">
+              <VideoTestimonial
+                src="/videos/remote/ruth-adjetey-testimonial.mp4"
+                ariaLabel="Ruth Adjetey, LigerRemote graduate, video testimonial with captions"
+                className="duotone remote-story__video"
+              />
+              <div>
+                <p>Ruth Adjetey</p>
+                <span>LigerRemote graduate, placed at a US company</span>
               </div>
             </article>
           </div>
