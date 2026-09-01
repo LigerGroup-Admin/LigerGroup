@@ -211,24 +211,6 @@ export default async function RemoteHomePage({
               </div>
             </article>
             <article className="remote-story">
-              <div className="duotone">
-                <Image
-                  src="/images/remote/omolola.jpeg"
-                  alt="Omolola Akinola, LigerRemote graduate"
-                  width={400}
-                  height={400}
-                />
-              </div>
-              <div>
-                <blockquote>
-                  “I left with clearer direction, stronger confidence, and a
-                  practical understanding of remote work.”
-                </blockquote>
-                <p>Omolola Akinola</p>
-                <span>Service Delivery Expert · LigerRemote graduate</span>
-              </div>
-            </article>
-            <article className="remote-story">
               <VideoTestimonial
                 src="/videos/remote/wonder-hagan-testimonial.mp4"
                 ariaLabel="Wonder Hagan, LigerRemote graduate, video testimonial with captions"
