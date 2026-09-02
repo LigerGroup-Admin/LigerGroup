@@ -11,8 +11,6 @@ import {
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
-import { PosterScene } from "@/components/poster-scene";
-import { RemoteScene } from "@/components/scenes";
 import { VideoTestimonial } from "@/components/video-testimonial";
 
 export const metadata: Metadata = {
@@ -73,9 +71,15 @@ export default async function RemoteHomePage({
 
       <main id="main-content">
         <section className="remote-hero poster-sheet" aria-label="LigerRemote">
-          <PosterScene className="remote-hero__scene">
-            <RemoteScene />
-          </PosterScene>
+          <div className="remote-hero__scene">
+            <Image
+              src="/images/remote/hero.jpg"
+              alt="A LigerRemote professional working remotely from a laptop"
+              fill
+              priority
+              sizes="100vw"
+            />
+          </div>
           <div className="remote-hero__copy reveal">
             <p className="hero-chip">
               Series No. 01 · Built for African professionals
@@ -96,7 +100,7 @@ export default async function RemoteHomePage({
         </section>
 
         <div className="caption-bar ink-field ink-field--1 remote-hero__caption">
-          <p className="caption-bar__imperative">Go remote. Start in Lagos.</p>
+          <p className="caption-bar__imperative">Go Remote. Go Beyond.</p>
           <Link href="#apply" className="poster-button poster-button--warm">
             Apply for the next cohort
             <ArrowRight size={17} aria-hidden="true" />
@@ -114,13 +118,13 @@ export default async function RemoteHomePage({
             <span>
               <ShieldCheck size={14} aria-hidden="true" /> The proof
             </span>
-            <strong>Supervised real work</strong>
+            <strong>4-Week Supervised Real-World Work Experience</strong>
           </div>
           <div>
             <span>
-              <Check size={14} aria-hidden="true" /> The cost to apply
+              <Check size={14} aria-hidden="true" /> The investment
             </span>
-            <strong>No payment required</strong>
+            <strong>$60.00</strong>
           </div>
         </section>
 
@@ -211,6 +215,27 @@ export default async function RemoteHomePage({
               </div>
             </article>
             <article className="remote-story">
+              <div className="duotone">
+                <Image
+                  src="/images/remote/barbara.jpg"
+                  alt="Barbara Cynthia Amondi, LigerRemote graduate"
+                  width={400}
+                  height={400}
+                />
+              </div>
+              <div>
+                <blockquote>
+                  “I learnt so much from the training. Tools like Clockify,
+                  Slack, Calendly, etc. I learnt to pitch myself, improve my
+                  resume, and cover letter style too. I also interned with an
+                  AI Guru and gained so much from my work experience with
+                  him.”
+                </blockquote>
+                <p>Barbara Cynthia Amondi</p>
+                <span>LigerRemote graduate</span>
+              </div>
+            </article>
+            <article className="remote-story">
               <VideoTestimonial
                 src="/videos/remote/wonder-hagan-testimonial.mp4"
                 ariaLabel="Wonder Hagan, LigerRemote graduate, video testimonial with captions"
@@ -264,7 +289,6 @@ export default async function RemoteHomePage({
             </p>
             <div className="remote-apply__meta">
               <span>Takes under 3 minutes</span>
-              <span>No payment required</span>
               <span>Your answers stay private</span>
             </div>
           </div>
@@ -297,7 +321,12 @@ export default async function RemoteHomePage({
             <div className="lead-form__split">
               <label>
                 Phone number
-                <input name="phone" type="tel" autoComplete="tel" placeholder="+234" />
+                <input
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder="+ Country code and number"
+                />
               </label>
               <label>
                 Current city
@@ -366,6 +395,7 @@ export default async function RemoteHomePage({
         brand="remote"
         statement="The talent was always here. We built the pathway."
         email="support@ligerremote.com"
+        termsHref="/remote/terms"
       />
     </div>
   );

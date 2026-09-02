@@ -33,9 +33,23 @@
   inset: 0;
 }
 
-.remote-hero__scene svg {
+.remote-hero__scene svg,
+.remote-hero__scene img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.remote-hero__scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ink-deep) 35%, transparent) 0%,
+    color-mix(in srgb, var(--ink-deep) 55%, transparent) 55%,
+    color-mix(in srgb, var(--ink-deep) 85%, transparent) 100%
+  );
 }
 
 .remote-hero__copy {
@@ -343,7 +357,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--ink-deep);
   filter: none;
   mix-blend-mode: normal;
 }
@@ -521,6 +536,83 @@
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
+}
+
+/* Terms & Conditions — plain legal read */
+.remote-terms-page {
+  min-height: 100vh;
+}
+
+.remote-terms-page > header {
+  display: flex;
+  min-height: 5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4vw;
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.remote-terms-page > header > a:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.remote-terms-page__intro {
+  max-width: 42rem;
+  padding: clamp(3rem, 6vw, 5rem) 4vw 0;
+}
+
+.remote-terms-page__intro h1 {
+  margin: 0.5rem 0 1rem;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+}
+
+.remote-terms-page__intro > p:not(:last-child) {
+  margin: 0 0 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4c5a6b;
+}
+
+.remote-terms-page__intro > p:last-child {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.remote-terms-page__body {
+  max-width: 42rem;
+  padding: 2rem 4vw clamp(4rem, 8vw, 7rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.remote-terms-page__body h2 {
+  margin: 0 0 0.5rem;
+  font-family: var(--display);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.remote-terms-page__body p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #34424f;
+}
+
+.remote-terms-page__body a {
+  color: var(--ink-1);
+  text-decoration: underline;
 }
 
 @media (max-width: 980px) {

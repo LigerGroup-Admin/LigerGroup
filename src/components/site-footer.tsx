@@ -8,9 +8,10 @@ type SiteFooterProps = {
   statement: string;
   email: string;
   light?: boolean;
+  termsHref?: string;
 };
 
-export function SiteFooter({ brand, statement, email }: SiteFooterProps) {
+export function SiteFooter({ brand, statement, email, termsHref = "#" }: SiteFooterProps) {
   return (
     <footer className="site-footer ink-field ink-field--deep">
       <div className="site-footer__main">
@@ -27,7 +28,7 @@ export function SiteFooter({ brand, statement, email }: SiteFooterProps) {
         <span>© {new Date().getFullYear()} Liger Group</span>
         <div>
           <Link href="#">Privacy</Link>
-          <Link href="#">Terms</Link>
+          <Link href={termsHref}>Terms</Link>
           <Link href="/">Liger Group</Link>
         </div>
       </div>
