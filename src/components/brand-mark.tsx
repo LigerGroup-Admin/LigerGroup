@@ -17,6 +17,9 @@ export function BrandMark({
   framed = false,
 }: BrandMarkProps) {
   const item = brands[brand];
+  // Group keeps its own black-and-white identity; every other brand's mark
+  // is tinted with its accent colour (ring, divider, and entity name).
+  const brandTint = brand === "group" ? undefined : ({ "--brand-accent": item.accent } as React.CSSProperties);
 
   return (
     <Link
@@ -24,6 +27,7 @@ export function BrandMark({
       className={`brand-mark ${light ? "brand-mark--light" : ""} ${
         framed ? "brand-mark--framed" : ""
       }`}
+      style={brandTint}
       aria-label={`${item.name} home`}
     >
       <span className="brand-mark__liger">Liger</span>

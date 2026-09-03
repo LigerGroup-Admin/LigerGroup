@@ -9,9 +9,23 @@ type SiteFooterProps = {
   email: string;
   light?: boolean;
   termsHref?: string;
+  privacyHref?: string;
 };
 
-export function SiteFooter({ brand, statement, email, termsHref = "#" }: SiteFooterProps) {
+export function SiteFooter({
+  brand,
+  statement,
+  email,
+  termsHref,
+  privacyHref,
+}: SiteFooterProps) {
+  // Until a brand has its own published Terms/Privacy page, route the link
+  // to a real request rather than a dead "#" anchor.
+  const resolvedPrivacyHref =
+    privacyHref ?? `mailto:${email}?subject=${encodeURIComponent("Privacy policy request")}`;
+  const resolvedTermsHref =
+    termsHref ?? `mailto:${email}?subject=${encodeURIComponent("Terms & conditions request")}`;
+
   return (
     <footer className="site-footer ink-field ink-field--deep">
       <div className="site-footer__main">
@@ -27,8 +41,8 @@ export function SiteFooter({ brand, statement, email, termsHref = "#" }: SiteFoo
       <div className="site-footer__bottom">
         <span>© {new Date().getFullYear()} Liger Group</span>
         <div>
-          <Link href="#">Privacy</Link>
-          <Link href={termsHref}>Terms</Link>
+          <Link href={resolvedPrivacyHref}>Privacy</Link>
+          <Link href={resolvedTermsHref}>Terms</Link>
           <Link href="/">Liger Group</Link>
         </div>
       </div>

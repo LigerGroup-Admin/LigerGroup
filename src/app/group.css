@@ -1,11 +1,11 @@
 /* Liger Group — Night Series frontispiece */
 
 .group-page {
-  --ink-1: #1c2b52;
-  --ink-2: #d3a04a;
-  --ink-3: #5a7191;
-  --ink-deep: #0d152b;
-  --display: var(--font-anton), "Arial Narrow", sans-serif;
+  --ink-1: #1a1a1a;
+  --ink-2: #3d3d3d;
+  --ink-3: #737373;
+  --ink-deep: #000000;
+  --display: var(--font-amaranth), "Arial Narrow", sans-serif;
   --body: var(--font-archivo), "Helvetica Neue", sans-serif;
 
   min-height: 100vh;
@@ -55,10 +55,10 @@
 }
 
 .group-hero h1 {
-  max-width: 62rem;
+  max-width: 42rem;
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(3.4rem, 8.6vw, 8.6rem);
+  font-size: clamp(3.4rem, 7.4vw, 7.4rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 0.92;
@@ -72,6 +72,56 @@
   color: color-mix(in srgb, var(--stock) 86%, transparent);
   font-size: clamp(0.92rem, 1.25vw, 1.05rem);
   line-height: 1.7;
+}
+
+/* The badge — the real Liger Group mark, the hero's centrepiece */
+.group-hero__badge {
+  position: absolute;
+  top: 50%;
+  right: clamp(0.5rem, 4vw, 5rem);
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(15rem, 34vw, 30rem);
+  height: clamp(15rem, 34vw, 30rem);
+  transform: translateY(-46%);
+  pointer-events: none;
+}
+
+.group-hero__badge::before {
+  position: absolute;
+  inset: -12%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--ink-3) 55%, transparent) 0%,
+    transparent 72%
+  );
+  content: "";
+}
+
+.group-hero__badge img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 1.5rem 4rem color-mix(in srgb, black 55%, transparent);
+}
+
+@media (max-width: 980px) {
+  .group-hero__badge {
+    top: 4.5rem;
+    right: 50%;
+    width: clamp(10rem, 46vw, 15rem);
+    height: clamp(10rem, 46vw, 15rem);
+    transform: translate(50%, 0);
+    opacity: 0.5;
+  }
+
+  .group-hero h1,
+  .group-hero__intro {
+    max-width: 100%;
+  }
 }
 
 .group-caption {
@@ -154,9 +204,11 @@
   isolation: isolate;
 }
 
-.group-poster__scene svg {
+.group-poster__scene svg,
+.group-poster__scene img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .group-poster__scene::after {

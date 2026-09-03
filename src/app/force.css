@@ -1,11 +1,11 @@
 /* LigerForce — Workshop Green */
 
 .force-root {
-  --ink-1: #2f5241;
+  --ink-1: #0097b2;
   --ink-2: #b5482f;
   --ink-3: #c98e3f;
   --ink-deep: #1f2b26;
-  --display: var(--font-alfa-slab), "Rockwell", serif;
+  --display: var(--font-bevan), "Rockwell", serif;
   --body: var(--font-public-sans), "Helvetica Neue", sans-serif;
 }
 
@@ -43,9 +43,23 @@
   inset: 0;
 }
 
-.force-hero__scene svg {
+.force-hero__scene svg,
+.force-hero__scene img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.force-hero__scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ink-deep) 35%, transparent) 0%,
+    color-mix(in srgb, var(--ink-deep) 55%, transparent) 55%,
+    color-mix(in srgb, var(--ink-deep) 85%, transparent) 100%
+  );
 }
 
 .force-hero__copy {

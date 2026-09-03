@@ -1,7 +1,7 @@
 /* LigerLearn — Summit Dusk */
 
 .learn-root {
-  --ink-1: #432b4e;
+  --ink-1: #902f2f;
   --ink-2: #6e2639;
   --ink-3: #b98a3c;
   --ink-deep: #2a1730;
@@ -43,9 +43,23 @@
   inset: 0;
 }
 
-.learn-hero__scene svg {
+.learn-hero__scene svg,
+.learn-hero__scene img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.learn-hero__scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ink-deep) 35%, transparent) 0%,
+    color-mix(in srgb, var(--ink-deep) 55%, transparent) 55%,
+    color-mix(in srgb, var(--ink-deep) 85%, transparent) 100%
+  );
 }
 
 .learn-hero__copy {
@@ -268,15 +282,39 @@
 
 /* No. 03 — Leadership */
 .learn-leadership {
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.learn-leadership__grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 6vw, 5rem);
+  margin-top: 2rem;
+}
+
+.learn-leadership__entry {
   display: grid;
   grid-template-columns: minmax(16rem, 0.62fr) minmax(0, 1fr);
   gap: 6vw;
-  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
 }
 
 .learn-leadership .duotone {
   min-height: 26rem;
   border: 3px solid var(--ink-deep);
+}
+
+.learn-leadership__photo-pending {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ink-3);
+}
+
+.learn-leadership__photo-pending span {
+  font-family: var(--display);
+  font-size: 3rem;
+  color: var(--stock);
+  opacity: 0.7;
 }
 
 .learn-leadership__copy h2 {
@@ -516,7 +554,7 @@
 
   .learn-approach,
   .learn-one-force,
-  .learn-leadership,
+  .learn-leadership__entry,
   .learn-conversation,
   .one-force-problem,
   .one-force-overview {

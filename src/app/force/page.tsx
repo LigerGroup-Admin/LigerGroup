@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, Clock3, ShieldCheck } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
-import { PosterScene } from "@/components/poster-scene";
-import { ForceScene } from "@/components/scenes";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const metadata: Metadata = {
   title: "LigerForce | Managed remote talent",
@@ -40,6 +40,7 @@ export default async function ForceHomePage({
 
   return (
     <div className="force-page poster-page">
+      <ScrollReveal />
       <SiteHeader
         brand="force"
         nav={[
@@ -52,9 +53,15 @@ export default async function ForceHomePage({
 
       <main id="main-content">
         <section className="force-hero poster-sheet" aria-label="LigerForce">
-          <PosterScene className="force-hero__scene">
-            <ForceScene />
-          </PosterScene>
+          <div className="force-hero__scene">
+            <Image
+              src="/images/force/hero.jpg"
+              alt="Two business leaders shaking hands over a deal"
+              fill
+              priority
+              sizes="100vw"
+            />
+          </div>
           <div className="force-hero__copy reveal">
             <p className="hero-chip">
               Series No. 02 · Remote talent without the uncertainty

@@ -11,6 +11,7 @@ import {
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { VideoTestimonial } from "@/components/video-testimonial";
 
 export const metadata: Metadata = {
@@ -36,9 +37,9 @@ const programme = [
   },
   {
     number: "03",
-    title: "Deploy",
+    title: "Connect",
     detail:
-      "Graduate with evidence of how you work and access to vetted employer opportunities.",
+      "Graduate with evidence of how you work. Vetted graduates get access to employer opportunities, including managed international placement through LigerForce.",
     meta: "Talent network",
   },
 ];
@@ -52,6 +53,7 @@ export default async function RemoteHomePage({
 
   return (
     <div className="remote-page poster-page">
+      <ScrollReveal />
       <SiteHeader
         brand="remote"
         nav={[
@@ -118,7 +120,7 @@ export default async function RemoteHomePage({
             <span>
               <ShieldCheck size={14} aria-hidden="true" /> The proof
             </span>
-            <strong>4-Week Supervised Real-World Work Experience</strong>
+            <strong>4-Week Internship</strong>
           </div>
           <div>
             <span>
@@ -396,6 +398,7 @@ export default async function RemoteHomePage({
         statement="The talent was always here. We built the pathway."
         email="support@ligerremote.com"
         termsHref="/remote/terms"
+        privacyHref="/remote/privacy"
       />
     </div>
   );

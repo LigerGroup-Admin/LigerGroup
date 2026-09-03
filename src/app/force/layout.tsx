@@ -1,7 +1,7 @@
-import { Alfa_Slab_One, Public_Sans } from "next/font/google";
+import { Bevan, Public_Sans } from "next/font/google";
 
-const alfaSlab = Alfa_Slab_One({
-  variable: "--font-alfa-slab",
+const bevan = Bevan({
+  variable: "--font-bevan",
   weight: "400",
   subsets: ["latin"],
   display: "swap",
@@ -17,7 +17,7 @@ export default function ForceLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className={`${alfaSlab.variable} ${publicSans.variable} brand-root force-root`}>
+    <div className={`${bevan.variable} ${publicSans.variable} brand-root force-root`}>
       {children}
     </div>
   );

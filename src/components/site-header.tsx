@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
@@ -17,6 +20,11 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ brand, nav, cta, announcement }: SiteHeaderProps) {
+  const mobileNavRef = useRef<HTMLDetailsElement>(null);
+  const closeMobileNav = () => {
+    if (mobileNavRef.current) mobileNavRef.current.open = false;
+  };
+
   return (
     <>
       {announcement ? (
@@ -40,19 +48,23 @@ export function SiteHeader({ brand, nav, cta, announcement }: SiteHeaderProps) {
           </Link>
         ) : null}
 
-        <details className="site-header__mobile">
+        <details className="site-header__mobile" ref={mobileNavRef}>
           <summary aria-label="Open navigation">
             <Menu className="menu-open" size={22} aria-hidden="true" />
             <X className="menu-close" size={22} aria-hidden="true" />
           </summary>
           <nav aria-label="Mobile navigation">
             {nav.map((item) => (
-              <Link key={item.label} href={item.href}>
+              <Link key={item.label} href={item.href} onClick={closeMobileNav}>
                 {item.label}
               </Link>
             ))}
             {cta ? (
-              <Link href={cta.href} className="site-header__mobile-cta">
+              <Link
+                href={cta.href}
+                className="site-header__mobile-cta"
+                onClick={closeMobileNav}
+              >
                 {cta.label}
                 <ArrowUpRight size={17} aria-hidden="true" />
               </Link>

@@ -3,11 +3,12 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { FormStatus } from "@/components/form-status";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const metadata: Metadata = {
   title: "One Force | Post-merger workforce integration",
   description:
-    "A focused diagnostic and leadership intervention for insurance organisations navigating the human reality of a merger.",
+    "A focused diagnostic and leadership intervention for business leaders navigating the human reality of an acquisition, merger, or takeover.",
 };
 
 export default async function OneForcePage({
@@ -19,6 +20,7 @@ export default async function OneForcePage({
 
   return (
     <main id="main-content" className="one-force-page poster-page">
+      <ScrollReveal />
       <header>
         <BrandMark brand="learn" href="/learn" framed />
         <Link href="/learn">
@@ -33,9 +35,11 @@ export default async function OneForcePage({
           A merger does not create one workforce. Leadership does.
         </h1>
         <p>
-          One Force helps insurance leadership teams diagnose and address the
-          cultural, behavioural, and performance friction that persists after
-          the transaction closes.
+          One Force is our core product for business leaders navigating an
+          acquisition, merger, or takeover. It helps leadership teams
+          diagnose and harmonise the moving people parts—the cultural,
+          behavioural, and performance friction that persists after the
+          transaction closes.
         </p>
         <a href="#overview" className="poster-button poster-button--stock">
           Get the One Force overview
@@ -92,7 +96,7 @@ export default async function OneForcePage({
             Take the framework into your next leadership conversation.
           </h2>
           <p>
-            Request the One Force overview. Femi will follow up personally within
+            Request the One Force overview. Our team will follow up within
             two business days if the context is a fit.
           </p>
           <div className="one-force-overview__list">
@@ -111,7 +115,7 @@ export default async function OneForcePage({
           <FormStatus
             state={form}
             successTitle="The overview is on its way."
-            successMessage="Please check your work inbox. Femi will follow up personally when the context is a fit."
+            successMessage="Please check your work inbox. Our team will follow up when the context is a fit."
           />
           <input type="hidden" name="site" value="learn" />
           <input type="hidden" name="type" value="one_force_download" />

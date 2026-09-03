@@ -4,8 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Award, Check, ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { PosterScene } from "@/components/poster-scene";
-import { LearnScene } from "@/components/scenes";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export const metadata: Metadata = {
   title: "LigerLearn | Corporate capability and leadership advisory",
@@ -60,6 +59,7 @@ const practices = [
 export default function LearnHomePage() {
   return (
     <div className="learn-page poster-page">
+      <ScrollReveal />
       <SiteHeader
         brand="learn"
         nav={[
@@ -73,9 +73,15 @@ export default function LearnHomePage() {
 
       <main id="main-content">
         <section className="learn-hero poster-sheet" aria-label="LigerLearn">
-          <PosterScene className="learn-hero__scene">
-            <LearnScene />
-          </PosterScene>
+          <div className="learn-hero__scene">
+            <Image
+              src="/images/learn/boardroom.jpg"
+              alt="A leadership team celebrating a win together"
+              fill
+              priority
+              sizes="100vw"
+            />
+          </div>
           <div className="learn-hero__copy reveal">
             <p className="hero-chip">
               Series No. 03 · Corporate capability · Leadership advisory
@@ -86,8 +92,8 @@ export default function LearnHomePage() {
               business problem.
             </h1>
             <p className="learn-hero__intro">
-              LigerLearn works with Nigerian and African organisations to build
-              the leadership, commercial capability, and workforce alignment
+              LigerLearn works with organisations across Africa to build the
+              leadership, commercial capability, and workforce alignment
               their strategy demands. The programme follows from the problem.
             </p>
           </div>
@@ -178,8 +184,10 @@ export default function LearnHomePage() {
           </div>
           <div>
             <p>
-              A focused diagnostic and leadership intervention for insurance
-              organisations navigating the human reality of a merger.
+              Our core product for business leaders navigating an
+              acquisition, merger, or takeover—a focused diagnostic and
+              leadership intervention that harmonises the moving people
+              parts after the transaction closes.
             </p>
             <Link href="/learn/one-force" className="poster-button">
               View the One Force overview
@@ -189,43 +197,81 @@ export default function LearnHomePage() {
         </section>
 
         <section className="learn-leadership" id="leadership">
-          <div className="duotone">
-            <Image
-              src="/images/learn/femi.jpg"
-              alt="Obafemi Oshinowo, Founding Partner of LigerLearn"
-              width={640}
-              height={800}
-            />
-          </div>
-          <div className="learn-leadership__copy">
-            <p className="series-label">No. 03 · Leadership</p>
-            <h2 className="poster-display">Obafemi Oshinowo</h2>
-            <p className="learn-leadership__role">Founding Partner</p>
-            <div className="learn-leadership__credentials">
-              <span>
-                <Award size={15} aria-hidden="true" /> FCIPD
-              </span>
-              <span>
-                <Award size={15} aria-hidden="true" /> GPHR
-              </span>
-              <span>
-                <Award size={15} aria-hidden="true" /> ICF-Certified Coach
-              </span>
-            </div>
-            <p className="learn-leadership__bio">
-              A senior HR and organisational development practitioner with
-              extensive experience across talent, leadership, commercial
-              capability, and executive coaching in African business contexts.
-            </p>
-            <a
-              className="text-link"
-              href="https://www.linkedin.com/in/obafemi-oshinowo/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Connect on LinkedIn
-              <ExternalLink size={15} aria-hidden="true" />
-            </a>
+          <p className="series-label">No. 03 · Leadership</p>
+          <div className="learn-leadership__grid">
+            <article className="learn-leadership__entry">
+              <div className="duotone">
+                <Image
+                  src="/images/learn/femi.jpg"
+                  alt="Obafemi Oshinowo, Founding Partner of LigerLearn"
+                  width={640}
+                  height={800}
+                />
+              </div>
+              <div className="learn-leadership__copy">
+                <h2 className="poster-display">Obafemi Oshinowo</h2>
+                <p className="learn-leadership__role">Founding Partner</p>
+                <div className="learn-leadership__credentials">
+                  <span>
+                    <Award size={15} aria-hidden="true" /> FCIPD
+                  </span>
+                  <span>
+                    <Award size={15} aria-hidden="true" /> GPHR
+                  </span>
+                  <span>
+                    <Award size={15} aria-hidden="true" /> ICF-Certified Coach
+                  </span>
+                </div>
+                <p className="learn-leadership__bio">
+                  A senior HR and organisational development practitioner with
+                  extensive experience across talent, leadership, commercial
+                  capability, and executive coaching in African business contexts.
+                </p>
+                <a
+                  className="text-link"
+                  href="https://www.linkedin.com/in/obafemi-oshinowo/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Connect on LinkedIn
+                  <ExternalLink size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </article>
+
+            <article className="learn-leadership__entry">
+              <div className="duotone learn-leadership__photo-pending" aria-hidden="true">
+                <span>EK</span>
+              </div>
+              <div className="learn-leadership__copy">
+                <h2 className="poster-display">Eseohe Kanu</h2>
+                <p className="learn-leadership__role">Certified Coach &amp; Facilitator</p>
+                <div className="learn-leadership__credentials">
+                  <span>
+                    <Award size={15} aria-hidden="true" /> Certified Coach
+                  </span>
+                  <span>
+                    <Award size={15} aria-hidden="true" /> ThinkBuzan Licensed Instructor
+                  </span>
+                  <span>
+                    <Award size={15} aria-hidden="true" /> Accredited Facilitator &amp; Corporate Trainer
+                  </span>
+                </div>
+                <p className="learn-leadership__bio">
+                  A Certified Coach, ThinkBuzan Licensed Instructor, and
+                  accredited Facilitator and Corporate Trainer.
+                </p>
+                <a
+                  className="text-link"
+                  href="https://www.linkedin.com/in/eseohe-kanu-9975068/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Connect on LinkedIn
+                  <ExternalLink size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </article>
           </div>
         </section>
 

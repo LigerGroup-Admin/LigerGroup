@@ -1,10 +1,11 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { Alfa_Slab_One, Marcellus, Staatliches } from "next/font/google";
+import { Bevan, Marcellus, Staatliches } from "next/font/google";
+import Image from "next/image";
 import { BrandMark } from "@/components/brand-mark";
-import { ForceScene, LearnScene, RemoteScene } from "@/components/scenes";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const staatliches = Staatliches({ weight: "400", subsets: ["latin"], display: "swap" });
-const alfaSlab = Alfa_Slab_One({ weight: "400", subsets: ["latin"], display: "swap" });
+const bevan = Bevan({ weight: "400", subsets: ["latin"], display: "swap" });
 const marcellus = Marcellus({ weight: "400", subsets: ["latin"], display: "swap" });
 
 const series = [
@@ -17,11 +18,12 @@ const series = [
       "Practical training, supervised experience, and a credible pathway into global remote work.",
     imperative: "Go remote",
     displayClass: staatliches.className,
-    scene: RemoteScene,
+    heroImage: "/images/remote/hero.jpg",
+    heroAlt: "A LigerRemote professional working remotely from a laptop",
     vars: {
       "--poster-ink": "#122840",
       "--poster-accent": "#e39b2d",
-      "--poster-accent-deep": "#1f4d92",
+      "--poster-accent-deep": "#467e6b",
     },
   },
   {
@@ -32,12 +34,13 @@ const series = [
     description:
       "Vetted, managed remote professionals without the hiring uncertainty or management overhead.",
     imperative: "Add capacity",
-    displayClass: alfaSlab.className,
-    scene: ForceScene,
+    displayClass: bevan.className,
+    heroImage: "/images/force/hero.jpg",
+    heroAlt: "Two business leaders shaking hands over a deal",
     vars: {
       "--poster-ink": "#1f2b26",
       "--poster-accent": "#b5482f",
-      "--poster-accent-deep": "#2f5241",
+      "--poster-accent-deep": "#0097b2",
     },
   },
   {
@@ -49,11 +52,12 @@ const series = [
       "Corporate capability, leadership advisory, and executive search grounded in business outcomes.",
     imperative: "Raise the standard",
     displayClass: marcellus.className,
-    scene: LearnScene,
+    heroImage: "/images/learn/boardroom.jpg",
+    heroAlt: "A leadership team celebrating a win together",
     vars: {
       "--poster-ink": "#2a1730",
       "--poster-accent": "#b98a3c",
-      "--poster-accent-deep": "#6e2639",
+      "--poster-accent-deep": "#902f2f",
     },
   },
 ] as const;
@@ -61,14 +65,24 @@ const series = [
 export default function GroupHomePage() {
   return (
     <main id="main-content" className="group-page poster-page">
+      <ScrollReveal />
       <section className="group-hero poster-sheet ink-field ink-field--1">
         <nav className="group-nav" aria-label="Liger Group navigation">
           <BrandMark brand="group" framed />
           <div className="group-nav__meta">
-            <span>Lagos · London · Global</span>
+            <span>Lagos · Africa · Global</span>
             <span>Est. Series of Three</span>
           </div>
         </nav>
+        <div className="group-hero__badge" aria-hidden="true">
+          <Image
+            src="/images/group/liger-group-badge-circle.png"
+            alt=""
+            width={600}
+            height={600}
+            priority
+          />
+        </div>
         <div className="group-hero__copy reveal">
           <p className="hero-chip">The Liger Group series</p>
           <h1>
@@ -89,7 +103,7 @@ export default function GroupHomePage() {
         </a>
         <span className="group-caption__count">
           <span>03</span>
-          Three posters, one group
+          Three businesses, one group
           <ArrowDown size={15} aria-hidden="true" />
         </span>
       </div>
@@ -99,9 +113,7 @@ export default function GroupHomePage() {
         className="group-series"
         aria-label="Liger Group businesses"
       >
-        {series.map((poster, index) => {
-          const Scene = poster.scene;
-          return (
+        {series.map((poster, index) => (
             <a
               key={poster.key}
               href={poster.path}
@@ -109,7 +121,12 @@ export default function GroupHomePage() {
               style={poster.vars as React.CSSProperties}
             >
               <div className="group-poster__scene">
-                <Scene />
+                <Image
+                  src={poster.heroImage}
+                  alt={poster.heroAlt}
+                  fill
+                  sizes="(min-width: 900px) 33vw, 100vw"
+                />
               </div>
               <div className="group-poster__body">
                 <span className="group-poster__series">{poster.series}</span>
@@ -121,8 +138,7 @@ export default function GroupHomePage() {
                 </span>
               </div>
             </a>
-          );
-        })}
+          ))}
       </section>
 
       <footer className="group-bottom">

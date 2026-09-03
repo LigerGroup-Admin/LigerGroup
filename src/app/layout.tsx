@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, Instrument_Serif, Manrope } from "next/font/google";
+import { Amaranth, Archivo, Instrument_Serif, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -16,15 +16,23 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-const anton = Anton({
-  variable: "--font-anton",
-  weight: "400",
+const amaranth = Amaranth({
+  variable: "--font-amaranth",
+  weight: ["400", "700"],
   subsets: ["latin"],
   display: "swap",
 });
 
 const archivo = Archivo({
   variable: "--font-archivo",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Shared "Liger" logotype serif used across every sub-brand's BrandMark lockup.
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
+  weight: ["600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -54,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${instrumentSerif.variable} ${anton.variable} ${archivo.variable}`}
+      className={`${manrope.variable} ${instrumentSerif.variable} ${amaranth.variable} ${archivo.variable} ${playfairDisplay.variable}`}
     >
       <body>
         <a className="skip-link" href="#main-content">
