@@ -1,12 +1,7 @@
 import { ArrowDown, ArrowRight } from "lucide-react";
-import { Bevan, Marcellus, Staatliches } from "next/font/google";
 import Image from "next/image";
 import { BrandMark } from "@/components/brand-mark";
 import { ScrollReveal } from "@/components/scroll-reveal";
-
-const staatliches = Staatliches({ weight: "400", subsets: ["latin"], display: "swap" });
-const bevan = Bevan({ weight: "400", subsets: ["latin"], display: "swap" });
-const marcellus = Marcellus({ weight: "400", subsets: ["latin"], display: "swap" });
 
 const series = [
   {
@@ -17,7 +12,6 @@ const series = [
     description:
       "Practical training, supervised experience, and a credible pathway into global remote work.",
     imperative: "Go remote",
-    displayClass: staatliches.className,
     heroImage: "/images/remote/hero.jpg",
     heroAlt: "A LigerRemote professional working remotely from a laptop",
     vars: {
@@ -34,7 +28,6 @@ const series = [
     description:
       "Vetted, managed remote professionals without the hiring uncertainty or management overhead.",
     imperative: "Add capacity",
-    displayClass: bevan.className,
     heroImage: "/images/force/hero.jpg",
     heroAlt: "Two business leaders shaking hands over a deal",
     vars: {
@@ -51,7 +44,6 @@ const series = [
     description:
       "Corporate capability, leadership advisory, and executive search grounded in business outcomes.",
     imperative: "Raise the standard",
-    displayClass: marcellus.className,
     heroImage: "/images/learn/boardroom.jpg",
     heroAlt: "A leadership team celebrating a win together",
     vars: {
@@ -117,6 +109,7 @@ export default function GroupHomePage() {
             <a
               key={poster.key}
               href={poster.path}
+              aria-label={poster.name}
               className={`group-poster reveal reveal--${index + 1}`}
               style={poster.vars as React.CSSProperties}
             >
@@ -130,7 +123,7 @@ export default function GroupHomePage() {
               </div>
               <div className="group-poster__body">
                 <span className="group-poster__series">{poster.series}</span>
-                <h2 className={poster.displayClass}>{poster.name}</h2>
+                <BrandMark brand={poster.key} static />
                 <p>{poster.description}</p>
                 <span className="group-poster__imperative">
                   {poster.imperative}

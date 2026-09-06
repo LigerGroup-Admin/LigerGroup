@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
-import type { BrandKey } from "@/lib/brands";
+import { publicBrands, type BrandKey } from "@/lib/brands";
 
 type SiteFooterProps = {
   brand: BrandKey;
@@ -25,6 +25,7 @@ export function SiteFooter({
     privacyHref ?? `mailto:${email}?subject=${encodeURIComponent("Privacy policy request")}`;
   const resolvedTermsHref =
     termsHref ?? `mailto:${email}?subject=${encodeURIComponent("Terms & conditions request")}`;
+  const siblingBrands = publicBrands.filter((item) => item.key !== brand);
 
   return (
     <footer className="site-footer ink-field ink-field--deep">
@@ -38,6 +39,23 @@ export function SiteFooter({
           </a>
         </div>
       </div>
+      {siblingBrands.length > 0 ? (
+        <div className="site-footer__siblings">
+          <span>Also part of Liger Group</span>
+          <div>
+            {siblingBrands.map((item) => (
+              <Link
+                key={item.key}
+                href={item.path}
+                aria-label={item.name}
+                className="site-footer__sibling"
+              >
+                <BrandMark brand={item.key} static />
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
       <div className="site-footer__bottom">
         <span>© {new Date().getFullYear()} Liger Group</span>
         <div>

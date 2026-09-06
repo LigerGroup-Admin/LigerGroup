@@ -240,8 +240,13 @@ export default function LearnHomePage() {
             </article>
 
             <article className="learn-leadership__entry">
-              <div className="duotone learn-leadership__photo-pending" aria-hidden="true">
-                <span>EK</span>
+              <div className="duotone">
+                <Image
+                  src="/images/learn/eseohe.jpg"
+                  alt="Eseohe Kanu, Certified Coach and Facilitator at LigerLearn"
+                  width={640}
+                  height={800}
+                />
               </div>
               <div className="learn-leadership__copy">
                 <h2 className="poster-display">Eseohe Kanu</h2>

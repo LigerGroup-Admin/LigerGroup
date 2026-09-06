@@ -7,6 +7,8 @@ type BrandMarkProps = {
   href?: string;
   compact?: boolean;
   framed?: boolean;
+  /** Renders as a plain span instead of a Link — for use inside another link/button. */
+  static?: boolean;
 };
 
 export function BrandMark({
@@ -15,21 +17,18 @@ export function BrandMark({
   href,
   compact = false,
   framed = false,
+  static: isStatic = false,
 }: BrandMarkProps) {
   const item = brands[brand];
-  // Group keeps its own black-and-white identity; every other brand's mark
-  // is tinted with its accent colour (ring, divider, and entity name).
-  const brandTint = brand === "group" ? undefined : ({ "--brand-accent": item.accent } as React.CSSProperties);
-
-  return (
-    <Link
-      href={href ?? item.path}
-      className={`brand-mark ${light ? "brand-mark--light" : ""} ${
-        framed ? "brand-mark--framed" : ""
-      }`}
-      style={brandTint}
-      aria-label={`${item.name} home`}
-    >
+  // Every brand's mark is tinted with its own accent colour (ring, divider,
+  // and entity name) — Group's badge illustration stays black-and-white,
+  // but its wordmark carries the same signature gold it always has.
+  const brandTint = { "--brand-accent": item.accent } as React.CSSProperties;
+  const className = `brand-mark ${light ? "brand-mark--light" : ""} ${
+    framed ? "brand-mark--framed" : ""
+  }`;
+  const content = (
+    <>
       <span className="brand-mark__liger">Liger</span>
       <span
         className="brand-mark__divider"
@@ -39,6 +38,25 @@ export function BrandMark({
       <span className="brand-mark__entity">
         {compact ? item.shortName.slice(0, 1) : item.shortName}
       </span>
+    </>
+  );
+
+  if (isStatic) {
+    return (
+      <span className={className} style={brandTint} aria-hidden="true">
+        {content}
+      </span>
+    );
+  }
+
+  return (
+    <Link
+      href={href ?? item.path}
+      className={className}
+      style={brandTint}
+      aria-label={`${item.name} home`}
+    >
+      {content}
     </Link>
   );
 }

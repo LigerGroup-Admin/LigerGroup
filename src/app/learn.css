@@ -303,20 +303,6 @@
   border: 3px solid var(--ink-deep);
 }
 
-.learn-leadership__photo-pending {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--ink-3);
-}
-
-.learn-leadership__photo-pending span {
-  font-family: var(--display);
-  font-size: 3rem;
-  color: var(--stock);
-  opacity: 0.7;
-}
-
 .learn-leadership__copy h2 {
   font-size: clamp(2rem, 3.6vw, 3.4rem);
 }
