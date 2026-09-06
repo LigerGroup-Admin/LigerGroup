@@ -189,6 +189,35 @@ export default async function ForceHomePage({
               <strong>Protect delivery</strong>
             </div>
           </div>
+          <figure className="force-case__quote">
+            <Image
+              src="/images/force/local-insights-logo.png"
+              alt="Local Insights"
+              width={186}
+              height={26}
+              className="force-case__quote-logo"
+            />
+            <blockquote>
+              “We can’t speak highly enough of our LigerRemote Virtual
+              Assistant and her efficiency and skill set. A pleasure to work
+              with, very quick to pick up our working habits and delivers
+              quality consistently. The Liger Group have been brilliant, all
+              round. Thanks to Femi and his team.”
+            </blockquote>
+            <figcaption>
+              <Image
+                src="/images/force/benji-mackenzie-weller.png"
+                alt="Benji Mackenzie Weller"
+                width={48}
+                height={48}
+                className="force-case__quote-photo"
+              />
+              <span>
+                Benji Mackenzie Weller
+                <em>Co-Founder &amp; Sales Director, Local Insights</em>
+              </span>
+            </figcaption>
+          </figure>
         </section>
 
         <section className="force-included">
