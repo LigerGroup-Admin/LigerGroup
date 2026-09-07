@@ -251,6 +251,14 @@
   line-height: 1.6;
 }
 
+.group-poster__body .group-poster__note {
+  padding-top: 0.75rem;
+  border-top: 2px solid color-mix(in srgb, var(--poster-ink) 15%, transparent);
+  font-size: 0.7rem;
+  line-height: 1.55;
+  opacity: 0.8;
+}
+
 .group-poster__imperative {
   display: inline-flex;
   align-items: center;
@@ -262,6 +270,35 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+/* Backed by the group — condensed trust strip near the bottom */
+.group-trust {
+  padding: clamp(2rem, 4vw, 3rem) 4vw;
+  border-top: 2px solid color-mix(in srgb, var(--stock) 24%, transparent);
+}
+
+.group-trust > p {
+  margin: 0 0 1.1rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--stock) 66%, transparent);
+}
+
+.group-trust > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 2rem;
+}
+
+.group-trust span {
+  font-family: var(--display);
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--stock) 90%, transparent);
 }
 
 .group-bottom {

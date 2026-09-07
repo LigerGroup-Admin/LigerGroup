@@ -259,6 +259,33 @@ export default async function RemoteHomePage({
                 <span>Customer Support VA · LigerRemote graduate, placed at a US client</span>
               </div>
             </article>
+            <article className="remote-story remote-story--client">
+              <div className="remote-story__logo-tile">
+                <a
+                  href="https://www.localinsights.co.uk"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Image
+                    src="/images/force/local-insights-logo.png"
+                    alt="Local Insights"
+                    width={160}
+                    height={22}
+                  />
+                </a>
+              </div>
+              <div>
+                <blockquote>
+                  “We can’t speak highly enough of our LigerRemote Virtual
+                  Assistant and her efficiency and skill set. A pleasure to
+                  work with, very quick to pick up our working habits and
+                  delivers quality consistently. The Liger Group have been
+                  brilliant, all round. Thanks to Femi and his team.”
+                </blockquote>
+                <p>Benji Mackenzie Weller</p>
+                <span>Co-Founder &amp; Sales Director, Local Insights</span>
+              </div>
+            </article>
           </div>
         </section>
 

@@ -86,8 +86,103 @@
   line-height: 1.7;
 }
 
+.force-hero__expansion {
+  max-width: 35rem;
+  margin: 1rem 0 0;
+  padding-top: 1rem;
+  border-top: 2px solid color-mix(in srgb, var(--stock) 40%, transparent);
+  color: color-mix(in srgb, var(--stock) 78%, transparent);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
 .force-hero__caption {
   border-top: 3px solid var(--stock);
+}
+
+/* Backed by the group — trust strip */
+.force-trust {
+  padding: clamp(2rem, 4vw, 3rem) 4vw;
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.force-trust > p {
+  margin: 0 0 1.2rem;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #47554d;
+}
+
+.force-trust > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 2.4rem;
+}
+
+.force-trust span {
+  font-family: var(--display);
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Roles we place */
+.force-roles {
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.force-roles h2 {
+  max-width: 40rem;
+  font-size: clamp(2.1rem, 4vw, 3.8rem);
+}
+
+.force-roles__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.force-roles__grid article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 1.5rem 1.5rem 1.75rem;
+  border: 3px solid var(--ink-deep);
+  background: white;
+}
+
+.force-roles__grid h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.force-roles__grid p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.force-roles__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.6rem;
+  border-top: 3px solid var(--ink-1);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-1);
 }
 
 /* Service facts — three stamped plates */
@@ -306,64 +401,6 @@
   color: var(--ink-3);
 }
 
-.force-case__quote {
-  max-width: 40rem;
-  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
-  padding-top: clamp(2rem, 4vw, 2.75rem);
-  border-top: 3px solid color-mix(in srgb, var(--stock) 45%, transparent);
-}
-
-.force-case__quote-logo {
-  display: block;
-  height: 1.6rem;
-  width: auto;
-  margin-bottom: 1.4rem;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-}
-
-.force-case__quote blockquote {
-  margin: 0;
-  font-family: var(--display);
-  font-size: clamp(1.15rem, 2vw, 1.5rem);
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-.force-case__quote figcaption {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin-top: 1.2rem;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.force-case__quote figcaption span {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.force-case__quote figcaption em {
-  font-style: normal;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: color-mix(in srgb, var(--stock) 78%, transparent);
-}
-
-.force-case__quote-photo {
-  flex: 0 0 auto;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 /* Built into every placement */
 .force-included {
   padding: clamp(4.5rem, 8vw, 8rem) 4vw;
@@ -393,6 +430,218 @@
 .force-included__list svg {
   flex: 0 0 auto;
   color: var(--ink-2);
+}
+
+/* Trust & security — compact card above Pricing */
+.force-trust-security-wrap {
+  padding: 0 4vw clamp(3rem, 6vw, 5rem);
+}
+
+.force-trust-security {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 3px solid var(--ink-deep);
+  background: color-mix(in srgb, var(--ink-1) 8%, white);
+}
+
+.force-trust-security h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.force-trust-security h2 svg {
+  flex: 0 0 auto;
+  color: var(--ink-1);
+}
+
+.force-trust-security ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.force-trust-security li {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.force-trust-security li svg {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  color: var(--ink-1);
+}
+
+/* Pricing */
+.force-pricing {
+  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+}
+
+.force-pricing h2 {
+  max-width: 40rem;
+  font-size: clamp(2.1rem, 4vw, 3.8rem);
+}
+
+.force-pricing__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.force-pricing__card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border: 3px solid var(--ink-deep);
+  background: white;
+}
+
+.force-pricing__card h3 {
+  margin: 0 0 0.9rem;
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.force-pricing__price {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.force-pricing__price span {
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+}
+
+.force-pricing__subtitle {
+  margin: 0 0 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid color-mix(in srgb, var(--ink-deep) 15%, transparent);
+  color: #47554d;
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.force-pricing__card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.force-pricing__card li {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.force-pricing__card li svg {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  color: var(--ink-2);
+}
+
+.force-pricing__card .poster-button {
+  margin-top: auto;
+  width: 100%;
+}
+
+.force-pricing__note {
+  max-width: 44rem;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+  color: #47554d;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Testimonial — moved out of the case study, its own field */
+.force-testimonial {
+  padding: clamp(4rem, 7vw, 6.5rem) 4vw;
+}
+
+.force-testimonial__quote {
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.force-testimonial__logo {
+  display: block;
+  height: 1.6rem;
+  width: auto;
+  margin-bottom: 1.4rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.force-testimonial__quote blockquote {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.force-testimonial__quote figcaption {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.force-testimonial__quote figcaption span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.force-testimonial__quote figcaption em {
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: color-mix(in srgb, var(--stock) 78%, transparent);
+}
+
+.force-testimonial__quote figcaption em a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.force-testimonial__photo {
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 /* No. 04 — Book the call */
@@ -434,6 +683,25 @@
 
 .force-book__intro svg {
   color: var(--ink-2);
+}
+
+.force-form__microcopy {
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #5c584c;
+}
+
+.force-form__price-hint {
+  margin: -0.5rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 2px solid var(--ink-1);
+  background: color-mix(in srgb, var(--ink-1) 10%, white);
+  color: var(--ink-deep);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 /* Ready band */
@@ -533,8 +801,13 @@
   }
 
   .force-how__steps,
-  .force-included__list {
+  .force-included__list,
+  .force-roles__grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .force-pricing__grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -553,7 +826,8 @@
   }
 
   .force-how__steps,
-  .force-included__list {
+  .force-included__list,
+  .force-roles__grid {
     grid-template-columns: 1fr;
   }
 

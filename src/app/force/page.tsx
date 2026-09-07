@@ -4,8 +4,9 @@ import Link from "next/link";
 import { ArrowRight, Check, Clock3, ShieldCheck } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { FormStatus } from "@/components/form-status";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { ClientTrust } from "@/components/client-trust";
+import { ForceBookingForm } from "@/components/force-booking-form";
 
 export const metadata: Metadata = {
   title: "LigerForce | Managed remote talent",
@@ -31,12 +32,51 @@ const steps = [
   },
 ];
 
+const roles = [
+  {
+    slug: "va",
+    title: "Virtual Assistant (VA)",
+    description:
+      "Inbox, calendar, travel, and admin management—freeing up your highest-value hours.",
+  },
+  {
+    slug: "sdr",
+    title: "Sales Development Rep (SDR)",
+    description:
+      "Outbound prospecting, lead qualification, and CRM discipline to keep your pipeline full.",
+  },
+  {
+    slug: "support",
+    title: "Customer Support Specialist",
+    description:
+      "Ticket resolution, live chat, and client communication with your tone and SOPs.",
+  },
+  {
+    slug: "ea",
+    title: "Executive Assistant (EA)",
+    description:
+      "High-trust support for founders and execs—scheduling, correspondence, and gatekeeping.",
+  },
+  {
+    slug: "bookkeeping",
+    title: "Bookkeeping & Admin Support",
+    description:
+      "Invoicing, reconciliation, and back-office admin, trained on your existing tools.",
+  },
+  {
+    slug: "social",
+    title: "Social Media / Content Coordinator",
+    description:
+      "Content scheduling, community management, and reporting across your channels.",
+  },
+];
+
 export default async function ForceHomePage({
   searchParams,
 }: {
-  searchParams: Promise<{ form?: string }>;
+  searchParams: Promise<{ form?: string; role?: string }>;
 }) {
-  const { form } = await searchParams;
+  const { form, role } = await searchParams;
 
   return (
     <div className="force-page poster-page">
@@ -45,7 +85,9 @@ export default async function ForceHomePage({
         brand="force"
         nav={[
           { label: "How it works", href: "#how" },
+          { label: "Roles", href: "#roles" },
           { label: "Why managed", href: "#managed" },
+          { label: "Pricing", href: "#pricing" },
           { label: "Case study", href: "#case-study" },
         ]}
         cta={{ label: "Book a 20-minute call", href: "#book" }}
@@ -77,6 +119,11 @@ export default async function ForceHomePage({
               You set the brief. We find, prepare, and manage the person—so
               adding remote capacity does not add another management problem.
             </p>
+            <p className="force-hero__expansion">
+              LigerForce is expanding its UK presence, with a UK-registered
+              entity currently in progress—giving clients a local contracting
+              point alongside our Lagos delivery team.
+            </p>
           </div>
         </section>
 
@@ -89,6 +136,33 @@ export default async function ForceHomePage({
             <ArrowRight size={17} aria-hidden="true" />
           </Link>
         </div>
+
+        <ClientTrust
+          label="Part of the Liger Group, trusted by:"
+          className="force-trust"
+        />
+
+        <section className="force-roles" id="roles">
+          <p className="series-label">Roles we place</p>
+          <h2 className="poster-display">
+            Match the role to the work, not the other way round.
+          </h2>
+          <div className="force-roles__grid">
+            {roles.map((item) => (
+              <article key={item.slug}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <Link
+                  href={`/force?role=${item.slug}#book`}
+                  className="force-roles__cta"
+                >
+                  Request this role
+                  <ArrowRight size={14} aria-hidden="true" />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <section className="force-facts" aria-label="Service facts">
           <div>
@@ -189,35 +263,6 @@ export default async function ForceHomePage({
               <strong>Protect delivery</strong>
             </div>
           </div>
-          <figure className="force-case__quote">
-            <Image
-              src="/images/force/local-insights-logo.png"
-              alt="Local Insights"
-              width={186}
-              height={26}
-              className="force-case__quote-logo"
-            />
-            <blockquote>
-              “We can’t speak highly enough of our LigerRemote Virtual
-              Assistant and her efficiency and skill set. A pleasure to work
-              with, very quick to pick up our working habits and delivers
-              quality consistently. The Liger Group have been brilliant, all
-              round. Thanks to Femi and his team.”
-            </blockquote>
-            <figcaption>
-              <Image
-                src="/images/force/benji-mackenzie-weller.png"
-                alt="Benji Mackenzie Weller"
-                width={48}
-                height={48}
-                className="force-case__quote-photo"
-              />
-              <span>
-                Benji Mackenzie Weller
-                <em>Co-Founder &amp; Sales Director, Local Insights</em>
-              </span>
-            </figcaption>
-          </figure>
         </section>
 
         <section className="force-included">
@@ -240,6 +285,148 @@ export default async function ForceHomePage({
           </div>
         </section>
 
+        <section className="force-trust-security-wrap">
+          <div className="force-trust-security">
+            <h2>
+              <ShieldCheck size={20} aria-hidden="true" />
+              Built on trust, not just talent
+            </h2>
+            <ul>
+              <li>
+                <Check size={15} aria-hidden="true" />
+                Every placement includes a signed NDA and IP assignment
+                agreement before day one.
+              </li>
+              <li>
+                <Check size={15} aria-hidden="true" />
+                Candidates are ID-verified and reference-checked prior to
+                placement.
+              </li>
+              <li>
+                <Check size={15} aria-hidden="true" />
+                All work is conducted through secure, client-approved
+                communication and file-sharing tools—never personal devices or
+                unmanaged accounts.
+              </li>
+              <li>
+                <Check size={15} aria-hidden="true" />
+                Our data handling practices are aligned with UK GDPR
+                requirements for our UK-based clients.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section className="force-pricing" id="pricing">
+          <p className="series-label">Pricing</p>
+          <h2 className="poster-display">Clear pricing. No hidden management fee.</h2>
+          <div className="force-pricing__grid">
+            <article className="force-pricing__card">
+              <h3>Virtual Assistant</h3>
+              <p className="force-pricing__price">
+                <span>$1,400–$1,500</span> / per month
+              </p>
+              <p className="force-pricing__subtitle">
+                Vetted, trained, and managed by LigerForce
+              </p>
+              <ul>
+                {[
+                  "One dedicated, full-time VA",
+                  "Vetted, trained, and employed by LigerForce",
+                  "Structured onboarding to your workflow",
+                  "Ongoing performance management",
+                ].map((item) => (
+                  <li key={item}>
+                    <Check size={15} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/force?role=va#book" className="poster-button">
+                Start a requirement
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </article>
+            <article className="force-pricing__card">
+              <h3>Sales Development Rep (SDR)</h3>
+              <p className="force-pricing__price">
+                <span>$1,800–$2,200</span> / per month
+              </p>
+              <p className="force-pricing__subtitle">
+                Quota-bearing, trained on your ICP and pipeline
+              </p>
+              <ul>
+                {[
+                  "One dedicated, full-time SDR",
+                  "Trained on your ICP, messaging, and CRM",
+                  "Outbound + inbound qualification",
+                  "Weekly pipeline reporting",
+                ].map((item) => (
+                  <li key={item}>
+                    <Check size={15} aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/force?role=sdr#book" className="poster-button">
+                Start a requirement
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </article>
+          </div>
+          <p className="force-pricing__note">
+            Vetting and management rigor on par with premium providers—priced
+            for a leaner cost base, not a leaner process.
+          </p>
+        </section>
+
+        <section className="force-testimonial ink-field ink-field--1" id="testimonial">
+          <figure className="force-testimonial__quote">
+            <a
+              href="https://www.localinsights.co.uk"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image
+                src="/images/force/local-insights-logo.png"
+                alt="Local Insights"
+                width={186}
+                height={26}
+                className="force-testimonial__logo"
+              />
+            </a>
+            <blockquote>
+              “We can’t speak highly enough of our LigerRemote Virtual
+              Assistant and her efficiency and skill set. A pleasure to work
+              with, very quick to pick up our working habits and delivers
+              quality consistently. The Liger Group have been brilliant, all
+              round. Thanks to Femi and his team.”
+            </blockquote>
+            <figcaption>
+              <Image
+                src="/images/force/benji-mackenzie-weller.png"
+                alt="Benji Mackenzie Weller"
+                width={48}
+                height={48}
+                className="force-testimonial__photo"
+              />
+              <span>
+                Benji Mackenzie Weller
+                <em>
+                  Co-Founder &amp; Sales Director,{" "}
+                  <a
+                    href="https://www.localinsights.co.uk"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Local Insights
+                  </a>
+                </em>
+              </span>
+            </figcaption>
+          </figure>
+        </section>
+
         <section className="force-book" id="book">
           <div className="force-book__intro">
             <p className="series-label">No. 04 · One useful conversation</p>
@@ -257,69 +444,7 @@ export default async function ForceHomePage({
               </span>
             </div>
           </div>
-          <form className="lead-form force-form" action="/api/submissions" method="post">
-            <FormStatus
-              state={form}
-              successTitle="Your request is with us."
-              successMessage="We will email the most useful next step and available call times shortly."
-            />
-            <input type="hidden" name="site" value="force" />
-            <input type="hidden" name="type" value="discovery_call" />
-            <label className="lead-form__hp" aria-hidden="true">
-              Website
-              <input name="website" tabIndex={-1} autoComplete="off" />
-            </label>
-            <label>
-              Your name
-              <input name="name" autoComplete="name" required placeholder="Full name" />
-            </label>
-            <label>
-              Work email
-              <input
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                placeholder="you@company.com"
-              />
-            </label>
-            <div className="lead-form__split">
-              <label>
-                Company
-                <input name="company" autoComplete="organization" required />
-              </label>
-              <label>
-                Team size
-                <select name="team_size" defaultValue="">
-                  <option value="" disabled>
-                    Select
-                  </option>
-                  <option>1–10</option>
-                  <option>11–50</option>
-                  <option>51–200</option>
-                  <option>201+</option>
-                </select>
-              </label>
-            </div>
-            <label>
-              What kind of support do you need?
-              <textarea
-                name="requirement"
-                required
-                placeholder="A sentence or two is enough."
-              />
-            </label>
-            <label className="lead-form__consent">
-              <input type="checkbox" name="consent" required />
-              <span>
-                I agree that LigerForce may contact me about this requirement.
-              </span>
-            </label>
-            <button className="poster-button" type="submit">
-              Book my 20-minute call
-              <ArrowRight size={17} aria-hidden="true" />
-            </button>
-          </form>
+          <ForceBookingForm formState={form} initialRole={role} />
         </section>
 
         <section className="force-ready ink-field ink-field--3">

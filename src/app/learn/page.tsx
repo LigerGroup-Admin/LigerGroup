@@ -5,23 +5,13 @@ import { ArrowRight, Award, Check, ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { ClientTrust } from "@/components/client-trust";
 
 export const metadata: Metadata = {
   title: "LigerLearn | Corporate capability and leadership advisory",
   description:
     "Corporate capability, leadership advisory, executive coaching, and workforce transformation grounded in measurable business outcomes.",
 };
-
-const clients = [
-  "Access Bank",
-  "Coronation",
-  "Dangote Group",
-  "FirstBank",
-  "Jumia",
-  "Leadway Pensure",
-  "May & Baker",
-  "MTN",
-];
 
 const practices = [
   {
@@ -109,13 +99,41 @@ export default function LearnHomePage() {
           </Link>
         </div>
 
-        <section className="learn-trust" aria-label="Selected organisations">
-          <p>Selected organisations our team has worked with</p>
-          <div>
-            {clients.map((client) => (
-              <span key={client}>{client}</span>
-            ))}
-          </div>
+        <ClientTrust
+          label="Selected organisations our team has worked with"
+          className="learn-trust"
+        />
+
+        <section className="learn-testimonial" aria-label="Client testimonial">
+          <figure className="learn-testimonial__quote">
+            <Image
+              src="/images/learn/iomi-water-logo.png"
+              alt="IOMI Water"
+              width={180}
+              height={45}
+              className="learn-testimonial__logo"
+            />
+            <blockquote>
+              “You understood both what IOMI needs at this stage and the
+              significance of finding the right person to lead it. Your
+              guidance throughout the process gave us the clarity and
+              confidence to recognise that person. Thank you for being such an
+              important part of this defining appointment and of IOMI’s
+              unfolding story.”
+            </blockquote>
+            <figcaption>
+              <span>
+                Yinka Ogunsulire &amp; Mosun Ogunbanjo
+                <em>
+                  Founding Director &amp; Co-Founding Director, IOMI Water
+                  Company
+                </em>
+              </span>
+            </figcaption>
+            <p className="learn-testimonial__mandate">
+              Executive search mandate LL-IOMI-MD-001 — MD search, completed.
+            </p>
+          </figure>
         </section>
 
         <section className="learn-position ink-field ink-field--2">

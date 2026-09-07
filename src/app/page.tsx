@@ -2,6 +2,7 @@ import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { BrandMark } from "@/components/brand-mark";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { ClientTrust } from "@/components/client-trust";
 
 const series = [
   {
@@ -11,6 +12,7 @@ const series = [
     series: "Series No. 01 — For African professionals",
     description:
       "Practical training, supervised experience, and a credible pathway into global remote work.",
+    note: null,
     imperative: "Go remote",
     heroImage: "/images/remote/hero.jpg",
     heroAlt: "A LigerRemote professional working remotely from a laptop",
@@ -27,6 +29,8 @@ const series = [
     series: "Series No. 02 — For UK & US growth businesses",
     description:
       "Vetted, managed remote professionals without the hiring uncertainty or management overhead.",
+    note:
+      "LigerForce is expanding its UK presence, with a UK-registered entity currently in progress—giving clients a local contracting point alongside our Lagos delivery team.",
     imperative: "Add capacity",
     heroImage: "/images/force/hero.jpg",
     heroAlt: "Two business leaders shaking hands over a deal",
@@ -43,6 +47,7 @@ const series = [
     series: "Series No. 03 — For leaders & organisations",
     description:
       "Corporate capability, leadership advisory, and executive search grounded in business outcomes.",
+    note: null,
     imperative: "Raise the standard",
     heroImage: "/images/learn/boardroom.jpg",
     heroAlt: "A leadership team celebrating a win together",
@@ -125,6 +130,9 @@ export default function GroupHomePage() {
                 <span className="group-poster__series">{poster.series}</span>
                 <BrandMark brand={poster.key} static />
                 <p>{poster.description}</p>
+                {poster.note ? (
+                  <p className="group-poster__note">{poster.note}</p>
+                ) : null}
                 <span className="group-poster__imperative">
                   {poster.imperative}
                   <ArrowRight size={15} aria-hidden="true" />
@@ -133,6 +141,11 @@ export default function GroupHomePage() {
             </a>
           ))}
       </section>
+
+      <ClientTrust
+        label="Part of the Liger Group, trusted by:"
+        className="group-trust"
+      />
 
       <footer className="group-bottom">
         <span>Liger Group · One system, three distinct businesses</span>
