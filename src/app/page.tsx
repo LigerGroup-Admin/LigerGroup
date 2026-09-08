@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ClientTrust } from "@/components/client-trust";
+import { socialLinksByBrand } from "@/lib/brands";
 
 const series = [
   {
@@ -144,6 +145,17 @@ export default function GroupHomePage() {
       <footer className="group-bottom">
         <span>Liger Group · One system, three distinct businesses</span>
         <span>Talent · Deployment · Capability</span>
+        <div className="group-bottom__social">
+          {socialLinksByBrand.group.map((item) =>
+            item.href ? (
+              <a key={item.label} href={item.href} target="_blank" rel="noreferrer">
+                {item.label}
+              </a>
+            ) : (
+              <span key={item.label}>{item.label}</span>
+            ),
+          )}
+        </div>
         <div className="group-bottom__links">
           <a href="mailto:hello@theliger.group">hello@theliger.group</a>
           <Link href="/privacy">Privacy</Link>

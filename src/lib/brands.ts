@@ -59,3 +59,33 @@ export const brands: Record<BrandKey, Brand> = {
 };
 
 export const publicBrands = [brands.remote, brands.force, brands.learn];
+
+export type SocialLink = { label: string; href: string | null };
+
+// Only LigerRemote has live social accounts today (captured from
+// ligerremote.com). The other businesses show the same platforms as
+// placeholders — not linked — until they stand up their own.
+export const socialLinksByBrand: Record<BrandKey, SocialLink[]> = {
+  remote: [
+    { label: "Instagram", href: "https://www.instagram.com/ligerremote/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/ligerremote" },
+    { label: "X", href: "https://x.com/ligerremote" },
+    { label: "Facebook", href: "https://www.facebook.com/Ligerremote" },
+    { label: "Telegram", href: "https://t.me/+k2RrgPL84V84MTZk" },
+  ],
+  force: [
+    { label: "Instagram", href: null },
+    { label: "LinkedIn", href: null },
+    { label: "X", href: null },
+  ],
+  learn: [
+    { label: "Instagram", href: null },
+    { label: "LinkedIn", href: null },
+    { label: "X", href: null },
+  ],
+  group: [
+    { label: "Instagram", href: null },
+    { label: "LinkedIn", href: null },
+    { label: "X", href: null },
+  ],
+};

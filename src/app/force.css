@@ -86,16 +86,6 @@
   line-height: 1.7;
 }
 
-.force-hero__expansion {
-  max-width: 35rem;
-  margin: 1rem 0 0;
-  padding-top: 1rem;
-  border-top: 2px solid color-mix(in srgb, var(--stock) 40%, transparent);
-  color: color-mix(in srgb, var(--stock) 78%, transparent);
-  font-size: 0.78rem;
-  line-height: 1.6;
-}
-
 .force-hero__caption {
   border-top: 3px solid var(--stock);
 }

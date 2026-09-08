@@ -329,6 +329,27 @@
   color: var(--ink-deep);
 }
 
+.group-bottom__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.group-bottom__social a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.group-bottom__social a:hover {
+  color: var(--ink-deep);
+}
+
+.group-bottom__social span {
+  color: color-mix(in srgb, var(--ink-deep) 35%, transparent);
+  cursor: default;
+}
+
 @media (max-width: 980px) {
   .group-series {
     grid-template-columns: 1fr;

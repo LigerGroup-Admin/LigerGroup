@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
-import { publicBrands, type BrandKey } from "@/lib/brands";
+import { publicBrands, socialLinksByBrand, type BrandKey } from "@/lib/brands";
 
 type SiteFooterProps = {
   brand: BrandKey;
@@ -24,6 +24,7 @@ export function SiteFooter({
   const resolvedPrivacyHref = privacyHref ?? "/privacy";
   const resolvedTermsHref = termsHref ?? "/privacy#terms";
   const siblingBrands = publicBrands.filter((item) => item.key !== brand);
+  const socialLinks = socialLinksByBrand[brand];
 
   return (
     <footer className="site-footer ink-field ink-field--deep">
@@ -35,6 +36,26 @@ export function SiteFooter({
             {email}
             <ArrowUpRight size={18} aria-hidden="true" />
           </a>
+          {socialLinks.length > 0 ? (
+            <div className="site-footer__social">
+              {socialLinks.map((item) =>
+                item.href ? (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <span key={item.label} aria-hidden="false">
+                    {item.label}
+                  </span>
+                ),
+              )}
+            </div>
+          ) : null}
         </div>
       </div>
       {siblingBrands.length > 0 ? (

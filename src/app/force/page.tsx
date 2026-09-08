@@ -130,11 +130,6 @@ export default async function ForceHomePage({
               <br />
               Accountable.
             </h1>
-            <p className="force-hero__expansion">
-              LigerForce is expanding its UK presence, with a UK-registered
-              entity currently in progress—giving clients a local contracting
-              point alongside our Lagos delivery team.
-            </p>
           </div>
         </section>
 
