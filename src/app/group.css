@@ -1,16 +1,21 @@
 /* Liger Group — Night Series frontispiece */
 
 .group-page {
-  --ink-1: #1a1a1a;
-  --ink-2: #3d3d3d;
+  --ink-1: var(--stock);
+  --ink-2: #b89243;
   --ink-3: #737373;
   --ink-deep: #000000;
   --display: var(--font-amaranth), "Arial Narrow", sans-serif;
   --body: var(--font-archivo), "Helvetica Neue", sans-serif;
 
   min-height: 100vh;
-  background: var(--ink-deep);
-  color: var(--stock);
+  background: var(--stock);
+  color: var(--ink-deep);
+}
+
+/* The hero field is a light ink too now — deep text on it */
+.group-page .ink-field--1 {
+  color: var(--ink-deep);
 }
 
 .group-hero {
@@ -28,18 +33,18 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 4vw;
-  border-bottom: 2px solid color-mix(in srgb, var(--stock) 24%, transparent);
+  border-bottom: 2px solid color-mix(in srgb, var(--ink-deep) 20%, transparent);
 }
 
 .group-nav .brand-mark {
-  color: var(--stock);
+  color: var(--ink-deep);
 }
 
 .group-nav__meta {
   display: flex;
   align-items: center;
   gap: 2rem;
-  color: color-mix(in srgb, var(--stock) 72%, transparent);
+  color: color-mix(in srgb, var(--ink-deep) 68%, transparent);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -63,13 +68,13 @@
   letter-spacing: 0.01em;
   line-height: 0.92;
   text-transform: uppercase;
-  text-shadow: 0.28rem 0.28rem 0 var(--ink-deep);
+  text-shadow: 0.28rem 0.28rem 0 var(--ink-2);
 }
 
 .group-hero__intro {
   max-width: 34rem;
   margin: 1.75rem 0 0;
-  color: color-mix(in srgb, var(--stock) 86%, transparent);
+  color: color-mix(in srgb, var(--ink-deep) 76%, transparent);
   font-size: clamp(0.92rem, 1.25vw, 1.05rem);
   line-height: 1.7;
 }
@@ -77,7 +82,7 @@
 /* The badge — the real Liger Group mark, the hero's centrepiece */
 .group-hero__badge {
   position: absolute;
-  top: 50%;
+  top: 58%;
   right: clamp(0.5rem, 4vw, 5rem);
   z-index: -1;
   display: flex;
@@ -252,14 +257,6 @@
   line-height: 1.6;
 }
 
-.group-poster__body .group-poster__note {
-  padding-top: 0.75rem;
-  border-top: 2px solid color-mix(in srgb, var(--poster-ink) 15%, transparent);
-  font-size: 0.7rem;
-  line-height: 1.55;
-  opacity: 0.8;
-}
-
 .group-poster__imperative {
   display: inline-flex;
   align-items: center;
@@ -276,7 +273,7 @@
 /* Backed by the group — condensed trust strip near the bottom */
 .group-trust {
   padding: clamp(2rem, 4vw, 3rem) 4vw;
-  border-top: 2px solid color-mix(in srgb, var(--stock) 24%, transparent);
+  border-top: 2px solid color-mix(in srgb, var(--ink-deep) 20%, transparent);
 }
 
 .group-trust > p {
@@ -285,7 +282,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--stock) 66%, transparent);
+  color: color-mix(in srgb, var(--ink-deep) 62%, transparent);
 }
 
 .group-trust > div {
@@ -299,7 +296,7 @@
   font-size: clamp(0.85rem, 1.3vw, 1.05rem);
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--stock) 90%, transparent);
+  color: color-mix(in srgb, var(--ink-deep) 88%, transparent);
 }
 
 .group-bottom {
@@ -308,8 +305,8 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1.2rem 4vw 1.4rem;
-  border-top: 2px solid color-mix(in srgb, var(--stock) 24%, transparent);
-  color: color-mix(in srgb, var(--stock) 66%, transparent);
+  border-top: 2px solid color-mix(in srgb, var(--ink-deep) 20%, transparent);
+  color: color-mix(in srgb, var(--ink-deep) 62%, transparent);
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.14em;

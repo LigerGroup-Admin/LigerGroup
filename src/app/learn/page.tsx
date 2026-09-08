@@ -105,6 +105,7 @@ export default function LearnHomePage() {
         />
 
         <section className="learn-testimonial" aria-label="Client testimonial">
+          <p className="learn-testimonial__eyebrow">Executive search</p>
           <div className="learn-testimonial__card">
             <div className="learn-testimonial__logo-tile">
               <Image

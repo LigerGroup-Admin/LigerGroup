@@ -383,6 +383,20 @@
   background: var(--ink-1);
 }
 
+/* More from our clients — standalone, full-width, outside the video grid */
+.remote-clients {
+  padding: 0 4vw clamp(4.5rem, 8vw, 8rem);
+}
+
+.remote-clients__heading {
+  margin: 0 0 1.5rem;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #4c5a6b;
+}
+
 .remote-story__logo-tile {
   display: flex;
   min-height: 16rem;

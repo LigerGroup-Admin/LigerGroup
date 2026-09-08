@@ -124,6 +124,16 @@
   border-bottom: 3px solid var(--ink-deep);
 }
 
+.learn-testimonial__eyebrow {
+  max-width: 54rem;
+  margin: 0 auto 1.5rem;
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5c4a5e;
+}
+
 .learn-testimonial__card {
   display: grid;
   grid-template-columns: minmax(11rem, 0.32fr) 1fr;
