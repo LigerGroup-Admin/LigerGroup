@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock3 } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { FormStatus } from "@/components/form-status";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Submit a requirement | LigerForce",
@@ -113,6 +114,11 @@ export default async function RequirementPage({
           </button>
         </form>
       </section>
+      <SiteFooter
+        brand="force"
+        statement="Remote talent should create capacity—not complexity."
+        email="hello@ligerforce.com"
+      />
     </main>
   );
 }

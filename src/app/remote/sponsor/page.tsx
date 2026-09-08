@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { FormStatus } from "@/components/form-status";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Sponsor a cohort | LigerRemote",
@@ -114,6 +115,13 @@ export default async function SponsorPage({
           </button>
         </form>
       </section>
+      <SiteFooter
+        brand="remote"
+        statement="The talent was always here. We built the pathway."
+        email="support@ligerremote.com"
+        termsHref="/remote/terms"
+        privacyHref="/remote/privacy"
+      />
     </main>
   );
 }

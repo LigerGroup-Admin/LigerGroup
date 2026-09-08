@@ -19,12 +19,10 @@ export function SiteFooter({
   termsHref,
   privacyHref,
 }: SiteFooterProps) {
-  // Until a brand has its own published Terms/Privacy page, route the link
-  // to a real request rather than a dead "#" anchor.
-  const resolvedPrivacyHref =
-    privacyHref ?? `mailto:${email}?subject=${encodeURIComponent("Privacy policy request")}`;
-  const resolvedTermsHref =
-    termsHref ?? `mailto:${email}?subject=${encodeURIComponent("Terms & conditions request")}`;
+  // Brands without their own dedicated Terms/Privacy page link to the
+  // shared group-level page instead.
+  const resolvedPrivacyHref = privacyHref ?? "/privacy";
+  const resolvedTermsHref = termsHref ?? "/privacy#terms";
   const siblingBrands = publicBrands.filter((item) => item.key !== brand);
 
   return (

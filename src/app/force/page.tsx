@@ -130,10 +130,6 @@ export default async function ForceHomePage({
               <br />
               Accountable.
             </h1>
-            <p className="force-hero__intro">
-              You set the brief. We find, prepare, and manage the person—so
-              adding remote capacity does not add another management problem.
-            </p>
             <p className="force-hero__expansion">
               LigerForce is expanding its UK presence, with a UK-registered
               entity currently in progress—giving clients a local contracting
