@@ -327,104 +327,136 @@
   font-size: 0.95rem;
 }
 
-/* No. 03 — Case study, green field */
-.force-case {
-  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
+/* Client note — Local Insights (formerly the numbered case study) */
+.force-note {
+  padding: clamp(4rem, 7vw, 6.5rem) 4vw;
 }
 
-.force-case .series-label {
-  color: var(--ink-3);
-}
-
-.force-case__label {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 3px solid color-mix(in srgb, var(--stock) 45%, transparent);
+.force-note__eyebrow {
+  max-width: 58rem;
+  margin: 0 auto 1.5rem;
   font-size: 0.64rem;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--stock) 80%, transparent);
+  color: var(--ink-1);
 }
 
-.force-case__content h2 {
-  max-width: 44rem;
-  font-size: clamp(2.1rem, 4vw, 3.9rem);
+.force-note__card {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.32fr) 1fr;
+  max-width: 58rem;
+  margin: 0 auto;
+  border: 3px solid var(--ink-deep);
+  background: white;
 }
 
-.force-case__content > p:last-child {
-  max-width: 40rem;
-  margin: 1.6rem 0 0;
-  color: color-mix(in srgb, var(--stock) 86%, transparent);
-  font-size: 0.92rem;
+.force-note__logo-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--ink-deep);
+  border-right: 3px solid var(--ink-deep);
+}
+
+.force-note__logo-tile img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+.force-note__body {
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.force-note__body h2 {
+  max-width: 34rem;
+  margin: 0 0 1rem;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+}
+
+.force-note__lede {
+  max-width: 36rem;
+  margin: 0 0 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 3px solid color-mix(in srgb, var(--ink-deep) 12%, transparent);
+  color: #47554d;
+  font-size: 0.88rem;
   line-height: 1.7;
 }
 
-.force-case__flow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  gap: 1rem;
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-}
-
-.force-case__flow > div {
-  flex: 1 1 12rem;
-  padding: 1.3rem 1.5rem 1.5rem;
-  border: 3px solid var(--stock);
-}
-
-.force-case__flow > div span {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: var(--ink-3);
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.force-case__flow > div strong {
+.force-note__body blockquote {
+  margin: 0;
   font-family: var(--display);
-  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.42;
+  color: var(--ink-deep);
+}
+
+.force-note__attribution {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 1.5rem 0 0;
+}
+
+.force-note__attribution img {
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.force-note__attribution figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.force-case__flow svg {
-  align-self: center;
-  flex: 0 0 auto;
-  color: var(--ink-3);
+.force-note__attribution figcaption em {
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: #47554d;
 }
 
-/* Built into every placement */
+.force-note__attribution figcaption em a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Built into every placement — a clean ledger, not tiled boxes */
 .force-included {
   padding: clamp(4.5rem, 8vw, 8rem) 4vw;
 }
 
 .force-included__list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 3px solid var(--ink-deep);
 }
 
 .force-included__list > div {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  min-height: 4.2rem;
-  padding: 0 1.2rem;
-  border: 3px solid var(--ink-deep);
-  background: white;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  gap: 0.9rem;
+  padding: 1.4rem 1.75rem;
+  border-bottom: 3px solid var(--ink-deep);
+}
+
+.force-included__list > div:nth-child(odd) {
+  border-right: 3px solid var(--ink-deep);
 }
 
 .force-included__list svg {
@@ -432,216 +464,85 @@
   color: var(--ink-2);
 }
 
-/* Trust & security — compact card above Pricing */
+.force-included__list span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Trust & security — a small announcement card above the booking form */
 .force-trust-security-wrap {
   padding: 0 4vw clamp(3rem, 6vw, 5rem);
 }
 
 .force-trust-security {
-  max-width: 54rem;
+  max-width: 58rem;
   margin: 0 auto;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  border: 3px solid var(--ink-deep);
-  background: color-mix(in srgb, var(--ink-1) 8%, white);
-}
-
-.force-trust-security h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin: 0 0 1rem;
-  font-family: var(--display);
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.force-trust-security h2 svg {
-  flex: 0 0 auto;
-  color: var(--ink-1);
-}
-
-.force-trust-security ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.force-trust-security li {
-  display: grid;
-  grid-template-columns: 1.1rem 1fr;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-.force-trust-security li svg {
-  flex: 0 0 auto;
-  margin-top: 0.2rem;
-  color: var(--ink-1);
-}
-
-/* Pricing */
-.force-pricing {
-  padding: clamp(4.5rem, 8vw, 8rem) 4vw;
-}
-
-.force-pricing h2 {
-  max-width: 40rem;
-  font-size: clamp(2.1rem, 4vw, 3.8rem);
-}
-
-.force-pricing__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  margin-top: clamp(2.5rem, 5vw, 4rem);
-}
-
-.force-pricing__card {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(1.75rem, 3vw, 2.5rem);
+  overflow: hidden;
   border: 3px solid var(--ink-deep);
   background: white;
 }
 
-.force-pricing__card h3 {
-  margin: 0 0 0.9rem;
-  font-family: var(--display);
-  font-size: clamp(1.3rem, 2vw, 1.7rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.force-pricing__price {
-  margin: 0 0 0.6rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.force-pricing__price span {
-  font-family: var(--display);
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 400;
-}
-
-.force-pricing__subtitle {
-  margin: 0 0 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 3px solid color-mix(in srgb, var(--ink-deep) 15%, transparent);
-  color: #47554d;
-  font-size: 0.85rem;
-  line-height: 1.55;
-}
-
-.force-pricing__card ul {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 0 0 1.75rem;
-  padding: 0;
-  list-style: none;
-}
-
-.force-pricing__card li {
-  display: grid;
-  grid-template-columns: 1.1rem 1fr;
-  gap: 0.6rem;
-  font-size: 0.85rem;
-  line-height: 1.5;
-}
-
-.force-pricing__card li svg {
-  flex: 0 0 auto;
-  margin-top: 0.2rem;
-  color: var(--ink-2);
-}
-
-.force-pricing__card .poster-button {
-  margin-top: auto;
-  width: 100%;
-}
-
-.force-pricing__note {
-  max-width: 44rem;
-  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
-  color: #47554d;
-  font-size: 0.85rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-/* Testimonial — moved out of the case study, its own field */
-.force-testimonial {
-  padding: clamp(4rem, 7vw, 6.5rem) 4vw;
-}
-
-.force-testimonial__quote {
-  max-width: 40rem;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.force-testimonial__logo {
-  display: block;
-  height: 1.6rem;
-  width: auto;
-  margin-bottom: 1.4rem;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-}
-
-.force-testimonial__quote blockquote {
-  margin: 0;
-  font-family: var(--display);
-  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-  font-weight: 400;
-  line-height: 1.4;
-}
-
-.force-testimonial__quote figcaption {
+.force-trust-security__header {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  margin-top: 1.4rem;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  gap: 0.75rem;
+  padding: 1.1rem 1.75rem;
+  background: var(--ink-1);
+  color: var(--stock);
+}
+
+.force-trust-security__header svg {
+  flex: 0 0 auto;
+}
+
+.force-trust-security__header h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.15rem, 1.9vw, 1.5rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
-.force-testimonial__quote figcaption span {
+.force-trust-security__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.force-trust-security__grid > div {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 1.4rem 1.75rem;
+  border-top: 2px solid color-mix(in srgb, var(--ink-deep) 12%, transparent);
 }
 
-.force-testimonial__quote figcaption em {
-  font-style: normal;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: color-mix(in srgb, var(--stock) 78%, transparent);
+.force-trust-security__grid > div:nth-child(odd) {
+  border-right: 2px solid color-mix(in srgb, var(--ink-deep) 12%, transparent);
 }
 
-.force-testimonial__quote figcaption em a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-.force-testimonial__photo {
+.force-trust-security__grid svg {
   flex: 0 0 auto;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  object-fit: cover;
+  margin-top: 0.2rem;
+  color: var(--ink-1);
+}
+
+.force-trust-security__grid p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* Pricing transition line — plain text, no card */
+.force-price-note {
+  max-width: 42rem;
+  margin: 0 auto clamp(3.5rem, 7vw, 5.5rem);
+  padding: 0 4vw;
+  color: #47554d;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  text-align: center;
 }
 
 /* No. 04 — Book the call */
@@ -691,17 +592,6 @@
   letter-spacing: normal;
   text-transform: none;
   color: #5c584c;
-}
-
-.force-form__price-hint {
-  margin: -0.5rem 0 0;
-  padding: 0.75rem 0.9rem;
-  border: 2px solid var(--ink-1);
-  background: color-mix(in srgb, var(--ink-1) 10%, white);
-  color: var(--ink-deep);
-  font-size: 0.78rem;
-  font-weight: 600;
-  line-height: 1.5;
 }
 
 /* Ready band */
@@ -801,13 +691,17 @@
   }
 
   .force-how__steps,
-  .force-included__list,
   .force-roles__grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .force-pricing__grid {
+  .force-note__card {
     grid-template-columns: 1fr;
+  }
+
+  .force-note__logo-tile {
+    border-right: 0;
+    border-bottom: 3px solid var(--ink-deep);
   }
 }
 
@@ -826,9 +720,15 @@
   }
 
   .force-how__steps,
+  .force-roles__grid,
   .force-included__list,
-  .force-roles__grid {
+  .force-trust-security__grid {
     grid-template-columns: 1fr;
+  }
+
+  .force-included__list > div:nth-child(odd),
+  .force-trust-security__grid > div:nth-child(odd) {
+    border-right: 0;
   }
 
   .force-requirement > header > a:last-child span {

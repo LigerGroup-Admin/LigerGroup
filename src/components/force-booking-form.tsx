@@ -6,7 +6,6 @@ import {
   FORCE_ROLE_OPTIONS,
   FORCE_ROLE_OTHER_SLUG,
   forceRoleLabel,
-  forceRolePriceLine,
 } from "@/lib/force-roles";
 
 const STORAGE_KEY = "force_last_role_label";
@@ -42,8 +41,8 @@ function ForceFormStatus({ formState }: { formState?: string }) {
         <p>
           {success
             ? lastRoleLabel
-              ? `Thanks — we've received your ${lastRoleLabel} requirement and will be in touch within 1 business day.`
-              : "We will email the most useful next step and available call times shortly."
+              ? `Thanks — we've received your ${lastRoleLabel} requirement and will be in touch within 1 business day to discuss fit and next steps.`
+              : "We will be in touch within 1 business day to discuss fit and next steps."
             : "Please check the required fields and try again. If the problem continues, contact us by email."}
         </p>
       </div>
@@ -74,8 +73,6 @@ export function ForceBookingForm({
       // Ignore storage failures; success message just falls back to generic copy.
     }
   }, [role]);
-
-  const priceLine = role ? forceRolePriceLine(role) : null;
 
   return (
     <form className="lead-form force-form" action="/api/submissions" method="post">
@@ -147,7 +144,6 @@ export function ForceBookingForm({
           <input name="requirement_other" required placeholder="A sentence or two is enough." />
         </label>
       ) : null}
-      {priceLine ? <p className="force-form__price-hint">{priceLine}</p> : null}
       <label className="lead-form__consent">
         <input type="checkbox" name="consent" required />
         <span>

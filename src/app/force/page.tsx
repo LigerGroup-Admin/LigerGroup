@@ -71,6 +71,22 @@ const roles = [
   },
 ];
 
+const included = [
+  "Role-specific vetting",
+  "Structured onboarding",
+  "Performance check-ins",
+  "HR and attendance support",
+  "Continuity planning",
+  "One commercial relationship",
+];
+
+const trustPoints = [
+  "Every placement includes a signed NDA and IP assignment agreement before day one.",
+  "Candidates are ID-verified and reference-checked prior to placement.",
+  "All work is conducted through secure, client-approved communication and file-sharing tools—never personal devices or unmanaged accounts.",
+  "Our data handling practices are aligned with UK GDPR requirements for our UK-based clients.",
+];
+
 export default async function ForceHomePage({
   searchParams,
 }: {
@@ -87,8 +103,7 @@ export default async function ForceHomePage({
           { label: "How it works", href: "#how" },
           { label: "Roles", href: "#roles" },
           { label: "Why managed", href: "#managed" },
-          { label: "Pricing", href: "#pricing" },
-          { label: "Case study", href: "#case-study" },
+          { label: "Client note", href: "#client-note" },
         ]}
         cta={{ label: "Book a 20-minute call", href: "#book" }}
       />
@@ -230,37 +245,61 @@ export default async function ForceHomePage({
           </div>
         </section>
 
-        <section className="force-case ink-field ink-field--1" id="case-study">
-          <div className="force-case__label">
-            <span>Case study / Local Insights</span>
-            <span>Managed operations support</span>
-          </div>
-          <div className="force-case__content">
-            <p className="series-label">No. 03 · The model in practice</p>
-            <h2 className="poster-display">
-              Dependable delivery capacity, without building another hiring
-              function.
-            </h2>
-            <p>
-              A closer look at how a clear brief, a role-specific match, and
-              structured performance support create a more reliable remote
-              working relationship.
-            </p>
-          </div>
-          <div className="force-case__flow" aria-label="Case study journey">
-            <div>
-              <span>Brief</span>
-              <strong>Define the outcome</strong>
+        <section className="force-note" id="client-note">
+          <p className="force-note__eyebrow">Client note / Local Insights</p>
+          <div className="force-note__card">
+            <div className="force-note__logo-tile">
+              <a
+                href="https://www.localinsights.co.uk"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Image
+                  src="/images/force/local-insights-logo.png"
+                  alt="Local Insights"
+                  width={160}
+                  height={22}
+                />
+              </a>
             </div>
-            <ArrowRight size={20} aria-hidden="true" />
-            <div>
-              <span>Match</span>
-              <strong>Prove role fit</strong>
-            </div>
-            <ArrowRight size={20} aria-hidden="true" />
-            <div>
-              <span>Manage</span>
-              <strong>Protect delivery</strong>
+            <div className="force-note__body">
+              <h2 className="poster-display">
+                Dependable delivery capacity, without building another hiring
+                function.
+              </h2>
+              <p className="force-note__lede">
+                A closer look at how a clear brief, a role-specific match, and
+                structured performance support create a more reliable remote
+                working relationship.
+              </p>
+              <blockquote>
+                “We can’t speak highly enough of our LigerRemote Virtual
+                Assistant and her efficiency and skill set. A pleasure to work
+                with, very quick to pick up our working habits and delivers
+                quality consistently. The Liger Group have been brilliant, all
+                round. Thanks to Femi and his team.”
+              </blockquote>
+              <figure className="force-note__attribution">
+                <Image
+                  src="/images/force/benji-mackenzie-weller.png"
+                  alt="Benji Mackenzie Weller"
+                  width={44}
+                  height={44}
+                />
+                <figcaption>
+                  Benji Mackenzie Weller
+                  <em>
+                    Co-Founder &amp; Sales Director,{" "}
+                    <a
+                      href="https://www.localinsights.co.uk"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Local Insights
+                    </a>
+                  </em>
+                </figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -269,17 +308,10 @@ export default async function ForceHomePage({
           <p className="series-label">Built into every placement</p>
           <h2 className="poster-display">Less uncertainty. Fewer loose ends.</h2>
           <div className="force-included__list">
-            {[
-              "Role-specific vetting",
-              "Structured onboarding",
-              "Performance check-ins",
-              "HR and attendance support",
-              "Continuity planning",
-              "One commercial relationship",
-            ].map((item) => (
+            {included.map((item) => (
               <div key={item}>
                 <Check size={16} aria-hidden="true" />
-                {item}
+                <span>{item}</span>
               </div>
             ))}
           </div>
@@ -287,145 +319,25 @@ export default async function ForceHomePage({
 
         <section className="force-trust-security-wrap">
           <div className="force-trust-security">
-            <h2>
-              <ShieldCheck size={20} aria-hidden="true" />
-              Built on trust, not just talent
-            </h2>
-            <ul>
-              <li>
-                <Check size={15} aria-hidden="true" />
-                Every placement includes a signed NDA and IP assignment
-                agreement before day one.
-              </li>
-              <li>
-                <Check size={15} aria-hidden="true" />
-                Candidates are ID-verified and reference-checked prior to
-                placement.
-              </li>
-              <li>
-                <Check size={15} aria-hidden="true" />
-                All work is conducted through secure, client-approved
-                communication and file-sharing tools—never personal devices or
-                unmanaged accounts.
-              </li>
-              <li>
-                <Check size={15} aria-hidden="true" />
-                Our data handling practices are aligned with UK GDPR
-                requirements for our UK-based clients.
-              </li>
-            </ul>
+            <div className="force-trust-security__header">
+              <ShieldCheck size={22} aria-hidden="true" />
+              <h2>Built on trust, not just talent</h2>
+            </div>
+            <div className="force-trust-security__grid">
+              {trustPoints.map((point) => (
+                <div key={point}>
+                  <Check size={15} aria-hidden="true" />
+                  <p>{point}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="force-pricing" id="pricing">
-          <p className="series-label">Pricing</p>
-          <h2 className="poster-display">Clear pricing. No hidden management fee.</h2>
-          <div className="force-pricing__grid">
-            <article className="force-pricing__card">
-              <h3>Virtual Assistant</h3>
-              <p className="force-pricing__price">
-                <span>$1,400–$1,500</span> / per month
-              </p>
-              <p className="force-pricing__subtitle">
-                Vetted, trained, and managed by LigerForce
-              </p>
-              <ul>
-                {[
-                  "One dedicated, full-time VA",
-                  "Vetted, trained, and employed by LigerForce",
-                  "Structured onboarding to your workflow",
-                  "Ongoing performance management",
-                ].map((item) => (
-                  <li key={item}>
-                    <Check size={15} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/force?role=va#book" className="poster-button">
-                Start a requirement
-                <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-            </article>
-            <article className="force-pricing__card">
-              <h3>Sales Development Rep (SDR)</h3>
-              <p className="force-pricing__price">
-                <span>$1,800–$2,200</span> / per month
-              </p>
-              <p className="force-pricing__subtitle">
-                Quota-bearing, trained on your ICP and pipeline
-              </p>
-              <ul>
-                {[
-                  "One dedicated, full-time SDR",
-                  "Trained on your ICP, messaging, and CRM",
-                  "Outbound + inbound qualification",
-                  "Weekly pipeline reporting",
-                ].map((item) => (
-                  <li key={item}>
-                    <Check size={15} aria-hidden="true" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/force?role=sdr#book" className="poster-button">
-                Start a requirement
-                <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-            </article>
-          </div>
-          <p className="force-pricing__note">
-            Vetting and management rigor on par with premium providers—priced
-            for a leaner cost base, not a leaner process.
-          </p>
-        </section>
-
-        <section className="force-testimonial ink-field ink-field--1" id="testimonial">
-          <figure className="force-testimonial__quote">
-            <a
-              href="https://www.localinsights.co.uk"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Image
-                src="/images/force/local-insights-logo.png"
-                alt="Local Insights"
-                width={186}
-                height={26}
-                className="force-testimonial__logo"
-              />
-            </a>
-            <blockquote>
-              “We can’t speak highly enough of our LigerRemote Virtual
-              Assistant and her efficiency and skill set. A pleasure to work
-              with, very quick to pick up our working habits and delivers
-              quality consistently. The Liger Group have been brilliant, all
-              round. Thanks to Femi and his team.”
-            </blockquote>
-            <figcaption>
-              <Image
-                src="/images/force/benji-mackenzie-weller.png"
-                alt="Benji Mackenzie Weller"
-                width={48}
-                height={48}
-                className="force-testimonial__photo"
-              />
-              <span>
-                Benji Mackenzie Weller
-                <em>
-                  Co-Founder &amp; Sales Director,{" "}
-                  <a
-                    href="https://www.localinsights.co.uk"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Local Insights
-                  </a>
-                </em>
-              </span>
-            </figcaption>
-          </figure>
-        </section>
+        <p className="force-price-note">
+          Pricing is structured by role and engagement scope—we’ll walk you
+          through it on a 20-minute call, no obligation.
+        </p>
 
         <section className="force-book" id="book">
           <div className="force-book__intro">

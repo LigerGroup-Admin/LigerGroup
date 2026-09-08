@@ -77,7 +77,7 @@
 /* The badge — the real Liger Group mark, the hero's centrepiece */
 .group-hero__badge {
   position: absolute;
-  bottom: clamp(1.75rem, 3vw, 2.75rem);
+  top: 50%;
   right: clamp(0.5rem, 4vw, 5rem);
   z-index: -1;
   display: flex;
@@ -85,6 +85,7 @@
   justify-content: center;
   width: clamp(13rem, 26vw, 24rem);
   height: clamp(13rem, 26vw, 24rem);
+  transform: translateY(-50%);
   pointer-events: none;
 }
 

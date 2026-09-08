@@ -105,35 +105,38 @@ export default function LearnHomePage() {
         />
 
         <section className="learn-testimonial" aria-label="Client testimonial">
-          <figure className="learn-testimonial__quote">
-            <Image
-              src="/images/learn/iomi-water-logo.png"
-              alt="IOMI Water"
-              width={180}
-              height={45}
-              className="learn-testimonial__logo"
-            />
-            <blockquote>
-              “You understood both what IOMI needs at this stage and the
-              significance of finding the right person to lead it. Your
-              guidance throughout the process gave us the clarity and
-              confidence to recognise that person. Thank you for being such an
-              important part of this defining appointment and of IOMI’s
-              unfolding story.”
-            </blockquote>
-            <figcaption>
-              <span>
-                Yinka Ogunsulire &amp; Mosun Ogunbanjo
-                <em>
-                  Founding Director &amp; Co-Founding Director, IOMI Water
-                  Company
-                </em>
-              </span>
-            </figcaption>
-            <p className="learn-testimonial__mandate">
-              Executive search mandate LL-IOMI-MD-001 — MD search, completed.
-            </p>
-          </figure>
+          <div className="learn-testimonial__card">
+            <div className="learn-testimonial__logo-tile">
+              <Image
+                src="/images/learn/iomi-water-logo.png"
+                alt="IOMI Water"
+                width={160}
+                height={40}
+              />
+            </div>
+            <div className="learn-testimonial__body">
+              <blockquote>
+                “You understood both what IOMI needs at this stage and the
+                significance of finding the right person to lead it. Your
+                guidance throughout the process gave us the clarity and
+                confidence to recognise that person. Thank you for being such
+                an important part of this defining appointment and of IOMI’s
+                unfolding story.”
+              </blockquote>
+              <figcaption>
+                <span>
+                  Yinka Ogunsulire &amp; Mosun Ogunbanjo
+                  <em>
+                    Founding Director &amp; Co-Founding Director, IOMI Water
+                    Company
+                  </em>
+                </span>
+              </figcaption>
+              <p className="learn-testimonial__mandate">
+                Executive search mandate LL-IOMI-MD-001 — MD search, completed.
+              </p>
+            </div>
+          </div>
         </section>
 
         <section className="learn-position ink-field ink-field--2">

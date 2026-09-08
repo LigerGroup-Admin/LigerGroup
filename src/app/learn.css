@@ -124,45 +124,60 @@
   border-bottom: 3px solid var(--ink-deep);
 }
 
-.learn-testimonial__quote {
-  max-width: 42rem;
+.learn-testimonial__card {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.32fr) 1fr;
+  max-width: 54rem;
   margin: 0 auto;
+  border: 3px solid var(--ink-deep);
+  background: var(--stock);
 }
 
-.learn-testimonial__logo {
-  display: block;
-  height: 2.2rem;
-  width: auto;
-  margin-bottom: 1.6rem;
-  object-fit: contain;
-  object-position: left;
+.learn-testimonial__logo-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--ink-deep);
+  border-right: 3px solid var(--ink-deep);
 }
 
-.learn-testimonial__quote blockquote {
+.learn-testimonial__logo-tile img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+.learn-testimonial__body {
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.learn-testimonial__body blockquote {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  font-size: clamp(1.2rem, 2.1vw, 1.55rem);
   letter-spacing: 0.02em;
-  line-height: 1.42;
+  line-height: 1.45;
 }
 
-.learn-testimonial__quote figcaption {
-  margin-top: 1.5rem;
-  font-size: 0.8rem;
+.learn-testimonial__body figcaption {
+  margin-top: 1.4rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-.learn-testimonial__quote figcaption span {
+.learn-testimonial__body figcaption span {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
 }
 
-.learn-testimonial__quote figcaption em {
+.learn-testimonial__body figcaption em {
   font-style: normal;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: none;
@@ -613,6 +628,15 @@
 
   .learn-leadership .duotone {
     max-width: 26rem;
+  }
+
+  .learn-testimonial__card {
+    grid-template-columns: 1fr;
+  }
+
+  .learn-testimonial__logo-tile {
+    border-right: 0;
+    border-bottom: 3px solid var(--ink-deep);
   }
 }
 

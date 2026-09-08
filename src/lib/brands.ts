@@ -21,7 +21,7 @@ export const brands: Record<BrandKey, Brand> = {
     description:
       "A Lagos-based group building talent, deploying capability, and transforming organisational performance.",
     path: "/",
-    accent: "#000000",
+    accent: "#b89243",
   },
   remote: {
     key: "remote",
