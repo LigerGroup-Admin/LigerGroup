@@ -227,7 +227,7 @@ export default async function ForceHomePage({
           </div>
         </section>
 
-        <section className="force-managed ink-field ink-field--2" id="managed">
+        <section className="force-managed ink-field ink-field--1" id="managed">
           <div className="force-managed__statement">
             <p className="series-label">No. 02 · We know what you are thinking</p>
             <h2>
