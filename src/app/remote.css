@@ -393,10 +393,11 @@
 /* More from our clients — standalone, full-width, outside the video grid */
 .remote-clients {
   padding: 0 4vw clamp(4.5rem, 8vw, 8rem);
+  text-align: center;
 }
 
 .remote-clients__heading {
-  margin: 0 0 1.5rem;
+  margin: 0 0 0.6rem;
   font-size: 0.64rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -404,8 +405,16 @@
   color: #4c5a6b;
 }
 
+.remote-clients__context {
+  margin: 0 0 1.5rem;
+  font-size: 0.85rem;
+  color: #4c5a6b;
+}
+
 .remote-clients__card {
   max-width: 58rem;
+  margin: 0 auto;
+  text-align: left;
 }
 
 /* Sponsor band — teal field */

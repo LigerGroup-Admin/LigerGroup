@@ -265,6 +265,9 @@ export default async function RemoteHomePage({
 
         <section className="remote-clients">
           <p className="remote-clients__heading">More from our clients</p>
+          <p className="remote-clients__context">
+            Hear from the businesses our graduates now work for.
+          </p>
           <LocalInsightsNote className="remote-clients__card" />
         </section>
 
