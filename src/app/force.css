@@ -388,23 +388,17 @@
   letter-spacing: 0.01em;
 }
 
-/* Trust & security — a small announcement card above the booking form */
+/* Trust & security — a designed section, not a data table */
 .force-trust-security-wrap {
   padding: 0 4vw clamp(3rem, 6vw, 5rem);
-}
-
-.force-trust-security {
-  max-width: 58rem;
-  margin: 0 auto;
-  overflow: hidden;
-  border: 3px solid var(--ink-deep);
-  background: white;
 }
 
 .force-trust-security__header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  max-width: 58rem;
+  margin: 0 auto;
   padding: 1.1rem 1.75rem;
   background: var(--ink-1);
   color: var(--stock);
@@ -426,27 +420,35 @@
 .force-trust-security__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  max-width: 58rem;
+  margin: 1rem auto 0;
 }
 
-.force-trust-security__grid > div {
+.force-trust-security__card {
   display: flex;
-  align-items: flex-start;
-  gap: 0.7rem;
-  padding: 1.4rem 1.75rem;
-  border-top: 2px solid color-mix(in srgb, var(--ink-deep) 12%, transparent);
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.5rem;
+  border: 3px solid var(--ink-deep);
+  background: white;
 }
 
-.force-trust-security__grid > div:nth-child(odd) {
-  border-right: 2px solid color-mix(in srgb, var(--ink-deep) 12%, transparent);
-}
-
-.force-trust-security__grid svg {
+.force-trust-security__card svg {
   flex: 0 0 auto;
-  margin-top: 0.2rem;
+  color: var(--ink-deep);
+}
+
+.force-trust-security__card--priority {
+  border-color: var(--ink-1);
+  background: color-mix(in srgb, var(--ink-1) 6%, white);
+}
+
+.force-trust-security__card--priority svg {
   color: var(--ink-1);
 }
 
-.force-trust-security__grid p {
+.force-trust-security__card p {
   margin: 0;
   font-size: 0.85rem;
   line-height: 1.6;
@@ -635,8 +637,7 @@
     grid-template-columns: 1fr;
   }
 
-  .force-included__list > div:nth-child(odd),
-  .force-trust-security__grid > div:nth-child(odd) {
+  .force-included__list > div:nth-child(odd) {
     border-right: 0;
   }
 

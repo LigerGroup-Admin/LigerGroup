@@ -375,6 +375,10 @@ export default async function RemoteHomePage({
           <div className="poster-faq">
             {[
               {
+                q: "Is there a cost to apply or join the accelerator?",
+                a: "Yes — a one-time $60 fee applies to join the accelerator, and it is non-refundable. There is no cost beyond this to complete the programme.",
+              },
+              {
                 q: "Do I need previous remote-work experience?",
                 a: "No. The accelerator is designed to turn your existing professional ability into remote-ready proof.",
               },

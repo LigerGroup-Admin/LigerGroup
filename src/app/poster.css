@@ -663,18 +663,32 @@
   margin: 0;
   border: 3px solid var(--ink-deep);
   background: white;
+  box-shadow: 0.6rem 0.6rem 0 var(--ink-1);
 }
 
 .local-insights-note__logo-tile {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   padding: 2rem;
   border-right: 3px solid var(--ink-deep);
   background: var(--ink-deep);
 }
 
+.local-insights-note__logo-tile::after {
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  content: "";
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .local-insights-note__logo-tile img {
+  position: relative;
   width: 100%;
   height: auto;
   filter: brightness(0) invert(1);
@@ -682,7 +696,20 @@
 }
 
 .local-insights-note__body {
-  padding: clamp(1.5rem, 3vw, 2.25rem);
+  position: relative;
+  isolation: isolate;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.75rem, 3.5vw, 2.5rem) clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.local-insights-note__mark {
+  position: absolute;
+  top: -0.5rem;
+  left: 0.5rem;
+  z-index: -1;
+  font-family: var(--display);
+  font-size: 6rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--ink-1) 22%, transparent);
 }
 
 .local-insights-note__body blockquote {
@@ -697,14 +724,17 @@
 .local-insights-note__attribution {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
-  margin-top: 1.4rem;
+  gap: 1rem;
+  margin-top: 2.1rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid color-mix(in srgb, var(--ink-deep) 10%, transparent);
 }
 
 .local-insights-note__attribution img {
   flex: 0 0 auto;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 3px solid var(--ink-1);
   border-radius: 50%;
   object-fit: cover;
 }

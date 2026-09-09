@@ -19,6 +19,9 @@ export function LocalInsightsNote({ className }: { className?: string }) {
         </a>
       </div>
       <div className="local-insights-note__body">
+        <span className="local-insights-note__mark" aria-hidden="true">
+          “
+        </span>
         <blockquote>
           “We can’t speak highly enough of our LigerRemote Virtual Assistant
           and her efficiency and skill set. A pleasure to work with, very

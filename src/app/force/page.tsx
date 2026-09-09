@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, Clock3, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  Clock3,
+  FileSignature,
+  Globe,
+  IdCard,
+  Lock,
+  ShieldCheck,
+} from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
@@ -82,10 +91,26 @@ const included = [
 ];
 
 const trustPoints = [
-  "Every placement includes a signed NDA and IP assignment agreement before day one.",
-  "Candidates are ID-verified and reference-checked prior to placement.",
-  "All work is conducted through secure, client-approved communication and file-sharing tools—never personal devices or unmanaged accounts.",
-  "Our data handling practices are aligned with UK GDPR requirements for our UK-based clients.",
+  {
+    text: "Every placement includes a signed NDA and IP assignment agreement before day one.",
+    icon: FileSignature,
+    priority: true,
+  },
+  {
+    text: "Our data handling practices are aligned with UK GDPR requirements for our UK-based clients.",
+    icon: Globe,
+    priority: true,
+  },
+  {
+    text: "Candidates are ID-verified and reference-checked prior to placement.",
+    icon: IdCard,
+    priority: false,
+  },
+  {
+    text: "All work is conducted through secure, client-approved communication and file-sharing tools—never personal devices or unmanaged accounts.",
+    icon: Lock,
+    priority: false,
+  },
 ];
 
 export default async function ForceHomePage({
@@ -244,9 +269,7 @@ export default async function ForceHomePage({
             function.
           </h2>
           <p className="force-note__lede">
-            A closer look at how a clear brief, a role-specific match, and
-            structured performance support create a more reliable remote
-            working relationship.
+            A real client relationship, in their own words.
           </p>
           <LocalInsightsNote className="force-note__card" />
         </section>
@@ -265,19 +288,24 @@ export default async function ForceHomePage({
         </section>
 
         <section className="force-trust-security-wrap">
-          <div className="force-trust-security">
-            <div className="force-trust-security__header">
-              <ShieldCheck size={22} aria-hidden="true" />
-              <h2>Built on trust, not just talent</h2>
-            </div>
-            <div className="force-trust-security__grid">
-              {trustPoints.map((point) => (
-                <div key={point}>
-                  <Check size={15} aria-hidden="true" />
-                  <p>{point}</p>
-                </div>
-              ))}
-            </div>
+          <div className="force-trust-security__header">
+            <ShieldCheck size={22} aria-hidden="true" />
+            <h2>Built on trust, not just talent</h2>
+          </div>
+          <div className="force-trust-security__grid">
+            {trustPoints.map((point) => (
+              <div
+                key={point.text}
+                className={
+                  point.priority
+                    ? "force-trust-security__card force-trust-security__card--priority"
+                    : "force-trust-security__card"
+                }
+              >
+                <point.icon size={20} aria-hidden="true" />
+                <p>{point.text}</p>
+              </div>
+            ))}
           </div>
         </section>
 
