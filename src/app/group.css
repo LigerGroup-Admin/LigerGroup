@@ -62,7 +62,7 @@
 .group-hero h1 {
   max-width: 42rem;
   margin: 0;
-  font-family: var(--display);
+  font-family: var(--font-playfair-display), Georgia, serif;
   font-size: clamp(3.4rem, 7.4vw, 7.4rem);
   font-weight: 400;
   letter-spacing: 0.01em;

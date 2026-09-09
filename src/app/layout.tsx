@@ -32,7 +32,7 @@ const archivo = Archivo({
 // Shared "Liger" logotype serif used across every sub-brand's BrandMark lockup.
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
-  weight: ["600", "700"],
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
