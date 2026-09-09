@@ -105,18 +105,6 @@
   color: #5c4a5e;
 }
 
-.learn-trust > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem 2.4rem;
-}
-
-.learn-trust span {
-  font-family: var(--display);
-  font-size: clamp(1rem, 1.6vw, 1.3rem);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
 
 /* Client testimonial — IOMI Water */
 .learn-testimonial {

@@ -170,7 +170,7 @@ export default async function ForceHomePage({
         </div>
 
         <ClientTrust
-          label="Part of the Liger Group, trusted by:"
+          label="LigerLearn, part of the Liger Group, has worked with:"
           className="force-trust"
         />
 

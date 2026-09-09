@@ -267,19 +267,6 @@
   color: color-mix(in srgb, var(--ink-deep) 62%, transparent);
 }
 
-.group-trust > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem 2rem;
-}
-
-.group-trust span {
-  font-family: var(--display);
-  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--ink-deep) 88%, transparent);
-}
 
 .group-bottom {
   display: flex;
