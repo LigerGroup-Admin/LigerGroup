@@ -775,16 +775,40 @@
   }
 }
 
-/* Client-logo trust strip — shared by group, force, and learn trust sections */
+/* Client-logo trust strip — shared by group, force, and learn trust sections.
+   Auto-scrolling marquee: .row is the fixed-width viewport (overflow hidden),
+   .track holds two back-to-back copies of the logo set and animates
+   translateX(-50%) — exactly one set-width — so the loop is seamless. */
 .client-trust__row {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.client-trust__track {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  width: max-content;
   gap: 1rem 1.5rem;
+  animation: client-trust-marquee 48s linear infinite;
+  will-change: transform;
+}
+
+.client-trust__row:hover .client-trust__track,
+.client-trust__row:focus-within .client-trust__track {
+  animation-play-state: paused;
+}
+
+@keyframes client-trust-marquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .client-trust__logo {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
   height: 3.6rem;
@@ -801,16 +825,9 @@
   object-fit: contain;
 }
 
-@media (max-width: 700px) {
-  .client-trust__row {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .client-trust__logo {
-    flex: 0 0 auto;
+@media (prefers-reduced-motion: reduce) {
+  .client-trust__track {
+    animation: none;
   }
 }
 

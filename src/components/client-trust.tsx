@@ -24,16 +24,28 @@ export function ClientTrust({
     <section className={className} aria-label="Selected organisations">
       <p>{label}</p>
       <div className="client-trust__row">
-        {GROUP_CLIENTS.map((client) => (
-          <span className="client-trust__logo" key={client.name}>
-            <Image
-              src={`/images/group/partners/${client.file}`}
-              alt={`${client.name} logo`}
-              width={client.width}
-              height={client.height}
-            />
-          </span>
-        ))}
+        <div className="client-trust__track">
+          {GROUP_CLIENTS.map((client) => (
+            <span className="client-trust__logo" key={client.name}>
+              <Image
+                src={`/images/group/partners/${client.file}`}
+                alt={`${client.name} logo`}
+                width={client.width}
+                height={client.height}
+              />
+            </span>
+          ))}
+          {GROUP_CLIENTS.map((client) => (
+            <span className="client-trust__logo" key={`${client.name}-repeat`} aria-hidden="true">
+              <Image
+                src={`/images/group/partners/${client.file}`}
+                alt=""
+                width={client.width}
+                height={client.height}
+              />
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
