@@ -9,6 +9,12 @@
   --body: var(--font-public-sans), "Helvetica Neue", sans-serif;
 }
 
+/* CTA buttons carry the brand's primary teal, not rust or near-black */
+.force-root .poster-button {
+  border-color: var(--ink-1);
+  background: var(--ink-1);
+}
+
 /* Brick fields need cream text, not graphite */
 .force-root .poster-button--warm {
   color: var(--stock);
