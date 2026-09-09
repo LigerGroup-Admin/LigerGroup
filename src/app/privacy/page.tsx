@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const privacySections = [
   {
     heading: "What we collect",
-    body: "Through LigerForce forms (booking a call, submitting a requirement): your name, work email, phone number where given, company name, team size, and the role or support you're enquiring about. Through LigerRemote forms (cohort applications, sponsor pack requests): your name, email, phone number, city, career stage, and, for sponsors, your organisation and role. If you email us directly, we hold whatever you send us.",
+    body: "Through LigerForce forms (booking a call, submitting a requirement): your name, work email, phone number where given, company name, team size, and the role or support you're enquiring about. Through LigerRemote forms (cohort applications, sponsor pack requests): your name, email, phone number, city, career stage, and, for sponsors, your organisation and role. Through LigerLearn's One Force overview request form: your name, work email, organisation, role, and where you are in the merger journey. If you email us directly, we hold whatever you send us.",
   },
   {
     heading: "Why we collect it",
@@ -71,10 +71,10 @@ export default function PrivacyPage() {
         <h1 className="poster-display">Privacy Policy &amp; Terms</h1>
         <p>
           This page explains what personal data the Liger Group collects
-          through our websites and forms — LigerForce and LigerRemote — why we
-          collect it, how long we keep it, and the terms governing use of our
-          sites. It applies across ligergroup.com, LigerForce, LigerRemote,
-          and LigerLearn.
+          through our websites and forms — LigerForce, LigerRemote, and
+          LigerLearn — why we collect it, how long we keep it, and the terms
+          governing use of our sites. It applies across ligergroup.com,
+          LigerForce, LigerRemote, and LigerLearn.
         </p>
       </section>
 
