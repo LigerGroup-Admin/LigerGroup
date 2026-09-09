@@ -36,7 +36,7 @@
   --font-serif: var(--font-instrument-serif), Georgia, serif;
 
   /* Poster series shared stock */
-  --stock: #f4edda;
+  --stock: #fafaf8;
   --stock-deep: #eae1c8;
   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.55'/%3E%3C/svg%3E");
 }
