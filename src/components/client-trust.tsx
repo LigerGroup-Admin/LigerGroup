@@ -10,6 +10,8 @@ export const GROUP_CLIENTS = [
   { name: "May & Baker", file: "may-baker.png", width: 447, height: 447 },
   { name: "MTN", file: "mtn.webp", width: 1045, height: 647 },
   { name: "Stanbic IBTC Insurance", file: "stanbic-ibtc-insurance.webp", width: 1940, height: 744 },
+  { name: "IOMI Water", file: "iomi-water.png", width: 601, height: 151 },
+  { name: "Orange Island Lagos", file: "orange-island-lagos.jpg", width: 447, height: 447 },
 ] as const;
 
 export function ClientTrust({
