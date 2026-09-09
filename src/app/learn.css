@@ -259,7 +259,7 @@
   margin-bottom: 2.4rem;
   font-family: var(--display);
   font-size: 1.15rem;
-  color: var(--ink-2);
+  color: var(--ink-1);
 }
 
 .learn-practices__grid h3 {
@@ -350,7 +350,7 @@
 }
 
 .learn-one-force .series-label {
-  color: var(--ink-2);
+  color: var(--ink-1);
 }
 
 .learn-one-force h2 {
@@ -421,7 +421,7 @@
 }
 
 .learn-leadership__credentials svg {
-  color: var(--ink-2);
+  color: var(--ink-1);
 }
 
 .learn-leadership__bio {
@@ -463,7 +463,7 @@
 
 .learn-conversation__list svg {
   flex: 0 0 auto;
-  color: var(--ink-2);
+  color: var(--ink-1);
 }
 
 /* One Force page */
@@ -615,7 +615,7 @@
 }
 
 .one-force-overview__list svg {
-  color: var(--ink-2);
+  color: var(--ink-1);
 }
 
 @media (max-width: 980px) {

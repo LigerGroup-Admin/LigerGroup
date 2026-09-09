@@ -14,6 +14,13 @@
   color: var(--ink-deep);
 }
 
+/* CTA buttons carry the brand's primary green, not the marigold secondary */
+.remote-root .poster-button--warm {
+  border-color: var(--ink-1);
+  background: var(--ink-1);
+  color: var(--stock);
+}
+
 /* Hero — the dawn sheet */
 .remote-hero {
   position: relative;
