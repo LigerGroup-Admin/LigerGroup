@@ -2,6 +2,21 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { publicBrands, socialLinksByBrand, type BrandKey } from "@/lib/brands";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  XIcon,
+} from "@/components/social-icons";
+
+const socialIcons = {
+  instagram: InstagramIcon,
+  linkedin: LinkedinIcon,
+  x: XIcon,
+  facebook: FacebookIcon,
+  telegram: TelegramIcon,
+};
 
 type SiteFooterProps = {
   brand: BrandKey;
@@ -38,22 +53,24 @@ export function SiteFooter({
           </a>
           {socialLinks.length > 0 ? (
             <div className="site-footer__social">
-              {socialLinks.map((item) =>
-                item.href ? (
+              {socialLinks.map((item) => {
+                const Icon = socialIcons[item.icon];
+                return item.href ? (
                   <a
                     key={item.label}
                     href={item.href}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label={item.label}
                   >
-                    {item.label}
+                    <Icon size={17} />
                   </a>
                 ) : (
-                  <span key={item.label} aria-hidden="false">
-                    {item.label}
+                  <span key={item.label} aria-label={`${item.label} — coming soon`}>
+                    <Icon size={17} />
                   </span>
-                ),
-              )}
+                );
+              })}
             </div>
           ) : null}
         </div>

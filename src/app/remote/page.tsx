@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { VideoTestimonial } from "@/components/video-testimonial";
+import { LocalInsightsNote } from "@/components/local-insights-note";
 
 export const metadata: Metadata = {
   title: "LigerRemote | Build a career the world can hire",
@@ -264,33 +265,7 @@ export default async function RemoteHomePage({
 
         <section className="remote-clients">
           <p className="remote-clients__heading">More from our clients</p>
-          <article className="remote-story remote-story--client">
-            <div className="remote-story__logo-tile">
-              <a
-                href="https://www.localinsights.co.uk"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image
-                  src="/images/force/local-insights-logo.png"
-                  alt="Local Insights"
-                  width={160}
-                  height={22}
-                />
-              </a>
-            </div>
-            <div>
-              <blockquote>
-                “We can’t speak highly enough of our LigerRemote Virtual
-                Assistant and her efficiency and skill set. A pleasure to
-                work with, very quick to pick up our working habits and
-                delivers quality consistently. The Liger Group have been
-                brilliant, all round. Thanks to Femi and his team.”
-              </blockquote>
-              <p>Benji Mackenzie Weller</p>
-              <span>Co-Founder &amp; Sales Director, Local Insights</span>
-            </div>
-          </article>
+          <LocalInsightsNote className="remote-clients__card" />
         </section>
 
         <section className="remote-sponsor ink-field ink-field--3" id="sponsors">
@@ -428,8 +403,8 @@ export default async function RemoteHomePage({
         brand="remote"
         statement="The talent was always here. We built the pathway."
         email="support@ligerremote.com"
-        termsHref="/remote/terms"
-        privacyHref="/remote/privacy"
+        termsHref="/privacy#terms"
+        privacyHref="/privacy"
       />
     </div>
   );

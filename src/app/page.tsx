@@ -1,10 +1,25 @@
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ClientTrust } from "@/components/client-trust";
 import { socialLinksByBrand } from "@/lib/brands";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  XIcon,
+} from "@/components/social-icons";
+
+const socialIcons = {
+  instagram: InstagramIcon,
+  linkedin: LinkedinIcon,
+  x: XIcon,
+  facebook: FacebookIcon,
+  telegram: TelegramIcon,
+};
 
 const series = [
   {
@@ -94,13 +109,8 @@ export default function GroupHomePage() {
 
       <div className="caption-bar ink-field ink-field--2 group-caption">
         <a href="#businesses" className="caption-bar__imperative group-caption__link">
-          Choose your business
-        </a>
-        <span className="group-caption__count">
-          <span>03</span>
           Three businesses, one group
-          <ArrowDown size={15} aria-hidden="true" />
-        </span>
+        </a>
       </div>
 
       <section
@@ -146,15 +156,24 @@ export default function GroupHomePage() {
         <span>Liger Group · One system, three distinct businesses</span>
         <span>Talent · Deployment · Capability</span>
         <div className="group-bottom__social">
-          {socialLinksByBrand.group.map((item) =>
-            item.href ? (
-              <a key={item.label} href={item.href} target="_blank" rel="noreferrer">
-                {item.label}
+          {socialLinksByBrand.group.map((item) => {
+            const Icon = socialIcons[item.icon];
+            return item.href ? (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={item.label}
+              >
+                <Icon size={16} />
               </a>
             ) : (
-              <span key={item.label}>{item.label}</span>
-            ),
-          )}
+              <span key={item.label} aria-label={`${item.label} — coming soon`}>
+                <Icon size={16} />
+              </span>
+            );
+          })}
         </div>
         <div className="group-bottom__links">
           <a href="mailto:hello@theliger.group">hello@theliger.group</a>

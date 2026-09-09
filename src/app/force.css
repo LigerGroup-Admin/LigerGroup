@@ -332,97 +332,25 @@
   color: var(--ink-1);
 }
 
-.force-note__card {
-  display: grid;
-  grid-template-columns: minmax(11rem, 0.32fr) 1fr;
-  max-width: 58rem;
-  margin: 0 auto;
-  border: 3px solid var(--ink-deep);
-  background: white;
-}
-
-.force-note__logo-tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  background: var(--ink-deep);
-  border-right: 3px solid var(--ink-deep);
-}
-
-.force-note__logo-tile img {
-  width: 100%;
-  height: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.92;
-}
-
-.force-note__body {
-  padding: clamp(1.75rem, 3vw, 2.75rem);
-}
-
-.force-note__body h2 {
-  max-width: 34rem;
-  margin: 0 0 1rem;
-  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+.force-note__heading {
+  max-width: 44rem;
+  margin: 0 auto 1rem;
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
 }
 
 .force-note__lede {
-  max-width: 36rem;
-  margin: 0 0 1.75rem;
+  max-width: 44rem;
+  margin: 0 auto;
   padding-bottom: 1.75rem;
   border-bottom: 3px solid color-mix(in srgb, var(--ink-deep) 12%, transparent);
   color: #47554d;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   line-height: 1.7;
 }
 
-.force-note__body blockquote {
-  margin: 0;
-  font-family: var(--display);
-  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-  font-weight: 400;
-  line-height: 1.42;
-  color: var(--ink-deep);
-}
-
-.force-note__attribution {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin: 1.5rem 0 0;
-}
-
-.force-note__attribution img {
-  flex: 0 0 auto;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.force-note__attribution figcaption {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.force-note__attribution figcaption em {
-  font-style: normal;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: #47554d;
-}
-
-.force-note__attribution figcaption em a {
-  color: inherit;
-  text-decoration: underline;
+.force-note__card {
+  max-width: 58rem;
+  margin: 1.75rem auto 0;
 }
 
 /* Built into every placement — a clean ledger, not tiled boxes */
@@ -683,15 +611,6 @@
   .force-how__steps,
   .force-roles__grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .force-note__card {
-    grid-template-columns: 1fr;
-  }
-
-  .force-note__logo-tile {
-    border-right: 0;
-    border-bottom: 3px solid var(--ink-deep);
   }
 }
 

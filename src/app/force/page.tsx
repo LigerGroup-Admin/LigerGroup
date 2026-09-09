@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ClientTrust } from "@/components/client-trust";
 import { ForceBookingForm } from "@/components/force-booking-form";
+import { LocalInsightsNote } from "@/components/local-insights-note";
 
 export const metadata: Metadata = {
   title: "LigerForce | Managed remote talent",
@@ -238,61 +239,16 @@ export default async function ForceHomePage({
 
         <section className="force-note" id="client-note">
           <p className="force-note__eyebrow">Client note / Local Insights</p>
-          <div className="force-note__card">
-            <div className="force-note__logo-tile">
-              <a
-                href="https://www.localinsights.co.uk"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image
-                  src="/images/force/local-insights-logo.png"
-                  alt="Local Insights"
-                  width={160}
-                  height={22}
-                />
-              </a>
-            </div>
-            <div className="force-note__body">
-              <h2 className="poster-display">
-                Dependable delivery capacity, without building another hiring
-                function.
-              </h2>
-              <p className="force-note__lede">
-                A closer look at how a clear brief, a role-specific match, and
-                structured performance support create a more reliable remote
-                working relationship.
-              </p>
-              <blockquote>
-                “We can’t speak highly enough of our LigerRemote Virtual
-                Assistant and her efficiency and skill set. A pleasure to work
-                with, very quick to pick up our working habits and delivers
-                quality consistently. The Liger Group have been brilliant, all
-                round. Thanks to Femi and his team.”
-              </blockquote>
-              <figure className="force-note__attribution">
-                <Image
-                  src="/images/force/benji-mackenzie-weller.png"
-                  alt="Benji Mackenzie Weller"
-                  width={44}
-                  height={44}
-                />
-                <figcaption>
-                  Benji Mackenzie Weller
-                  <em>
-                    Co-Founder &amp; Sales Director,{" "}
-                    <a
-                      href="https://www.localinsights.co.uk"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Local Insights
-                    </a>
-                  </em>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
+          <h2 className="poster-display force-note__heading">
+            Dependable delivery capacity, without building another hiring
+            function.
+          </h2>
+          <p className="force-note__lede">
+            A closer look at how a clear brief, a role-specific match, and
+            structured performance support create a more reliable remote
+            working relationship.
+          </p>
+          <LocalInsightsNote className="force-note__card" />
         </section>
 
         <section className="force-included">

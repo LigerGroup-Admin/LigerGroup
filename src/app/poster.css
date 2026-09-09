@@ -374,18 +374,21 @@
 .site-footer__social {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
+  align-items: center;
+  gap: 1rem;
   margin-top: 1.4rem;
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+}
+
+.site-footer__social a,
+.site-footer__social span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .site-footer__social a {
   color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  transition: color 160ms ease;
 }
 
 .site-footer__social a:hover {
@@ -393,7 +396,7 @@
 }
 
 .site-footer__social span {
-  color: color-mix(in srgb, var(--stock) 45%, transparent);
+  color: color-mix(in srgb, var(--stock) 40%, transparent);
   cursor: default;
 }
 
@@ -651,6 +654,95 @@
   mix-blend-mode: overlay;
   opacity: 0.3;
   pointer-events: none;
+}
+
+/* Local Insights testimonial card — shared by /force and /remote */
+.local-insights-note {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.32fr) 1fr;
+  margin: 0;
+  border: 3px solid var(--ink-deep);
+  background: white;
+}
+
+.local-insights-note__logo-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-right: 3px solid var(--ink-deep);
+  background: var(--ink-deep);
+}
+
+.local-insights-note__logo-tile img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+.local-insights-note__body {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.local-insights-note__body blockquote {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.42;
+  color: var(--ink-deep);
+}
+
+.local-insights-note__attribution {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+}
+
+.local-insights-note__attribution img {
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.local-insights-note__attribution figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--ink-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.local-insights-note__attribution figcaption em {
+  font-style: normal;
+  color: #47554d;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.local-insights-note__attribution figcaption em a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .local-insights-note {
+    grid-template-columns: 1fr;
+  }
+
+  .local-insights-note__logo-tile {
+    border-right: 0;
+    border-bottom: 3px solid var(--ink-deep);
+  }
 }
 
 /* Poster sheet — hero carries the WPA margin frame */

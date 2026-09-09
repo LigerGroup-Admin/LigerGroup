@@ -162,24 +162,6 @@
   transform-origin: left;
 }
 
-.group-caption__count {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.group-caption__count span {
-  display: grid;
-  width: 2.4rem;
-  height: 2.4rem;
-  border: 2px solid currentColor;
-  place-items: center;
-}
-
 /* The series rack — three posters, one group */
 .group-series {
   display: grid;
@@ -332,13 +314,20 @@
 .group-bottom__social {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.group-bottom__social a,
+.group-bottom__social span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .group-bottom__social a {
   color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  transition: color 160ms ease;
 }
 
 .group-bottom__social a:hover {
@@ -346,7 +335,7 @@
 }
 
 .group-bottom__social span {
-  color: color-mix(in srgb, var(--ink-deep) 35%, transparent);
+  color: color-mix(in srgb, var(--ink-deep) 30%, transparent);
   cursor: default;
 }
 
