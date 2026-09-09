@@ -148,7 +148,7 @@ export default function GroupHomePage() {
       </section>
 
       <ClientTrust
-        label="LigerLearn, part of the Liger Group, has worked with:"
+        label="Our leadership has supported and facilitated capability and leadership programmes for organisations including:"
         className="group-trust"
       />
 

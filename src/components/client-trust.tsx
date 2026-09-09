@@ -9,6 +9,7 @@ export const GROUP_CLIENTS = [
   { name: "Leadway Pensure", file: "leadway-pensure.png", width: 657, height: 465 },
   { name: "May & Baker", file: "may-baker.png", width: 447, height: 447 },
   { name: "MTN", file: "mtn.webp", width: 1045, height: 647 },
+  { name: "Stanbic IBTC", file: "stanbic-ibtc.png", width: 534, height: 187 },
 ] as const;
 
 export function ClientTrust({

@@ -100,7 +100,7 @@ export default function LearnHomePage() {
         </div>
 
         <ClientTrust
-          label="Selected organisations our team has worked with"
+          label="Our leadership has supported and facilitated capability and leadership programmes for organisations including:"
           className="learn-trust"
         />
 
