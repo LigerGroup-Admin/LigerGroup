@@ -20,6 +20,13 @@
   color: var(--stock);
 }
 
+/* Section headlines read as sentence case here, not full caps — the
+   source copy is already correctly cased, this just stops the shared
+   .poster-display treatment from forcing it upper. Scoped to /force only. */
+.force-root h2.poster-display {
+  text-transform: none;
+}
+
 /* Ochre is a light ink — deep text on it */
 .force-root .ink-field--3 {
   color: var(--ink-deep);
@@ -420,7 +427,6 @@
   font-size: clamp(1.15rem, 1.9vw, 1.5rem);
   font-weight: 400;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
 .force-trust-security__grid {
