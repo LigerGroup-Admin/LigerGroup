@@ -214,7 +214,7 @@ export default async function RemoteHomePage({
                   how I position my experience.”
                 </blockquote>
                 <p>Joy Agbadu</p>
-                <span>Project Manager · LigerRemote graduate</span>
+                <span>Project Manager · LigerRemote graduate from Nigeria</span>
               </div>
             </article>
             <article className="remote-story">
@@ -235,7 +235,7 @@ export default async function RemoteHomePage({
                   him.”
                 </blockquote>
                 <p>Barbara Cynthia Amondi</p>
-                <span>Product Specialist · LigerRemote graduate</span>
+                <span>Product Specialist · LigerRemote graduate from Kenya</span>
               </div>
             </article>
             <article className="remote-story">
@@ -246,7 +246,7 @@ export default async function RemoteHomePage({
               />
               <div>
                 <p>Wonder Hagan</p>
-                <span>Administration VA · LigerRemote graduate, placed at a UK client</span>
+                <span>Administration VA · LigerRemote graduate from Ghana, placed at a UK client</span>
               </div>
             </article>
             <article className="remote-story">
@@ -257,7 +257,7 @@ export default async function RemoteHomePage({
               />
               <div>
                 <p>Ruth Adjetey</p>
-                <span>Customer Support VA · LigerRemote graduate, placed at a US client</span>
+                <span>Customer Support VA · LigerRemote graduate from Ghana, placed at a US client</span>
               </div>
             </article>
           </div>
