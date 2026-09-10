@@ -20,7 +20,6 @@ const SELECTORS = [
   ".force-trust-security__grid",
   ".force-price-note",
   ".force-ready",
-  ".learn-practices__grid",
   ".learn-approach__steps",
   ".client-trust__row",
   // Individual cards and images
@@ -30,6 +29,7 @@ const SELECTORS = [
   ".learn-testimonial__card",
   ".remote-story",
   ".force-roles__grid article",
+  ".learn-practices__grid article",
 ].join(", ");
 
 /**

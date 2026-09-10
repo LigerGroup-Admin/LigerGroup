@@ -243,6 +243,13 @@
   padding: 1.5rem 1.5rem 1.75rem;
 }
 
+/* Staggered reveal — left to right, top row then bottom row */
+.learn-practices__grid article:nth-child(2) { transition-delay: 90ms; }
+.learn-practices__grid article:nth-child(3) { transition-delay: 180ms; }
+.learn-practices__grid article:nth-child(4) { transition-delay: 270ms; }
+.learn-practices__grid article:nth-child(5) { transition-delay: 360ms; }
+.learn-practices__grid article:nth-child(6) { transition-delay: 450ms; }
+
 .learn-practices__grid article > span {
   margin-bottom: 2.4rem;
   font-family: var(--display);
