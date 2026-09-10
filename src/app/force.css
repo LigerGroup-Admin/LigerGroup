@@ -9,10 +9,10 @@
   --body: var(--font-public-sans), "Helvetica Neue", sans-serif;
 }
 
-/* CTA buttons carry the brand's primary teal, not rust or near-black */
+/* CTA buttons carry the original rust/orange, not the teal identity accent */
 .force-root .poster-button {
-  border-color: var(--ink-1);
-  background: var(--ink-1);
+  border-color: var(--ink-2);
+  background: var(--ink-2);
 }
 
 /* Brick fields need cream text, not graphite */
@@ -150,11 +150,21 @@
   transition: opacity 300ms ease-out, transform 300ms ease-out, box-shadow 300ms ease-out;
 }
 
-/* Desktop-only: lift + shadow, no scale (reserved for /remote) */
+/* Staggered reveal — left to right, top row then bottom row */
+.force-roles__grid article:nth-child(2) { transition-delay: 90ms; }
+.force-roles__grid article:nth-child(3) { transition-delay: 180ms; }
+.force-roles__grid article:nth-child(4) { transition-delay: 270ms; }
+.force-roles__grid article:nth-child(5) { transition-delay: 360ms; }
+.force-roles__grid article:nth-child(6) { transition-delay: 450ms; }
+
+/* Desktop-only: lift + shadow, no scale (reserved for /remote).
+   transition-delay reset to 0 so hover feedback stays instant — otherwise
+   it would inherit each card's scroll-reveal stagger delay (up to 450ms). */
 @media (hover: hover) {
   .force-roles__grid article:hover {
     transform: translateY(-3px);
     box-shadow: 0 0.9rem 1.6rem -0.6rem color-mix(in srgb, var(--ink-deep) 40%, transparent);
+    transition-delay: 0s;
   }
 }
 
