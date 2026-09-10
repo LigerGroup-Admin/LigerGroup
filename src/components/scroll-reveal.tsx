@@ -3,16 +3,35 @@
 import { useEffect } from "react";
 
 const SELECTORS = [
+  // Section headings and key text
   "h2.poster-display",
   ".series-label",
   ".caption-bar__imperative",
-  ".remote-story blockquote",
+  ".force-managed__statement h2",
+  ".force-trust-security__header h2",
   ".learn-position blockquote",
+  // Section content blocks
+  ".remote-fit__list",
+  ".remote-programme__steps",
+  ".force-how__steps",
+  ".force-managed__answers",
+  ".force-included__list",
+  ".force-trust-security__grid",
+  ".learn-practices__grid",
+  ".learn-approach__steps",
+  ".client-trust__row",
+  // Individual cards and images
+  ".duotone",
+  ".local-insights-note",
+  ".learn-testimonial__card",
+  ".remote-story",
+  ".force-roles__grid article",
 ].join(", ");
 
 /**
- * Mount once per page. Fades/lifts headings and key text into view on
- * scroll, instead of everything just sitting static on the page.
+ * Mount once per page. Fades/lifts major sections, cards, and images into
+ * view on scroll (once per element), instead of everything just sitting
+ * static on the page.
  */
 export function ScrollReveal() {
   useEffect(() => {

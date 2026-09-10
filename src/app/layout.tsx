@@ -42,14 +42,14 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
   ),
   title: {
-    default: "Liger Group — Potential, made operational",
+    default: "Liger Group — Potential, made possible",
     template: "%s — Liger Group",
   },
   description:
     "Liger Group builds talent, deploys capability, and transforms organisational performance across Africa and global markets.",
   openGraph: {
     title: "Liger Group",
-    description: "Potential, made operational.",
+    description: "Potential, made possible.",
     type: "website",
   },
 };

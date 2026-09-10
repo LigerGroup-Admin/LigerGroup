@@ -315,6 +315,18 @@
   grid-template-columns: minmax(9rem, 0.62fr) 1fr;
   border: 3px solid var(--ink-deep);
   background: white;
+  /* opacity kept here (not just in .scroll-reveal) so this rule's later
+     cascade position doesn't drop the fade-in transition when the card
+     is also a scroll-reveal target */
+  transition: opacity 300ms ease-out, transform 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+/* Desktop-only: lift + shadow + a touch of scale for extra energy */
+@media (hover: hover) {
+  .remote-story:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0.9rem 1.6rem -0.6rem color-mix(in srgb, var(--ink-deep) 40%, transparent);
+  }
 }
 
 .remote-story .duotone {

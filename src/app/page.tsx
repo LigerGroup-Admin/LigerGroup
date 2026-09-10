@@ -98,7 +98,7 @@ export default function GroupHomePage() {
           <h1>
             Human potential,
             <br />
-            made operational.
+            made possible.
           </h1>
           <p className="group-hero__intro">
             We build talent, deploy capability, and strengthen the organisations

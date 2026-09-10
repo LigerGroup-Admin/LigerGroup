@@ -60,15 +60,16 @@
 }
 
 .group-hero h1 {
+  width: fit-content;
   max-width: 42rem;
   margin: 0;
+  padding-bottom: 0.9rem;
+  border-bottom: 3px solid var(--ink-2);
   font-family: var(--font-playfair-display), Georgia, serif;
   font-size: clamp(3.4rem, 7.4vw, 7.4rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 0.92;
-  text-transform: uppercase;
-  text-shadow: 0.28rem 0.28rem 0 var(--ink-2);
 }
 
 .group-hero__intro {
@@ -176,13 +177,24 @@
   border: 3px solid var(--poster-accent-deep);
   background: var(--stock);
   color: var(--poster-ink);
-  transition: transform 220ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  transition: transform 220ms ease-out, box-shadow 220ms ease-out;
 }
 
-.group-poster:hover,
+/* !important: the card also carries the .reveal entrance animation, which
+   (via fill-mode: both) holds `transform` at animation-tier cascade
+   priority forever after it finishes — a plain author rule can't win
+   against that, so these need to force the override. */
 .group-poster:focus-visible {
-  transform: translate(-0.3rem, -0.3rem);
+  transform: translate(-0.3rem, -0.3rem) !important;
   box-shadow: 0.55rem 0.55rem 0 var(--poster-accent);
+}
+
+/* Desktop-only: real pointer devices get a subtle lift, not the bolder focus stamp */
+@media (hover: hover) {
+  .group-poster:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 0.9rem 1.6rem -0.6rem color-mix(in srgb, var(--poster-ink) 45%, transparent);
+  }
 }
 
 .group-poster__scene {

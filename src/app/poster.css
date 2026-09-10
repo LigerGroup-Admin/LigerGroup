@@ -891,17 +891,51 @@
   animation-delay: 220ms;
 }
 
-/* Scroll-triggered reveal — for text below the fold, mounted via ScrollReveal */
+/* Scroll-triggered reveal — for sections, cards, and images below the fold, mounted via ScrollReveal */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 650ms cubic-bezier(0.2, 0.75, 0.2, 1),
-    transform 650ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  transform: translateY(14px);
+  transition: opacity 360ms ease-out, transform 360ms ease-out;
 }
 
 .scroll-reveal--visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Ken Burns — a very slow, barely-perceptible zoom on hero photography */
+@keyframes ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.force-hero__scene img,
+.remote-hero__scene img,
+.learn-hero__scene img {
+  animation: ken-burns 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .force-hero__scene img,
+  .remote-hero__scene img,
+  .learn-hero__scene img {
+    animation: none;
+  }
+
+  /* Hover feedback stays (shadow), but the lift/scale motion is dropped.
+     !important matches .group-poster:hover's own !important (needed there
+     to beat the .reveal entrance animation's held transform), otherwise
+     this override would silently lose to it. */
+  .group-poster:hover,
+  .force-roles__grid article:hover,
+  .remote-story:hover {
+    transform: none !important;
+  }
 }
 
 @media (max-width: 900px) {
