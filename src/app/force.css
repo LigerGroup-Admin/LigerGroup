@@ -647,6 +647,19 @@
 }
 
 @media (max-width: 640px) {
+  /* "Accountable." at the base clamp's floor size (2.4rem) overflows
+     narrow phones — measured ~30px past the container at 360px wide.
+     Fixing this also resolves the handshake photo reading as hidden
+     behind the text: the oversized/overflowing headline was inflating
+     the hero's actual height, which changed how object-fit: cover
+     cropped the image and pushed the visible hand area down out of
+     view. With the text back to its intended size, the crop resolves
+     normally and the handshake sits clearly above it — no change to
+     the image itself was needed. */
+  .force-hero h1 {
+    font-size: clamp(1.9rem, 9vw, 2.4rem);
+  }
+
   .force-facts {
     grid-template-columns: 1fr;
   }
