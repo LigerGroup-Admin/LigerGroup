@@ -354,6 +354,16 @@
   padding: 1.1rem;
   border: 3px solid var(--ink-deep);
   background: white;
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+/* Desktop-only: lift + shadow + a touch of scale, matching the other
+   card hovers on /remote (graduate stories) */
+@media (hover: hover) {
+  .remote-mentor-card:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0.9rem 1.6rem -0.6rem color-mix(in srgb, var(--ink-deep) 40%, transparent);
+  }
 }
 
 .remote-mentor-card__photo {
@@ -530,6 +540,20 @@
   max-width: 58rem;
   margin: 0 auto;
   text-align: left;
+  /* opacity kept here (not just in .scroll-reveal) so this rule's later
+     cascade position doesn't drop the fade-in transition when the card
+     is also a scroll-reveal target */
+  transition: opacity 300ms ease-out, transform 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+/* Desktop-only: deepen the card's existing offset shadow and lift it,
+   rather than introducing the soft-blur hover style used elsewhere —
+   keeps its established "poster stamp" look consistent on hover */
+@media (hover: hover) {
+  .remote-clients__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0.85rem 0.85rem 0 var(--ink-1);
+  }
 }
 
 /* Sponsor band — teal field */

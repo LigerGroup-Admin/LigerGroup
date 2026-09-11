@@ -129,6 +129,19 @@
   margin: 0 auto;
   border: 3px solid var(--ink-deep);
   background: var(--stock);
+  /* opacity kept here (not just in .scroll-reveal) so this rule's later
+     cascade position doesn't drop the fade-in transition when the card
+     is also a scroll-reveal target */
+  transition: opacity 300ms ease-out, transform 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+/* Desktop-only: lift + shadow, no scale — matches /learn's restrained
+   treatment used on the "What we solve" cards */
+@media (hover: hover) {
+  .learn-testimonial__card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.9rem 1.6rem -0.6rem color-mix(in srgb, var(--ink-deep) 40%, transparent);
+  }
 }
 
 .learn-testimonial__logo-tile {

@@ -934,7 +934,10 @@
   .group-poster:hover,
   .force-roles__grid article:hover,
   .learn-practices__grid article:hover,
-  .remote-story:hover {
+  .learn-testimonial__card:hover,
+  .remote-story:hover,
+  .remote-mentor-card:hover,
+  .remote-clients__card:hover {
     transform: none !important;
   }
 }
