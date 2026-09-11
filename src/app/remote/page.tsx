@@ -3,9 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  Award,
   Check,
   ChevronDown,
+  ClipboardCheck,
   Clock3,
+  MessageCircle,
   ShieldCheck,
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
@@ -42,6 +45,21 @@ const programme = [
     detail:
       "Graduate with evidence of how you work. Vetted graduates get access to employer opportunities, including managed international placement through LigerForce.",
     meta: "Talent network",
+  },
+];
+
+const mentorship = [
+  {
+    icon: ClipboardCheck,
+    text: "Reviews your mock client work before it's “real”",
+  },
+  {
+    icon: MessageCircle,
+    text: "One-on-one check-ins during the programme",
+  },
+  {
+    icon: Award,
+    text: "Portfolio and LinkedIn feedback from someone who's hired for this role before",
   },
 ];
 
@@ -180,6 +198,23 @@ export default async function RemoteHomePage({
                 </div>
               </article>
             ))}
+          </div>
+          <div className="remote-programme__mentors">
+            <h3>Guided by people who’ve done the work</h3>
+            <p>
+              Every cohort is supported by mentors who’ve worked in the roles
+              our participants are training for—not just instructors, but
+              people who review your work, answer real questions, and stay in
+              your corner past week four.
+            </p>
+            <div className="remote-programme__mentors-list">
+              {mentorship.map((item) => (
+                <div key={item.text}>
+                  <item.icon size={18} aria-hidden="true" />
+                  <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <div className="remote-programme__cta">
             <Link href="#apply" className="poster-button poster-button--warm">

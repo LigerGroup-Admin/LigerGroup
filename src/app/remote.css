@@ -281,6 +281,61 @@
   line-height: 1.7;
 }
 
+/* Mentorship — a continuation of the programme breakdown above, not a
+   new numbered section, so no series-label/h2 here */
+.remote-programme__mentors {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 3px solid color-mix(in srgb, var(--stock) 55%, transparent);
+}
+
+.remote-programme__mentors h3 {
+  margin: 0 0 1rem;
+  max-width: 34rem;
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.remote-programme__mentors > p {
+  max-width: 42rem;
+  margin: 0 0 2rem;
+  color: color-mix(in srgb, var(--stock) 86%, transparent);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.remote-programme__mentors-list > div {
+  display: grid;
+  grid-template-columns: 2.4rem 1fr;
+  align-items: start;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 2px solid color-mix(in srgb, var(--stock) 30%, transparent);
+}
+
+.remote-programme__mentors-list > div:last-child {
+  border-bottom: 0;
+}
+
+.remote-programme__mentors-list svg {
+  margin-top: 0.15rem;
+  color: var(--ink-2);
+}
+
+.remote-programme__mentors-list p {
+  max-width: 36rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--stock) 90%, transparent);
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
 .remote-programme__cta {
   display: flex;
   justify-content: flex-start;

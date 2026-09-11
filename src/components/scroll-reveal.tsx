@@ -13,6 +13,7 @@ const SELECTORS = [
   // Section content blocks
   ".remote-fit__list",
   ".remote-programme__steps",
+  ".remote-programme__mentors",
   ".force-facts",
   ".force-how__steps",
   ".force-managed__answers",
