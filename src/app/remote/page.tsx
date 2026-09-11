@@ -63,6 +63,19 @@ const mentorship = [
   },
 ];
 
+const mentors = [
+  {
+    name: "Modupe Marc-Dawodu",
+    role: "Managing Consultant · Marcforte Business Consulting",
+    image: "/images/remote/modupe-marc-dawodu.jpeg",
+  },
+  {
+    name: "Orimolade Oluwamuyemi",
+    role: "Strategic Communications Lead · Tellit.NG",
+    image: "/images/remote/orimolade-oluwamuyemi.jpeg",
+  },
+];
+
 export default async function RemoteHomePage({
   searchParams,
 }: {
@@ -212,6 +225,24 @@ export default async function RemoteHomePage({
                 <div key={item.text}>
                   <item.icon size={18} aria-hidden="true" />
                   <p>{item.text}</p>
+                </div>
+              ))}
+            </div>
+            <div className="remote-mentor-cards">
+              {mentors.map((mentor) => (
+                <div className="remote-mentor-card" key={mentor.name}>
+                  <div className="duotone remote-mentor-card__photo">
+                    <Image
+                      src={mentor.image}
+                      alt={`${mentor.name}, LigerRemote mentor`}
+                      width={200}
+                      height={200}
+                    />
+                  </div>
+                  <div>
+                    <p>{mentor.name}</p>
+                    <span>{mentor.role}</span>
+                  </div>
                 </div>
               ))}
             </div>

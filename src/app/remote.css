@@ -336,6 +336,53 @@
   line-height: 1.6;
 }
 
+/* Mentor cards — small format, one or two max, echoing the graduate-story
+   card (white card, duotone photo, uppercase display-font name) at a
+   scale proportionate to a subsection rather than its own major section */
+.remote-mentor-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  max-width: 36rem;
+  margin-top: 2.25rem;
+}
+
+.remote-mentor-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem;
+  border: 3px solid var(--ink-deep);
+  background: white;
+}
+
+.remote-mentor-card__photo {
+  flex: 0 0 auto;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+}
+
+.remote-mentor-card p {
+  margin: 0 0 0.25rem;
+  font-family: var(--display);
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--ink-deep);
+}
+
+.remote-mentor-card span {
+  display: block;
+  color: #4c5a6b;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
 .remote-programme__cta {
   display: flex;
   justify-content: flex-start;
@@ -773,6 +820,10 @@
 
   .remote-facts > div:last-child {
     border-bottom: 0;
+  }
+
+  .remote-mentor-cards {
+    grid-template-columns: 1fr;
   }
 
   .remote-story {
