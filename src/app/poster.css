@@ -933,6 +933,7 @@
      this override would silently lose to it. */
   .group-poster:hover,
   .force-roles__grid article:hover,
+  .learn-practices__grid article:hover,
   .remote-story:hover {
     transform: none !important;
   }

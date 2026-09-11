@@ -241,6 +241,21 @@
   border: 3px solid var(--ink-deep);
   background: white;
   padding: 1.5rem 1.5rem 1.75rem;
+  /* opacity kept here (not just in .scroll-reveal) so this rule's later
+     cascade position doesn't drop the fade-in transition when the card
+     is also a scroll-reveal target */
+  transition: opacity 300ms ease-out, transform 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+/* Desktop-only: lift + shadow, no scale — matches /force's role-card
+   treatment. transition-delay reset to 0 so hover feedback stays
+   instant instead of inheriting a card's reveal stagger delay. */
+@media (hover: hover) {
+  .learn-practices__grid article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.9rem 1.6rem -0.6rem color-mix(in srgb, var(--ink-deep) 40%, transparent);
+    transition-delay: 0s;
+  }
 }
 
 /* Staggered reveal — left to right, top row then bottom row */
