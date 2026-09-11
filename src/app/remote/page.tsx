@@ -15,6 +15,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { LinkedinIcon } from "@/components/social-icons";
 import { VideoTestimonial } from "@/components/video-testimonial";
 import { LocalInsightsNote } from "@/components/local-insights-note";
 
@@ -248,7 +249,14 @@ export default async function RemoteHomePage({
             </div>
             <div className="remote-mentor-cards">
               {mentors.map((mentor) => (
-                <div className="remote-mentor-card" key={mentor.name}>
+                <a
+                  className="remote-mentor-card"
+                  href={mentor.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${mentor.name} on LinkedIn`}
+                  key={mentor.name}
+                >
                   <div className="duotone remote-mentor-card__photo">
                     <Image
                       src={mentor.image}
@@ -256,19 +264,16 @@ export default async function RemoteHomePage({
                       width={200}
                       height={200}
                     />
-                  </div>
-                  <div>
-                    <p>
-                      <a href={mentor.linkedin} target="_blank" rel="noreferrer">
-                        {mentor.name}
-                      </a>
-                    </p>
-                    <span>{mentor.role}</span>
-                    <span className="remote-mentor-card__qualifier">
-                      {mentor.qualifier}
+                    <span className="remote-mentor-card__badge">
+                      <LinkedinIcon size={13} aria-hidden />
                     </span>
                   </div>
-                </div>
+                  <p className="remote-mentor-card__name">{mentor.name}</p>
+                  <span>{mentor.role}</span>
+                  <span className="remote-mentor-card__qualifier">
+                    {mentor.qualifier}
+                  </span>
+                </a>
               ))}
             </div>
           </div>
