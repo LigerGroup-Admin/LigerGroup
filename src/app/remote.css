@@ -383,6 +383,17 @@
   color: var(--ink-deep);
 }
 
+.remote-mentor-card p a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.remote-mentor-card p a:hover,
+.remote-mentor-card p a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .remote-mentor-card span {
   display: block;
   color: #4c5a6b;
@@ -391,6 +402,15 @@
   letter-spacing: 0.03em;
   line-height: 1.4;
   text-transform: uppercase;
+}
+
+.remote-mentor-card__qualifier {
+  margin-top: 0.35rem;
+  color: #6b7787;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.45;
+  text-transform: none;
 }
 
 .remote-programme__cta {

@@ -67,12 +67,30 @@ const mentors = [
   {
     name: "Modupe Marc-Dawodu",
     role: "Managing Consultant · Marcforte Business Consulting",
+    qualifier: "Expertise in HR consulting, talent management, and performance coaching",
     image: "/images/remote/modupe-marc-dawodu.jpeg",
+    linkedin: "https://www.linkedin.com/in/modupe-marc-dawodu-csm-114b2312/",
   },
   {
     name: "Orimolade Oluwamuyemi",
     role: "Strategic Communications Lead · Tellit.NG",
+    qualifier: "18+ years in strategic communications, including senior roles at Microsoft",
     image: "/images/remote/orimolade-oluwamuyemi.jpeg",
+    linkedin: "https://www.linkedin.com/in/orimoladeoluwamuyemi/",
+  },
+  {
+    name: "Toun-Tunde Anjous",
+    role: "Founder & CEO · The People Practice",
+    qualifier: "13+ years in HR transformation and recruitment across Sub-Saharan Africa",
+    image: "/images/remote/toun-tunde-anjous.jpeg",
+    linkedin: "https://www.linkedin.com/in/tountunde-anjous/",
+  },
+  {
+    name: "Sharon Orisakwe",
+    role: "CEO · Eagle Badger Data Analytics",
+    qualifier: "Background in data systems, workflow tools, and product management",
+    image: "/images/remote/sharon-orisakwe.jpeg",
+    linkedin: "https://www.linkedin.com/in/sharon-orisakwe-41b602186/",
   },
 ];
 
@@ -240,8 +258,15 @@ export default async function RemoteHomePage({
                     />
                   </div>
                   <div>
-                    <p>{mentor.name}</p>
+                    <p>
+                      <a href={mentor.linkedin} target="_blank" rel="noreferrer">
+                        {mentor.name}
+                      </a>
+                    </p>
                     <span>{mentor.role}</span>
+                    <span className="remote-mentor-card__qualifier">
+                      {mentor.qualifier}
+                    </span>
                   </div>
                 </div>
               ))}
