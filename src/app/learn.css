@@ -145,15 +145,28 @@
 }
 
 .learn-testimonial__logo-tile {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   padding: 2rem;
   background: var(--ink-deep);
   border-right: 3px solid var(--ink-deep);
 }
 
+.learn-testimonial__logo-tile::after {
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  content: "";
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .learn-testimonial__logo-tile img {
+  position: relative;
   width: 100%;
   height: auto;
   filter: brightness(0) invert(1);
@@ -161,7 +174,20 @@
 }
 
 .learn-testimonial__body {
-  padding: clamp(1.75rem, 3vw, 2.5rem);
+  position: relative;
+  isolation: isolate;
+  padding: clamp(2.25rem, 4vw, 3.25rem) clamp(1.75rem, 3vw, 2.5rem) clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.learn-testimonial__mark {
+  position: absolute;
+  top: -0.75rem;
+  left: 0.5rem;
+  z-index: -1;
+  font-family: var(--display);
+  font-size: 6rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--ink-3) 25%, transparent);
 }
 
 .learn-testimonial__body blockquote {
@@ -173,7 +199,9 @@
 }
 
 .learn-testimonial__body figcaption {
-  margin-top: 1.4rem;
+  margin-top: 2rem;
+  padding-top: 1.4rem;
+  border-top: 2px solid color-mix(in srgb, var(--ink-deep) 10%, transparent);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;

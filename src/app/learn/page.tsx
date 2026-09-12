@@ -116,6 +116,9 @@ export default function LearnHomePage() {
               />
             </div>
             <div className="learn-testimonial__body">
+              <span className="learn-testimonial__mark" aria-hidden="true">
+                “
+              </span>
               <blockquote>
                 “You understood both what IOMI needs at this stage and the
                 significance of finding the right person to lead it. Your
