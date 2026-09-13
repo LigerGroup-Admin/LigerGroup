@@ -257,22 +257,26 @@ export default async function RemoteHomePage({
                   aria-label={`${mentor.name} on LinkedIn`}
                   key={mentor.name}
                 >
-                  <div className="duotone remote-mentor-card__photo">
+                  <div className="remote-mentor-card__photo">
                     <Image
                       src={mentor.image}
                       alt={`${mentor.name}, LigerRemote mentor`}
                       width={200}
                       height={200}
                     />
-                    <span className="remote-mentor-card__badge">
-                      <LinkedinIcon size={13} aria-hidden />
+                  </div>
+                  <div className="remote-mentor-card__body">
+                    <div className="remote-mentor-card__name-row">
+                      <p className="remote-mentor-card__name">{mentor.name}</p>
+                      <span className="remote-mentor-card__linkedin">
+                        <LinkedinIcon size={14} aria-hidden />
+                      </span>
+                    </div>
+                    <span className="remote-mentor-card__role">{mentor.role}</span>
+                    <span className="remote-mentor-card__qualifier">
+                      {mentor.qualifier}
                     </span>
                   </div>
-                  <p className="remote-mentor-card__name">{mentor.name}</p>
-                  <span>{mentor.role}</span>
-                  <span className="remote-mentor-card__qualifier">
-                    {mentor.qualifier}
-                  </span>
                 </a>
               ))}
             </div>
