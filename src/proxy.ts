@@ -17,6 +17,18 @@ const hostRoutes: Record<string, string> = {
   "admin.localhost": "/admin",
 };
 
+// Top-level paths that already resolve on their own (shared pages, other
+// brand sections reached via a sibling-brand or footer link, API routes).
+// A branded domain must pass these through as-is rather than re-prefixing
+// them, or e.g. ligerforce.com/privacy would rewrite to /force/privacy (404).
+const passthroughSegments = new Set([
+  "force",
+  "remote",
+  "learn",
+  "admin",
+  "privacy",
+]);
+
 export function proxy(request: NextRequest) {
   const host = (request.headers.get("host") ?? "")
     .split(":")[0]
@@ -30,6 +42,11 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (pathname === routePrefix || pathname.startsWith(`${routePrefix}/`)) {
+    return NextResponse.next();
+  }
+
+  const firstSegment = pathname.split("/")[1];
+  if (passthroughSegments.has(firstSegment)) {
     return NextResponse.next();
   }
 
