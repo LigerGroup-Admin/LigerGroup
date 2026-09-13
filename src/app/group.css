@@ -80,6 +80,12 @@
   line-height: 1.7;
 }
 
+/* Quiet "group architecture" cue — mobile-only (see @media max-width:600px);
+   desktop's hero is intentionally left as-is. */
+.group-hero__series-line {
+  display: none;
+}
+
 /* The badge — the real Liger Group mark, the hero's centrepiece */
 .group-hero__badge {
   position: absolute;
@@ -360,6 +366,65 @@
 
   .group-nav__meta span:first-child {
     display: none;
+  }
+
+  /* The hero's min-height formula is tuned for tall desktop viewports; on
+     phones it left a large empty gap above the bottom-anchored copy block
+     (justify-content: flex-end), since content height is roughly fixed
+     but the section kept forcing itself as tall as the viewport allows. */
+  .group-hero {
+    min-height: max(30rem, min(calc(100svh - 4.75rem), 31.5rem));
+  }
+
+  .group-hero__copy {
+    padding-top: 1.75rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .group-hero__copy .hero-chip {
+    margin-bottom: 0.8rem;
+  }
+
+  /* Sized so "Human potential," and "made possible." each hold a single
+     line at common phone widths (measured against the actual Playfair
+     Display metrics, not estimated) instead of each wrapping again into
+     a fourth line — while staying as large as that constraint allows. */
+  .group-hero h1 {
+    padding-bottom: 0.85rem;
+    font-size: clamp(2.1rem, calc(11.8vw - 0.24rem), 3.4rem);
+  }
+
+  .group-hero__intro {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  .group-hero__series-line {
+    display: block;
+    margin: 0.9rem 0 0;
+    color: var(--ink-2);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .group-hero__series-line span {
+    margin: 0 0.4em;
+    opacity: 0.6;
+  }
+
+  /* Smaller, fainter, and anchored to the bottom of the hero (behind the
+     supporting copy) instead of a fixed top offset sized for the taller
+     desktop composition — keeps it a quiet device behind the headline
+     rather than a competing graphic. */
+  .group-hero__badge {
+    top: auto;
+    bottom: 0.5rem;
+    width: clamp(8rem, 34vw, 11rem);
+    height: clamp(8rem, 34vw, 11rem);
+    opacity: 0.16;
   }
 
   .group-bottom {

@@ -104,6 +104,10 @@ export default function GroupHomePage() {
             We build talent, deploy capability, and strengthen the organisations
             people make possible—from Africa to the world.
           </p>
+          <p className="group-hero__series-line">
+            LigerLearn <span aria-hidden="true">·</span> LigerRemote{" "}
+            <span aria-hidden="true">·</span> LigerForce
+          </p>
         </div>
       </section>
 
