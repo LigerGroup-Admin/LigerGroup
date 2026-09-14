@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { FormStatus } from "@/components/form-status";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "One Force | Post-merger workforce integration",
@@ -166,6 +167,11 @@ export default async function OneForcePage({
           </button>
         </form>
       </section>
+      <SiteFooter
+        brand="learn"
+        statement="Serious capability work begins with a serious business question."
+        email="support@ligerlearn.org"
+      />
     </main>
   );
 }
