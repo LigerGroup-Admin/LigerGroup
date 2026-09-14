@@ -32,6 +32,8 @@ export function ClientTrust({
                 alt={`${client.name} logo`}
                 width={client.width}
                 height={client.height}
+                sizes="112px"
+                loading="eager"
               />
             </span>
           ))}
@@ -42,6 +44,8 @@ export function ClientTrust({
                 alt=""
                 width={client.width}
                 height={client.height}
+                sizes="112px"
+                loading="eager"
               />
             </span>
           ))}

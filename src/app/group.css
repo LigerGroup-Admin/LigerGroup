@@ -72,6 +72,10 @@
   line-height: 0.92;
 }
 
+.group-hero__copy .hero-chip {
+  margin-bottom: 1.75rem;
+}
+
 .group-hero__intro {
   max-width: 34rem;
   margin: 1.75rem 0 0;
@@ -119,7 +123,7 @@
      "THE LIGER GROUP SERIES" chip above it — it used to start high enough
      to cut across that chip, slicing the badge in half */
   .group-hero__badge {
-    top: 15rem;
+    top: 17rem;
     bottom: auto;
     right: 50%;
     width: clamp(10rem, 46vw, 15rem);
@@ -135,7 +139,7 @@
 }
 
 .group-caption {
-  border-top: 3px solid var(--ink-deep);
+  border-top: 3px solid var(--ink-2);
 }
 
 /* Gold is a light ink — deep text on it */
@@ -373,11 +377,11 @@
     flex: none;
     justify-content: flex-start;
     padding-top: 2.25rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 2.25rem;
   }
 
   .group-hero__copy .hero-chip {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
   }
 
   /* Sized so "Human potential," and "made possible." each hold a single
