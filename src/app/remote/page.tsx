@@ -8,6 +8,7 @@ import {
   ChevronDown,
   ClipboardCheck,
   Clock3,
+  ExternalLink,
   MessageCircle,
   ShieldCheck,
 } from "lucide-react";
@@ -178,6 +179,22 @@ export default async function RemoteHomePage({
               <Check size={14} aria-hidden="true" /> The investment
             </span>
             <strong>$60.00</strong>
+            <div className="remote-facts__pay">
+              <a
+                href="https://flutterwave.com/pay/wjnl3tsyemcv"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Pay · Flutterwave
+              </a>
+              <a
+                href="https://paystack.shop/pay/Ligerremote"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Pay · Paystack
+              </a>
+            </div>
           </div>
         </section>
 
@@ -476,11 +493,38 @@ export default async function RemoteHomePage({
             <h2 className="poster-display">Before you apply.</h2>
           </div>
           <div className="poster-faq">
+            <details>
+              <summary>
+                Is there a cost to apply or join the accelerator?
+                <ChevronDown size={18} aria-hidden="true" />
+              </summary>
+              <p>
+                Yes — a one-time $60 fee applies to join the accelerator, and
+                it is non-refundable. There is no cost beyond this to
+                complete the programme.
+              </p>
+              <div className="remote-faq__pay">
+                <a
+                  className="text-link"
+                  href="https://flutterwave.com/pay/wjnl3tsyemcv"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Pay with Flutterwave
+                  <ExternalLink size={15} aria-hidden="true" />
+                </a>
+                <a
+                  className="text-link"
+                  href="https://paystack.shop/pay/Ligerremote"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Pay with Paystack
+                  <ExternalLink size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </details>
             {[
-              {
-                q: "Is there a cost to apply or join the accelerator?",
-                a: "Yes — a one-time $60 fee applies to join the accelerator, and it is non-refundable. There is no cost beyond this to complete the programme.",
-              },
               {
                 q: "Do I need previous remote-work experience?",
                 a: "No. The accelerator is designed to turn your existing professional ability into remote-ready proof.",
