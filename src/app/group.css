@@ -139,7 +139,7 @@
 }
 
 .group-caption {
-  border-top: 3px solid var(--ink-2);
+  border-top: 3px solid var(--ink-deep);
 }
 
 /* Gold is a light ink — deep text on it */
