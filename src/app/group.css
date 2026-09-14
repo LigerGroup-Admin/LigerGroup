@@ -80,12 +80,6 @@
   line-height: 1.7;
 }
 
-/* Quiet "group architecture" cue — mobile-only (see @media max-width:600px);
-   desktop's hero is intentionally left as-is. */
-.group-hero__series-line {
-  display: none;
-}
-
 /* The badge — the real Liger Group mark, the hero's centrepiece */
 .group-hero__badge {
   position: absolute;
@@ -368,16 +362,17 @@
     display: none;
   }
 
-  /* The hero's min-height formula is tuned for tall desktop viewports; on
-     phones it left a large empty gap above the bottom-anchored copy block
-     (justify-content: flex-end), since content height is roughly fixed
-     but the section kept forcing itself as tall as the viewport allows. */
+  /* Content now sizes to its own height instead of being stretched and
+     bottom-anchored inside a viewport-tall section — that was what pushed
+     "The Liger Group series" label down and left a large empty gap above it. */
   .group-hero {
-    min-height: max(30rem, min(calc(100svh - 4.75rem), 31.5rem));
+    min-height: auto;
   }
 
   .group-hero__copy {
-    padding-top: 1.75rem;
+    flex: none;
+    justify-content: flex-start;
+    padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
 
@@ -400,31 +395,20 @@
     line-height: 1.55;
   }
 
-  .group-hero__series-line {
-    display: block;
-    margin: 0.9rem 0 0;
-    color: var(--ink-2);
-    font-size: 0.62rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-
-  .group-hero__series-line span {
-    margin: 0 0.4em;
-    opacity: 0.6;
-  }
-
-  /* Smaller, fainter, and anchored to the bottom of the hero (behind the
-     supporting copy) instead of a fixed top offset sized for the taller
-     desktop composition — keeps it a quiet device behind the headline
-     rather than a competing graphic. */
+  /* The lion mark moves out of its absolutely-positioned watermark role
+     (sat behind the headline) and into normal flow as a standalone piece
+     of art beneath the supporting copy, above the next section. */
   .group-hero__badge {
+    position: relative;
     top: auto;
-    bottom: 0.5rem;
-    width: clamp(8rem, 34vw, 11rem);
-    height: clamp(8rem, 34vw, 11rem);
-    opacity: 0.16;
+    right: auto;
+    bottom: auto;
+    z-index: auto;
+    transform: none;
+    width: clamp(9rem, 42vw, 13rem);
+    height: clamp(9rem, 42vw, 13rem);
+    margin: 0 auto 1.75rem;
+    opacity: 1;
   }
 
   .group-bottom {

@@ -86,7 +86,6 @@ export const socialLinksByBrand: Record<BrandKey, SocialLink[]> = {
     { label: "X", href: null, icon: "x" },
   ],
   group: [
-    { label: "Instagram", href: null, icon: "instagram" },
     { label: "LinkedIn", href: null, icon: "linkedin" },
     { label: "X", href: null, icon: "x" },
   ],

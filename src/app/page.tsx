@@ -84,15 +84,6 @@ export default function GroupHomePage() {
             <span>Est. Series of Three</span>
           </div>
         </nav>
-        <div className="group-hero__badge" aria-hidden="true">
-          <Image
-            src="/images/group/liger-group-badge-circle.png"
-            alt=""
-            width={600}
-            height={600}
-            priority
-          />
-        </div>
         <div className="group-hero__copy reveal">
           <p className="hero-chip">The Liger Group series</p>
           <h1>
@@ -104,10 +95,15 @@ export default function GroupHomePage() {
             We build talent, deploy capability, and strengthen the organisations
             people make possible—from Africa to the world.
           </p>
-          <p className="group-hero__series-line">
-            LigerLearn <span aria-hidden="true">·</span> LigerRemote{" "}
-            <span aria-hidden="true">·</span> LigerForce
-          </p>
+        </div>
+        <div className="group-hero__badge" aria-hidden="true">
+          <Image
+            src="/images/group/liger-group-badge-circle.png"
+            alt=""
+            width={600}
+            height={600}
+            priority
+          />
         </div>
       </section>
 
