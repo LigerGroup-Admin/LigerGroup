@@ -176,7 +176,7 @@ export default function GroupHomePage() {
           })}
         </div>
         <div className="group-bottom__links">
-          <a href="mailto:hello@ligerforce.com">hello@ligerforce.com</a>
+          <a href="mailto:hello@theliger.group">hello@theliger.group</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/privacy#terms">Terms</Link>
         </div>

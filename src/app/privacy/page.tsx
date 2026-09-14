@@ -101,7 +101,7 @@ export default function PrivacyPage() {
           <h3>Contact</h3>
           <p>
             For data requests, or any question about this page, email{" "}
-            <a href="mailto:hello@ligerforce.com">hello@ligerforce.com</a>.
+            <a href="mailto:hello@theliger.group">hello@theliger.group</a>.
           </p>
         </section>
       </div>
