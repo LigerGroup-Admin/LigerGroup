@@ -40,6 +40,11 @@ const SELECTORS = [
  */
 export function ScrollReveal() {
   useEffect(() => {
+    // iOS Safari only triggers :active (and therefore touch press feedback)
+    // once some touch listener exists on the page — a documented quirk, not
+    // a functional listener. This unlocks :active site-wide.
+    document.documentElement.addEventListener("touchstart", () => {}, { passive: true });
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const els = Array.from(document.querySelectorAll<HTMLElement>(SELECTORS));

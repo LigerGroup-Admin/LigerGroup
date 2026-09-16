@@ -664,6 +664,23 @@
   border: 3px solid var(--ink-deep);
   background: white;
   box-shadow: 0.6rem 0.6rem 0 var(--ink-1);
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+/* Desktop-only: lift + deepen the poster shadow, matching the card hovers
+   on /remote (graduate stories, mentor cards) */
+@media (hover: hover) {
+  .local-insights-note:hover {
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0.9rem 0.9rem 0 var(--ink-1);
+  }
+}
+
+/* Touch/click press feedback — pushes the card toward its own shadow */
+.local-insights-note:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 0.35rem 0.35rem 0 var(--ink-1);
+  transition-duration: 120ms;
 }
 
 .local-insights-note__logo-tile {

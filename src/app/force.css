@@ -263,6 +263,21 @@
 .force-how__steps article {
   border: 3px solid var(--ink-deep);
   background: white;
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+/* Desktop-only: lift + shadow, matching the card hovers on /remote */
+@media (hover: hover) {
+  .force-how__steps article:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0.9rem 1.6rem -0.6rem color-mix(in srgb, var(--ink-deep) 40%, transparent);
+  }
+}
+
+/* Touch/click press feedback */
+.force-how__steps article:active {
+  transform: scale(0.97);
+  transition-duration: 120ms;
 }
 
 .force-how__steps article > span {
