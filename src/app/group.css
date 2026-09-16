@@ -57,6 +57,10 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: clamp(2.5rem, 5vw, 4.5rem) 4vw clamp(1.75rem, 3vw, 2.75rem);
+  /* Plain text only (no links/buttons) — stays out of the way of pointer
+     events so the lion/tiger badge behind it stays hoverable/tappable in
+     the empty space this flex box otherwise claims across the full width. */
+  pointer-events: none;
 }
 
 .group-hero h1 {
@@ -116,6 +120,23 @@
   height: 100%;
   border-radius: 50%;
   box-shadow: 0 1.5rem 4rem color-mix(in srgb, black 55%, transparent);
+  pointer-events: auto;
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out;
+}
+
+/* Desktop-only: lift + deepen the shadow, matching the card hovers used
+   across /force, /remote, /learn */
+@media (hover: hover) {
+  .group-hero__badge img:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 2rem 4.5rem color-mix(in srgb, black 65%, transparent);
+  }
+}
+
+/* Touch/click press feedback */
+.group-hero__badge img:active {
+  transform: scale(0.97);
+  transition-duration: 120ms;
 }
 
 @media (max-width: 980px) {
