@@ -475,14 +475,14 @@
   flex-direction: column;
   gap: 0.85rem;
   padding: 1.5rem;
-  border: 3px solid var(--ink-2);
+  border: 3px solid var(--ink-deep);
   background: white;
   transition: transform 300ms ease-out, box-shadow 300ms ease-out;
 }
 
 .force-trust-security__card svg {
   flex: 0 0 auto;
-  color: var(--ink-2);
+  color: var(--ink-deep);
 }
 
 .force-trust-security__card--priority {
