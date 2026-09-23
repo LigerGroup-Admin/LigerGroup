@@ -475,13 +475,14 @@
   flex-direction: column;
   gap: 0.85rem;
   padding: 1.5rem;
-  border: 3px solid var(--ink-deep);
+  border: 3px solid var(--ink-2);
   background: white;
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out;
 }
 
 .force-trust-security__card svg {
   flex: 0 0 auto;
-  color: var(--ink-deep);
+  color: var(--ink-2);
 }
 
 .force-trust-security__card--priority {
@@ -491,6 +492,20 @@
 
 .force-trust-security__card--priority svg {
   color: var(--ink-1);
+}
+
+/* Desktop-only: lift + shadow, matching the card hovers used across the site */
+@media (hover: hover) {
+  .force-trust-security__card:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 0.9rem 1.6rem -0.6rem color-mix(in srgb, var(--ink-deep) 40%, transparent);
+  }
+}
+
+/* Touch/click press feedback */
+.force-trust-security__card:active {
+  transform: scale(0.97);
+  transition-duration: 120ms;
 }
 
 .force-trust-security__card p {
