@@ -138,7 +138,16 @@ export default async function ForceHomePage({
         <section className="force-hero poster-sheet" aria-label="LigerForce">
           <div className="force-hero__scene">
             <Image
+              className="force-hero__scene-img--desktop"
               src="/images/force/hero.jpg"
+              alt="Two business leaders shaking hands over a deal"
+              fill
+              priority
+              sizes="100vw"
+            />
+            <Image
+              className="force-hero__scene-img--mobile"
+              src="/images/force/hero-mobile.jpg"
               alt="Two business leaders shaking hands over a deal"
               fill
               priority
