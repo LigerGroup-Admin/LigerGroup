@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { brands } from "@/lib/brands";
 
-export const size = { width: 32, height: 32 };
+export const size = { width: 48, height: 48 };
 export const contentType = "image/png";
 
 export default function Icon() {
@@ -16,7 +16,7 @@ export default function Icon() {
           justifyContent: "center",
           background: brands.force.accent,
           color: "#ffffff",
-          fontSize: 20,
+          fontSize: 30,
           fontWeight: 700,
           fontFamily: "Georgia, serif",
         }}
