@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Amaranth, Archivo, Instrument_Serif, Manrope, Playfair_Display } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -65,10 +66,12 @@ export default function RootLayout({
       className={`${manrope.variable} ${instrumentSerif.variable} ${amaranth.variable} ${archivo.variable} ${playfairDisplay.variable}`}
     >
       <body>
-        <a className="skip-link" href="#main-content">
-          Skip to content
-        </a>
-        {children}
+        <ClerkProvider>
+          <a className="skip-link" href="#main-content">
+            Skip to content
+          </a>
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   );

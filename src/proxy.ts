@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const hostRoutes: Record<string, string> = {
   "ligerremote.com": "/remote",
@@ -26,12 +27,18 @@ const passthroughSegments = new Set([
   "remote",
   "learn",
   "admin",
+  "sign-in",
+  "unauthorized",
   "privacy",
   "images",
   "videos",
 ]);
 
-export function proxy(request: NextRequest) {
+const adminHosts = new Set(["admin.ligergroup.com", "admin.localhost"]);
+
+const isAdminPath = createRouteMatcher(["/admin(.*)"]);
+
+function routeByHost(request: NextRequest) {
   const host = (request.headers.get("host") ?? "")
     .split(":")[0]
     .toLowerCase();
@@ -59,6 +66,23 @@ export function proxy(request: NextRequest) {
   response.headers.set("x-liger-site", routePrefix.slice(1));
   return response;
 }
+
+export default clerkMiddleware(async (auth, request) => {
+  const host = (request.headers.get("host") ?? "")
+    .split(":")[0]
+    .toLowerCase();
+  const { pathname } = request.nextUrl;
+  const isSignInRoute = pathname === "/sign-in" || pathname.startsWith("/sign-in/");
+
+  // Everything under the admin dashboard needs a signed-in session — on the
+  // dedicated admin host "/" itself means the dashboard (it gets rewritten
+  // to /admin below), so gate on the host too, not just the literal path.
+  if (!isSignInRoute && (adminHosts.has(host) || isAdminPath(request))) {
+    await auth.protect();
+  }
+
+  return routeByHost(request);
+});
 
 export const config = {
   matcher: [
