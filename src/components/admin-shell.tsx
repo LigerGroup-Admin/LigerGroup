@@ -43,7 +43,19 @@ function AdminNavigation() {
   );
 }
 
-export function AdminShell({ children }: { children: React.ReactNode }) {
+type AdminUser = {
+  name: string;
+  email: string;
+  initials: string;
+};
+
+export function AdminShell({
+  children,
+  user,
+}: {
+  children: React.ReactNode;
+  user: AdminUser;
+}) {
   return (
     <div className="admin-shell">
       <aside className="admin-sidebar">
@@ -65,10 +77,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </a>
         </div>
         <div className="admin-sidebar__user">
-          <span>LO</span>
+          <span>{user.initials}</span>
           <div>
-            <strong>Lola O.</strong>
-            <small>Group owner</small>
+            <strong>{user.name}</strong>
+            <small>{user.email}</small>
           </div>
           <Link href="/admin/settings" aria-label="Open settings">
             <Settings size={16} aria-hidden="true" />

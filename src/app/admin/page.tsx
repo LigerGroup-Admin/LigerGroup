@@ -10,6 +10,7 @@ import {
   MousePointerClick,
   UsersRound,
 } from "lucide-react";
+import { currentUser } from "@clerk/nextjs/server";
 
 const metrics = [
   {
@@ -119,13 +120,25 @@ function TrafficChart() {
   );
 }
 
-export default function AdminOverviewPage() {
+export default async function AdminOverviewPage() {
+  const user = await currentUser();
+  const firstName = user?.firstName?.trim() || user?.primaryEmailAddress?.emailAddress || "there";
+
+  const now = new Date();
+  const hour = now.getHours();
+  const timeOfDay = hour < 12 ? "morning" : hour < 18 ? "afternoon" : "evening";
+  const dateLabel = now.toLocaleDateString("en-GB", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+
   return (
     <main id="main-content" className="admin-page">
       <div className="admin-page__heading">
         <div>
-          <p className="admin-kicker">Wednesday, 15 July</p>
-          <h1>Good morning, Lola.</h1>
+          <p className="admin-kicker">{dateLabel}</p>
+          <h1>Good {timeOfDay}, {firstName}.</h1>
           <p>Here is what is happening across the Liger portfolio.</p>
         </div>
         <button className="admin-date-button" type="button">
