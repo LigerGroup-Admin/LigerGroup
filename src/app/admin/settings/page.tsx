@@ -22,11 +22,7 @@ export default async function AdminSettingsPage() {
           <section id="team">
             <header>
               <h2>Admin access</h2>
-              <p>
-                Anyone signed in with one of these emails can reach this dashboard. To add or
-                remove an admin, update the ADMIN_ALLOWED_EMAILS environment variable in Vercel —
-                there is no self-service invite flow yet.
-              </p>
+              <p>Anyone signed in with one of these emails can reach this dashboard.</p>
             </header>
             {allowedAdminEmails.map((email) => (
               <div className="admin-team-row" key={email}>

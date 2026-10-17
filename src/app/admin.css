@@ -1037,6 +1037,20 @@
   background: white;
   color: #4c565f;
   place-items: center;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, transform 150ms ease-out;
+}
+
+@media (hover: hover) {
+  .admin-topbar__actions button:hover {
+    border-color: #b7bcb6;
+    background: #f3f4f2;
+  }
+}
+
+.admin-topbar__actions button:active {
+  background: #e9ebe7;
+  transform: scale(0.95);
+  transition-duration: 80ms;
 }
 
 .admin-topbar__actions button i {
@@ -1099,6 +1113,20 @@
   color: #4d575f;
   font-size: 0.64rem;
   font-weight: 650;
+  transition: background-color 150ms ease-out, border-color 150ms ease-out, transform 150ms ease-out;
+}
+
+@media (hover: hover) {
+  .admin-date-button:hover {
+    border-color: #b7bcb6;
+    background: #f3f4f2;
+  }
+}
+
+.admin-date-button:active {
+  background: #e9ebe7;
+  transform: scale(0.97);
+  transition-duration: 80ms;
 }
 
 .admin-metrics {
