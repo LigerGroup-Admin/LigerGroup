@@ -1,11 +1,8 @@
 import Link from "next/link";
 import {
-  BarChart3,
   Bell,
   ContactRound,
-  FilePenLine,
   Globe2,
-  Inbox,
   LayoutDashboard,
   Menu,
   Search,
@@ -17,11 +14,8 @@ import { BrandMark } from "@/components/brand-mark";
 
 const navigation = [
   { label: "Overview", href: "/admin", icon: LayoutDashboard },
-  { label: "Analytics", href: "/admin/analytics", icon: BarChart3 },
   { label: "Leads & forms", href: "/admin/leads", icon: UsersRound },
-  { label: "Inbox", href: "/admin/inbox", icon: Inbox, badge: "17" },
   { label: "Contacts", href: "/admin/contacts", icon: ContactRound },
-  { label: "Content", href: "/admin/content", icon: FilePenLine },
   { label: "Websites", href: "/admin/websites", icon: Globe2 },
 ];
 
@@ -35,7 +29,6 @@ function AdminNavigation() {
           <Link key={item.href} href={item.href}>
             <Icon size={17} strokeWidth={1.7} aria-hidden="true" />
             <span>{item.label}</span>
-            {item.badge ? <b>{item.badge}</b> : null}
           </Link>
         );
       })}
@@ -101,14 +94,12 @@ export function AdminShell({
         <header className="admin-topbar">
           <label className="admin-search">
             <Search size={16} aria-hidden="true" />
-            <input aria-label="Search admin" placeholder="Search leads, contacts, content…" />
+            <input aria-label="Search admin" placeholder="Search leads, contacts, sites…" />
             <kbd>⌘ K</kbd>
           </label>
           <div className="admin-topbar__actions">
-            <span className="admin-preview-label">Preview data</span>
             <button type="button" aria-label="Notifications">
               <Bell size={18} aria-hidden="true" />
-              <i />
             </button>
           </div>
         </header>
