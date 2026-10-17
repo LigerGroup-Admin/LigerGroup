@@ -36,6 +36,12 @@
       "sourceType": "github",
       "skillPath": "skills/clerk-webhooks/SKILL.md",
       "computedHash": "2e09a26af49fcd7081b9c370e9c2008f1ff5ee4474141fd2c693431358c9e4ec"
+    },
+    "supabase": {
+      "source": "supabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/supabase/SKILL.md",
+      "computedHash": "af1844ade632808fc0c15cf2db87daf3b2431c5262dc8a0c3ea7d70880fadf91"
     }
   }
 }
