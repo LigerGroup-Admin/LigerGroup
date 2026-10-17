@@ -4,12 +4,14 @@ import {
   ContactRound,
   Globe2,
   LayoutDashboard,
+  LogOut,
   Menu,
   Search,
   Settings,
   UsersRound,
   X,
 } from "lucide-react";
+import { SignOutButton } from "@clerk/nextjs";
 import { BrandMark } from "@/components/brand-mark";
 
 const navigation = [
@@ -78,6 +80,11 @@ export function AdminShell({
           <Link href="/admin/settings" aria-label="Open settings">
             <Settings size={16} aria-hidden="true" />
           </Link>
+          <SignOutButton>
+            <button type="button" aria-label="Sign out">
+              <LogOut size={16} aria-hidden="true" />
+            </button>
+          </SignOutButton>
         </div>
       </aside>
 
