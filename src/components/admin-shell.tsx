@@ -47,9 +47,11 @@ type AdminUser = {
 export function AdminShell({
   children,
   user,
+  needsReviewCount,
 }: {
   children: React.ReactNode;
   user: AdminUser;
+  needsReviewCount: number;
 }) {
   return (
     <div className="admin-shell">
@@ -105,9 +107,17 @@ export function AdminShell({
             <kbd>⌘ K</kbd>
           </label>
           <div className="admin-topbar__actions">
-            <button type="button" aria-label="Notifications">
+            <Link
+              href="/admin/leads"
+              aria-label={
+                needsReviewCount > 0
+                  ? `${needsReviewCount} lead${needsReviewCount === 1 ? "" : "s"} need review`
+                  : "No leads need review"
+              }
+            >
               <Bell size={18} aria-hidden="true" />
-            </button>
+              {needsReviewCount > 0 ? <i>{needsReviewCount > 99 ? "99+" : needsReviewCount}</i> : null}
+            </Link>
           </div>
         </header>
         {children}

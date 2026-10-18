@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { currentUser } from "@clerk/nextjs/server";
 import { AdminShell } from "@/components/admin-shell";
+import { listSubmissions } from "@/server/submissions/repository";
 
 export const metadata: Metadata = {
   title: "Admin",
@@ -34,8 +35,19 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   const name = user?.fullName?.trim() || user?.firstName?.trim() || email;
 
+  // This badge count must not take the whole shell down if the database
+  // has a hiccup — error.tsx only guards page-level content, not the
+  // layout itself, so a thrown error here would bypass it entirely.
+  let needsReviewCount = 0;
+  try {
+    const submissions = await listSubmissions(1000);
+    needsReviewCount = submissions.filter((s) => s.status === "new").length;
+  } catch (error) {
+    console.error("Failed to load needs-review count for admin topbar:", error);
+  }
+
   return (
-    <AdminShell user={{ name, email, initials: initialsFor(name) }}>
+    <AdminShell user={{ name, email, initials: initialsFor(name) }} needsReviewCount={needsReviewCount}>
       {children}
     </AdminShell>
   );

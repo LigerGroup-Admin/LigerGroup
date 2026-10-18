@@ -1,16 +1,16 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  CalendarDays,
   CheckCircle2,
+  Clock3,
   ShieldAlert,
-  UserPlus,
   UsersRound,
   XCircle,
 } from "lucide-react";
 import { currentUser } from "@clerk/nextjs/server";
 import { listSubmissions } from "@/server/submissions/repository";
 import { checkSiteHealth } from "@/server/site-health";
+import { AdminDateRangeSelect } from "@/components/admin-date-range-select";
 
 const typeLabels: Record<string, string> = {
   cohort_interest: "Cohort interest",
@@ -20,6 +20,13 @@ const typeLabels: Record<string, string> = {
   one_force_download: "One Force overview",
   diagnostic_call: "Diagnostic call",
   contact: "Contact",
+};
+
+const rangeLabels: Record<string, string> = {
+  "7d": "in the last 7 days",
+  "30d": "in the last 30 days",
+  "90d": "in the last 90 days",
+  all: "all time",
 };
 
 function referrerLabel(referrer: string | null) {
@@ -42,8 +49,15 @@ function relativeTime(value: string) {
   return `${days} day${days === 1 ? "" : "s"} ago`;
 }
 
-export default async function AdminOverviewPage() {
-  const [user, submissions, siteHealth] = await Promise.all([
+export default async function AdminOverviewPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ range?: string }>;
+}) {
+  const { range: rawRange } = await searchParams;
+  const range = ["7d", "30d", "90d", "all"].includes(rawRange ?? "") ? rawRange! : "all";
+
+  const [user, allSubmissions, siteHealth] = await Promise.all([
     currentUser(),
     listSubmissions(1000),
     checkSiteHealth(),
@@ -60,21 +74,26 @@ export default async function AdminOverviewPage() {
     month: "long",
   });
 
-  const thirtyDaysAgo = Date.now() - 30 * 24 * 60 * 60 * 1000;
-  const newLast30Days = submissions.filter(
-    (s) => new Date(s.createdAt).getTime() >= thirtyDaysAgo,
-  ).length;
+  const submissions =
+    range === "all"
+      ? allSubmissions
+      : allSubmissions.filter((s) => {
+          const days = range === "7d" ? 7 : range === "90d" ? 90 : 30;
+          return new Date(s.createdAt).getTime() >= Date.now() - days * 24 * 60 * 60 * 1000;
+        });
+
   const needsReview = submissions.filter((s) => s.status === "new").length;
+  const inProgress = submissions.filter((s) => s.status === "in_progress").length;
   const qualified = submissions.filter((s) => s.status === "qualified").length;
 
   const metrics = [
-    { label: "All-time leads", value: submissions.length, icon: UsersRound },
-    { label: "New (last 30 days)", value: newLast30Days, icon: UserPlus },
+    { label: "Leads", value: submissions.length, icon: UsersRound },
     { label: "Needs review", value: needsReview, icon: ShieldAlert },
+    { label: "In progress", value: inProgress, icon: Clock3 },
     { label: "Qualified", value: qualified, icon: CheckCircle2 },
   ];
 
-  const recentLeads = submissions.slice(0, 4);
+  const recentLeads = allSubmissions.slice(0, 4);
   const allSitesUp = siteHealth.every((s) => s.up);
 
   return (
@@ -83,12 +102,9 @@ export default async function AdminOverviewPage() {
         <div>
           <p className="admin-kicker">{dateLabel}</p>
           <h1>Good {timeOfDay}, {firstName}.</h1>
-          <p>Here is what is happening across the Liger portfolio.</p>
+          <p>Here is what is happening across the Liger portfolio, {rangeLabels[range]}.</p>
         </div>
-        <button className="admin-date-button" type="button">
-          <CalendarDays size={16} aria-hidden="true" />
-          All time
-        </button>
+        <AdminDateRangeSelect />
       </div>
 
       <section className="admin-metrics" aria-label="Portfolio metrics">
@@ -125,7 +141,10 @@ export default async function AdminOverviewPage() {
                   <i className={`site-dot site-dot--${site.brand}`} />
                   <div>
                     <strong>{site.name}</strong>
-                    <span>{leads} lead{leads === 1 ? "" : "s"} total</span>
+                    <span>
+                      {leads} lead{leads === 1 ? "" : "s"}
+                      {range === "all" ? " total" : ` (${rangeLabels[range]})`}
+                    </span>
                   </div>
                   <b style={{ color: site.up ? "#1b7a4d" : "#b3261e" }}>
                     {site.up ? "Live" : "Unreachable"}
