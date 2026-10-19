@@ -2,14 +2,14 @@
 
 import { Suspense, useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { posthog } from "@/lib/posthog-client";
+import { posthog, isPostHogInitialized } from "@/lib/posthog-client";
 
 function PageviewTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!pathname) return;
+    if (!pathname || !isPostHogInitialized()) return;
     let url = `${window.origin}${pathname}`;
     const query = searchParams.toString();
     if (query) url += `?${query}`;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { posthog, CONSENT_KEY } from "@/lib/posthog-client";
+import { posthog, initPostHog, CONSENT_KEY } from "@/lib/posthog-client";
 
 export function CookieConsentBanner() {
   const [visible, setVisible] = useState(false);
@@ -14,14 +14,13 @@ export function CookieConsentBanner() {
   function respond(choice: "granted" | "denied") {
     window.localStorage.setItem(CONSENT_KEY, choice);
     if (choice === "granted") {
-      posthog.opt_in_capturing();
+      initPostHog();
       // The pageview tracker only fires on route *changes* — without this,
       // a visitor who accepts and never navigates again would be counted
       // as having consented but never actually captured.
       posthog.capture("$pageview", { $current_url: window.location.href });
-    } else {
-      posthog.opt_out_capturing();
     }
+    // "denied": nothing to do — PostHog is simply never initialized.
     setVisible(false);
   }
 

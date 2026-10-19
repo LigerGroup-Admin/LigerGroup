@@ -4,25 +4,36 @@ import posthog from "posthog-js";
 
 export const CONSENT_KEY = "liger-analytics-consent";
 
-// Initialises once per page load, but opted OUT by default — no events are
-// actually sent to PostHog until the visitor explicitly accepts the cookie
-// banner (or we find they already did, from a prior visit).
-if (typeof window !== "undefined") {
+let initialized = false;
+
+// Deliberately NOT using opt_out_capturing_by_default + opt_in_capturing():
+// that combination silently no-ops capture() calls in this posthog-js
+// version (confirmed — a raw fetch() to the same endpoint from the same
+// page works fine, so it's an SDK-internal issue, not network/CSP/app
+// code). Instead we simply never call init() at all until consent is
+// granted — the SDK has no tracking capability to suppress in the
+// meantime, which sidesteps the bug entirely and is arguably more
+// privacy-respecting besides.
+export function initPostHog() {
+  if (initialized) return;
   const key = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
   const host = process.env.NEXT_PUBLIC_POSTHOG_HOST;
+  if (!key || !host) return;
 
-  if (key && host) {
-    posthog.init(key, {
-      api_host: host,
-      capture_pageview: false, // captured manually — see posthog-pageview.tsx
-      opt_out_capturing_by_default: true,
-      persistence: "localStorage+cookie",
-    });
+  posthog.init(key, {
+    api_host: host,
+    capture_pageview: false, // captured manually — see posthog-pageview.tsx
+    persistence: "localStorage+cookie",
+  });
+  initialized = true;
+}
 
-    if (window.localStorage.getItem(CONSENT_KEY) === "granted") {
-      posthog.opt_in_capturing();
-    }
-  }
+export function isPostHogInitialized() {
+  return initialized;
+}
+
+if (typeof window !== "undefined" && window.localStorage.getItem(CONSENT_KEY) === "granted") {
+  initPostHog();
 }
 
 export { posthog };
