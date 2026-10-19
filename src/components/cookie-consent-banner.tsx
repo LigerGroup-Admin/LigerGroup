@@ -15,6 +15,10 @@ export function CookieConsentBanner() {
     window.localStorage.setItem(CONSENT_KEY, choice);
     if (choice === "granted") {
       posthog.opt_in_capturing();
+      // The pageview tracker only fires on route *changes* — without this,
+      // a visitor who accepts and never navigates again would be counted
+      // as having consented but never actually captured.
+      posthog.capture("$pageview", { $current_url: window.location.href });
     } else {
       posthog.opt_out_capturing();
     }
