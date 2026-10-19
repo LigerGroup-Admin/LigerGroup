@@ -1,15 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { posthog, initPostHog, CONSENT_KEY } from "@/lib/posthog-client";
 
 export function CookieConsentBanner() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    // Admins are an authenticated, known party using their own dashboard —
+    // asking them to consent to anonymous visitor tracking doesn't apply.
+    if (pathname?.startsWith("/admin")) return;
     if (window.localStorage.getItem(CONSENT_KEY)) return;
     setVisible(true);
-  }, []);
+  }, [pathname]);
 
   function respond(choice: "granted" | "denied") {
     window.localStorage.setItem(CONSENT_KEY, choice);

@@ -16,6 +16,11 @@ let initialized = false;
 // privacy-respecting besides.
 export function initPostHog() {
   if (initialized) return;
+  // Never track the admin dashboard — that's internal team usage, not
+  // visitor behaviour, and would otherwise pollute real analytics with
+  // our own clicks around the leads/settings/websites pages.
+  if (window.location.pathname.startsWith("/admin")) return;
+
   const key = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
   const host = process.env.NEXT_PUBLIC_POSTHOG_HOST;
   if (!key || !host) return;

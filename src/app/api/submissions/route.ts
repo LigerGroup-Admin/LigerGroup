@@ -1,7 +1,8 @@
 import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { normaliseFormData, type SubmissionRecord } from "@/server/submissions/schema";
 import { saveSubmission } from "@/server/submissions/repository";
+import { notifyAdminsOfNewLead, sendSubmitterConfirmation } from "@/server/notifications/lead-email";
 
 const formAnchors: Record<string, string> = {
   cohort_interest: "apply",
@@ -66,6 +67,9 @@ export async function POST(request: NextRequest) {
 
   try {
     await saveSubmission(record);
+    after(async () => {
+      await Promise.all([notifyAdminsOfNewLead(record), sendSubmitterConfirmation(record)]);
+    });
     return NextResponse.redirect(returnUrl(request, record.type, "submitted"), 303);
   } catch (error) {
     console.error("Unable to save form submission", error);
