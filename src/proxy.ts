@@ -27,6 +27,7 @@ const passthroughSegments = new Set([
   "remote",
   "learn",
   "admin",
+  "api", // now reachable via the proxy for /api/admin/* only — never rewrite it
   "sign-in",
   "unauthorized",
   "privacy",
@@ -37,6 +38,12 @@ const passthroughSegments = new Set([
 const adminHosts = new Set(["admin.ligergroup.com", "admin.localhost"]);
 
 const isAdminPath = createRouteMatcher(["/admin(.*)"]);
+// /api is excluded from the main matcher below (so the public
+// /api/submissions endpoint never pays Clerk's overhead), but admin-only
+// API routes like the CSV exports still need clerkMiddleware to actually
+// run so currentUser()/auth() work inside them — hence the separate
+// matcher entry and check for just this prefix.
+const isAdminApiPath = createRouteMatcher(["/api/admin(.*)"]);
 
 function routeByHost(request: NextRequest) {
   const host = (request.headers.get("host") ?? "")
@@ -77,7 +84,7 @@ export default clerkMiddleware(async (auth, request) => {
   // Everything under the admin dashboard needs a signed-in session — on the
   // dedicated admin host "/" itself means the dashboard (it gets rewritten
   // to /admin below), so gate on the host too, not just the literal path.
-  if (!isSignInRoute && (adminHosts.has(host) || isAdminPath(request))) {
+  if (!isSignInRoute && (adminHosts.has(host) || isAdminPath(request) || isAdminApiPath(request))) {
     await auth.protect();
   }
 
@@ -87,5 +94,6 @@ export default clerkMiddleware(async (auth, request) => {
 export const config = {
   matcher: [
     "/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|mp4|webm|mov)$).*)",
+    "/api/admin/:path*",
   ],
 };

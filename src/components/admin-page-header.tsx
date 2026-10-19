@@ -7,6 +7,8 @@ type AdminPageHeaderProps = {
   action?: {
     label: string;
     icon: LucideIcon;
+    /** Renders as a real download link instead of a decorative button. */
+    href?: string;
   };
 };
 
@@ -26,9 +28,15 @@ export function AdminPageHeader({
         <p>{description}</p>
       </div>
       {action && ActionIcon ? (
-        <button type="button" className="admin-primary-action">
-          <ActionIcon size={15} aria-hidden="true" /> {action.label}
-        </button>
+        action.href ? (
+          <a href={action.href} className="admin-primary-action" download>
+            <ActionIcon size={15} aria-hidden="true" /> {action.label}
+          </a>
+        ) : (
+          <button type="button" className="admin-primary-action">
+            <ActionIcon size={15} aria-hidden="true" /> {action.label}
+          </button>
+        )
       ) : null}
     </div>
   );

@@ -1,6 +1,6 @@
 import { Download, Search } from "lucide-react";
 import { AdminPageHeader } from "@/components/admin-page-header";
-import { listSubmissions } from "@/server/submissions/repository";
+import { getContacts } from "@/server/submissions/contacts";
 
 function formatTime(value: string) {
   return new Intl.DateTimeFormat("en-GB", {
@@ -11,20 +11,7 @@ function formatTime(value: string) {
 }
 
 export default async function AdminContactsPage() {
-  const submissions = await listSubmissions(1000);
-
-  // Deduplicate by email — most recent submission per person becomes their
-  // contact record, since that's the freshest name/company/site we have.
-  const byEmail = new Map<string, (typeof submissions)[number]>();
-  for (const submission of submissions) {
-    const existing = byEmail.get(submission.email);
-    if (!existing || new Date(submission.createdAt) > new Date(existing.createdAt)) {
-      byEmail.set(submission.email, submission);
-    }
-  }
-  const contacts = Array.from(byEmail.values()).sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-  );
+  const contacts = await getContacts();
 
   const withCompany = contacts.filter((c) => c.company).length;
   const thisMonthStart = new Date(new Date().getFullYear(), new Date().getMonth(), 1).getTime();
@@ -38,7 +25,7 @@ export default async function AdminContactsPage() {
         kicker="Group CRM"
         title="Contacts"
         description="Every unique person who has submitted a form across the three sites, deduplicated by email."
-        action={{ label: "Export CSV", icon: Download }}
+        action={{ label: "Export CSV", icon: Download, href: "/api/admin/contacts/export" }}
       />
       <section className="admin-stats-strip">
         <div><span>All contacts</span><strong>{contacts.length}</strong></div>

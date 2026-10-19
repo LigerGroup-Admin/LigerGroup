@@ -1,6 +1,8 @@
-import { Download, Search, SlidersHorizontal } from "lucide-react";
+import { BarChart3, Download, Search, SlidersHorizontal } from "lucide-react";
 import { AdminPageHeader } from "@/components/admin-page-header";
 import { listSubmissions } from "@/server/submissions/repository";
+
+const POSTHOG_ACTIVITY_URL = "https://eu.posthog.com/project/91021/activity/explore";
 
 const typeLabels: Record<string, string> = {
   cohort_interest: "Cohort interest",
@@ -33,8 +35,19 @@ export default async function AdminLeadsPage() {
         kicker="CRM / submissions"
         title="Leads & forms"
         description="Review every application, booking request, requirement, and download across all three sites."
-        action={{ label: "Export CSV", icon: Download }}
+        action={{ label: "Export CSV", icon: Download, href: "/api/admin/leads/export" }}
       />
+
+      <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "-1.25rem", marginBottom: "1.25rem" }}>
+        <a
+          href={POSTHOG_ACTIVITY_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="admin-panel__link"
+        >
+          <BarChart3 size={14} aria-hidden="true" /> View real-time activity in PostHog
+        </a>
+      </div>
 
       <section className="admin-stats-strip" aria-label="Lead counts">
         <div><span>All leads</span><strong>{rows.length}</strong></div>
