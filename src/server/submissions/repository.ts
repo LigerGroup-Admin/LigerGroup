@@ -53,6 +53,8 @@ export async function saveSubmission(record: SubmissionRecord) {
       source_page: record.sourcePage,
       referrer: record.referrer,
       user_agent: record.userAgent,
+      email_verified: record.emailVerified,
+      verification_token: record.verificationToken,
       created_at: record.createdAt,
     });
 
@@ -96,10 +98,50 @@ export async function listSubmissions(limit = 100): Promise<SubmissionRecord[]> 
       sourcePage: (row.source_page as string | null) ?? null,
       referrer: (row.referrer as string | null) ?? null,
       userAgent: (row.user_agent as string | null) ?? null,
+      emailVerified: Boolean(row.email_verified),
+      verificationToken: row.verification_token as string,
       createdAt: row.created_at as string,
     }));
   }
 
   if (process.env.NODE_ENV === "production") return [];
   return (await readLocalRecords()).slice(0, limit);
+}
+
+// Called from /api/verify-email when someone clicks the confirmation link
+// in their submission email. Returns the now-verified record, or null if
+// the token doesn't match anything (expired link, tampered URL, etc.).
+export async function verifyEmailByToken(token: string): Promise<SubmissionRecord | null> {
+  const supabase = getSupabaseAdmin();
+  if (!supabase) return null;
+
+  const { data, error } = await supabase
+    .from("submissions")
+    .update({ email_verified: true })
+    .eq("verification_token", token)
+    .select()
+    .maybeSingle();
+
+  if (error) throw error;
+  if (!data) return null;
+
+  return {
+    id: data.id as string,
+    site: data.site as SubmissionRecord["site"],
+    type: data.form_type as string,
+    name: data.name as string,
+    email: data.email as string,
+    phone: (data.phone as string | null) ?? undefined,
+    company: (data.company as string | null) ?? undefined,
+    consent: Boolean(data.consent) as true,
+    website: undefined,
+    status: data.status as SubmissionRecord["status"],
+    payload: (data.payload ?? {}) as Record<string, string>,
+    sourcePage: (data.source_page as string | null) ?? null,
+    referrer: (data.referrer as string | null) ?? null,
+    userAgent: (data.user_agent as string | null) ?? null,
+    emailVerified: Boolean(data.email_verified),
+    verificationToken: data.verification_token as string,
+    createdAt: data.created_at as string,
+  };
 }

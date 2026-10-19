@@ -96,6 +96,7 @@ export default async function AdminLeadsPage() {
                   <th>Site</th>
                   <th>Conversion</th>
                   <th>Organisation / detail</th>
+                  <th>Email</th>
                   <th>Status</th>
                   <th>Received</th>
                 </tr>
@@ -117,6 +118,13 @@ export default async function AdminLeadsPage() {
                     <td>
                       <strong>{row.company ?? row.payload.city ?? "—"}</strong>
                       <span>{row.payload.role ?? row.payload.career_stage ?? ""}</span>
+                    </td>
+                    <td>
+                      <span
+                        className={`admin-status admin-status--${row.emailVerified ? "qualified" : "closed"}`}
+                      >
+                        {row.emailVerified ? "Verified" : "Unverified"}
+                      </span>
                     </td>
                     <td>
                       <span className={`admin-status admin-status--${row.status}`}>

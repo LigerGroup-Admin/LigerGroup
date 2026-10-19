@@ -17,6 +17,7 @@ const columns = [
   "email",
   "phone",
   "company",
+  "emailVerified",
   "status",
   "sourcePage",
   "referrer",

@@ -44,7 +44,7 @@ export default async function AdminContactsPage() {
         ) : (
           <div className="admin-table-wrap">
             <table className="admin-table">
-              <thead><tr><th>Contact</th><th>Organisation</th><th>Primary site</th><th>Last activity</th></tr></thead>
+              <thead><tr><th>Contact</th><th>Organisation</th><th>Primary site</th><th>Email</th><th>Last activity</th></tr></thead>
               <tbody>
                 {contacts.map((contact) => (
                   <tr key={contact.email}>
@@ -54,6 +54,13 @@ export default async function AdminContactsPage() {
                       <span className="admin-site-name">
                         <i className={`site-dot site-dot--${contact.site}`} />
                         Liger{contact.site.charAt(0).toUpperCase() + contact.site.slice(1)}
+                      </span>
+                    </td>
+                    <td>
+                      <span
+                        className={`admin-status admin-status--${contact.emailVerified ? "qualified" : "closed"}`}
+                      >
+                        {contact.emailVerified ? "Verified" : "Unverified"}
                       </span>
                     </td>
                     <td>{formatTime(contact.createdAt)}</td>

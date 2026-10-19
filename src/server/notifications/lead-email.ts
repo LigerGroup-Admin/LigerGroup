@@ -58,7 +58,7 @@ export async function notifyAdminsOfNewLead(record: SubmissionRecord) {
           <h2 style="margin:0 0 12px;">New ${typeLabel.toLowerCase()} on ${siteLabel}</h2>
           <table style="border-collapse:collapse;font-family:sans-serif;font-size:14px;">
             <tr><td style="padding:4px 12px 4px 0;color:#666;">Name</td><td>${escapeHtml(record.name)}</td></tr>
-            <tr><td style="padding:4px 12px 4px 0;color:#666;">Email</td><td>${escapeHtml(record.email)}</td></tr>
+            <tr><td style="padding:4px 12px 4px 0;color:#666;">Email</td><td>${escapeHtml(record.email)} <em>(unverified — awaiting confirmation)</em></td></tr>
             ${record.phone ? `<tr><td style="padding:4px 12px 4px 0;color:#666;">Phone</td><td>${escapeHtml(record.phone)}</td></tr>` : ""}
             ${record.company ? `<tr><td style="padding:4px 12px 4px 0;color:#666;">Company</td><td>${escapeHtml(record.company)}</td></tr>` : ""}
             ${payloadRows}
@@ -80,16 +80,23 @@ export async function sendSubmitterConfirmation(record: SubmissionRecord) {
   if (!resend) return;
 
   const siteLabel = siteLabels[record.site] ?? record.site;
+  const verifyUrl = `https://theliger.group/api/verify-email?token=${record.verificationToken}`;
 
   try {
     await resend.emails.send(
       {
         from: FROM_ADDRESS,
         to: record.email,
-        subject: `We've received your submission — ${siteLabel}`,
+        subject: `Please confirm your email — ${siteLabel}`,
         html: `
           <p>Hi ${escapeHtml(record.name.split(/\s+/)[0] ?? record.name)},</p>
-          <p>Thanks for reaching out to ${siteLabel}. We've received your submission and someone from our team will be in touch shortly.</p>
+          <p>Thanks for reaching out to ${siteLabel}. We've received your submission — please confirm your email address so we know it's really you:</p>
+          <p style="margin:24px 0;">
+            <a href="${verifyUrl}" style="display:inline-block;padding:12px 20px;background:#1b1b1b;color:#fff;text-decoration:none;border-radius:4px;">
+              Confirm my email
+            </a>
+          </p>
+          <p>Once confirmed, someone from our team will be in touch shortly.</p>
           <p>— The Liger Group</p>
         `,
       },

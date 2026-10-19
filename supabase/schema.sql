@@ -18,6 +18,8 @@ create table public.submissions (
   referrer text,
   user_agent text,
   assigned_to uuid references auth.users(id) on delete set null,
+  email_verified boolean not null default false,
+  verification_token uuid not null default gen_random_uuid(),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -28,6 +30,8 @@ create index submissions_status_created_at_idx
   on public.submissions (status, created_at desc);
 create index submissions_email_idx
   on public.submissions (lower(email));
+create index submissions_verification_token_idx
+  on public.submissions (verification_token);
 
 alter table public.submissions enable row level security;
 

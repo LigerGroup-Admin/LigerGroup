@@ -62,6 +62,8 @@ export async function POST(request: NextRequest) {
     sourcePage,
     referrer,
     userAgent: request.headers.get("user-agent"),
+    emailVerified: false,
+    verificationToken: crypto.randomUUID(),
     createdAt: new Date().toISOString(),
   };
 

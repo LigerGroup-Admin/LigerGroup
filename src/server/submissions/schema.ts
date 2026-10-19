@@ -38,6 +38,8 @@ export type SubmissionRecord = SubmissionInput & {
   sourcePage: string | null;
   referrer: string | null;
   userAgent: string | null;
+  emailVerified: boolean;
+  verificationToken: string;
   createdAt: string;
 };
 

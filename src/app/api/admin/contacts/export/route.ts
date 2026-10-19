@@ -9,7 +9,7 @@ function csvField(value: string) {
   return value;
 }
 
-const columns = ["name", "email", "company", "site", "createdAt"] as const;
+const columns = ["name", "email", "emailVerified", "company", "site", "createdAt"] as const;
 
 export async function GET() {
   const email = await requireAdminEmail();
