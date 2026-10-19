@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Amaranth, Archivo, Instrument_Serif, Manrope, Playfair_Display } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import { PostHogPageview } from "@/components/posthog-pageview";
+import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -71,6 +73,8 @@ export default function RootLayout({
             Skip to content
           </a>
           {children}
+          <PostHogPageview />
+          <CookieConsentBanner />
         </ClerkProvider>
       </body>
     </html>
