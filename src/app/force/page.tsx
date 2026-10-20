@@ -17,14 +17,13 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { ClientTrust } from "@/components/client-trust";
 import { ForceBookingForm } from "@/components/force-booking-form";
 import { LocalInsightsNote } from "@/components/local-insights-note";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 export const metadata: Metadata = {
   title: "LigerForce | Managed remote talent",
   description:
     "Vetted remote professionals with structured onboarding, performance support, and one accountable partner.",
 };
-
-const CALENDLY_URL = "https://calendly.com/obafemi-oshinowo-ligerforce/30min";
 
 const steps = [
   {

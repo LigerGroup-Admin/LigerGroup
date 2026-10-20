@@ -3,6 +3,7 @@ import { ArrowUpRight, CheckCircle2, ExternalLink, Globe2, XCircle } from "lucid
 import { AdminPageHeader } from "@/components/admin-page-header";
 import { listSubmissions } from "@/server/submissions/repository";
 import { checkSiteHealth } from "@/server/site-health";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 const taglines: Record<string, string> = {
   remote: "Build a career the world can hire.",
@@ -29,6 +30,9 @@ export default async function AdminWebsitesPage() {
   const [sites, submissions] = await Promise.all([checkSiteHealth(), listSubmissions(1000)]);
   const allUp = sites.every((s) => s.up);
   const supabaseConnected = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL);
+  const posthogConnected = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN);
+  const resendConnected = Boolean(process.env.RESEND_API_KEY);
+  const calendlyConnected = CALENDLY_URL.startsWith("https://calendly.com/");
 
   return (
     <main id="main-content" className="admin-page admin-subpage">
@@ -97,9 +101,9 @@ export default async function AdminWebsitesPage() {
         <div>
           {[
             ["Supabase", "Database for form submissions", supabaseConnected ? "Connected" : "Configuration required"],
-            ["PostHog", "Consent-aware product and web analytics", "Configuration required"],
-            ["Resend", "Form notifications and follow-up email", "Configuration required"],
-            ["Calendly", "LigerForce discovery call scheduling", "Configuration required"],
+            ["PostHog", "Consent-aware product and web analytics", posthogConnected ? "Connected" : "Configuration required"],
+            ["Resend", "Form notifications and follow-up email", resendConnected ? "Connected" : "Configuration required"],
+            ["Calendly", "LigerForce discovery call scheduling", calendlyConnected ? "Connected" : "Configuration required"],
           ].map(([name, purpose, status]) => (
             <div key={name}><div><strong>{name}</strong><span>{purpose}</span></div><b>{status}</b></div>
           ))}
