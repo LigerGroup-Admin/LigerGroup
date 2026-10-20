@@ -56,8 +56,8 @@ export default async function SponsorPage({
         >
           <FormStatus
             state={form}
-            successTitle="Sponsor pack requested."
-            successMessage="Check your inbox for a confirmation email and click the link inside — once verified, we'll send the sponsor pack and follow up with the right person for this conversation."
+            successTitle="Sponsorship enquiry received."
+            successMessage="Check your inbox for a confirmation email and click the link inside — once verified, a member of our team will follow up directly to discuss sponsorship."
           />
           <input type="hidden" name="site" value="remote" />
           <input type="hidden" name="type" value="sponsor_pack" />
