@@ -151,7 +151,7 @@ export function ForceBookingForm({
         </span>
       </label>
       <button className="poster-button" type="submit">
-        Book my 20-minute call
+        Book my 30-minute call
         <ArrowRight size={17} aria-hidden="true" />
       </button>
     </form>

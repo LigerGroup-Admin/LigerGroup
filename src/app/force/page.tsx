@@ -133,7 +133,7 @@ export default async function ForceHomePage({
           { label: "Why managed", href: "#managed" },
           { label: "Client note", href: "#client-note" },
         ]}
-        cta={{ label: "Book a 20-minute call", href: CALENDLY_URL }}
+        cta={{ label: "Book a 30-minute call", href: CALENDLY_URL }}
       />
 
       <main id="main-content">
@@ -180,7 +180,7 @@ export default async function ForceHomePage({
             rel="noreferrer"
             className="poster-button poster-button--warm"
           >
-            Book a 20-minute call
+            Book a 30-minute call
             <ArrowRight size={17} aria-hidden="true" />
           </Link>
         </div>
@@ -327,7 +327,7 @@ export default async function ForceHomePage({
 
         <p className="force-price-note">
           Pricing is structured by role and engagement scope—we’ll walk you
-          through it on a 20-minute call, no obligation.
+          through it on a 30-minute call, no obligation.
         </p>
 
         <section className="force-book" id="book">
@@ -335,12 +335,12 @@ export default async function ForceHomePage({
             <p className="series-label">No. 04 · One useful conversation</p>
             <h2 className="poster-display">Tell us where work is getting stuck.</h2>
             <p>
-              In 20 minutes we will establish whether the LigerForce model fits
+              In 30 minutes we will establish whether the LigerForce model fits
               the role you need. If it does not, we will say so.
             </p>
             <div>
               <span>
-                <Clock3 size={16} aria-hidden="true" /> 20 minutes
+                <Clock3 size={16} aria-hidden="true" /> 30 minutes
               </span>
               <span>
                 <ShieldCheck size={16} aria-hidden="true" /> No hard sell
