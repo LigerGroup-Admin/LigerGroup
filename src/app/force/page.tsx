@@ -24,6 +24,8 @@ export const metadata: Metadata = {
     "Vetted remote professionals with structured onboarding, performance support, and one accountable partner.",
 };
 
+const CALENDLY_URL = "https://calendly.com/obafemi-oshinowo-ligerforce/30min";
+
 const steps = [
   {
     number: "01",
@@ -131,7 +133,7 @@ export default async function ForceHomePage({
           { label: "Why managed", href: "#managed" },
           { label: "Client note", href: "#client-note" },
         ]}
-        cta={{ label: "Book a 20-minute call", href: "#book" }}
+        cta={{ label: "Book a 20-minute call", href: CALENDLY_URL }}
       />
 
       <main id="main-content">
@@ -172,7 +174,12 @@ export default async function ForceHomePage({
           <p className="caption-bar__imperative">
             Add capacity. Not complexity.
           </p>
-          <Link href="#book" className="poster-button poster-button--warm">
+          <Link
+            href={CALENDLY_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="poster-button poster-button--warm"
+          >
             Book a 20-minute call
             <ArrowRight size={17} aria-hidden="true" />
           </Link>

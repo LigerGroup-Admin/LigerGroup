@@ -24,6 +24,9 @@ export function SiteHeader({ brand, nav, cta, announcement }: SiteHeaderProps) {
   const closeMobileNav = () => {
     if (mobileNavRef.current) mobileNavRef.current.open = false;
   };
+  const ctaExternalProps = cta?.href.startsWith("http")
+    ? { target: "_blank", rel: "noreferrer" }
+    : {};
 
   return (
     <>
@@ -42,7 +45,7 @@ export function SiteHeader({ brand, nav, cta, announcement }: SiteHeaderProps) {
         </nav>
 
         {cta ? (
-          <Link href={cta.href} className="poster-button site-header__cta">
+          <Link href={cta.href} className="poster-button site-header__cta" {...ctaExternalProps}>
             {cta.label}
             <ArrowUpRight size={16} strokeWidth={2.2} aria-hidden="true" />
           </Link>
@@ -64,6 +67,7 @@ export function SiteHeader({ brand, nav, cta, announcement }: SiteHeaderProps) {
                 href={cta.href}
                 className="site-header__mobile-cta"
                 onClick={closeMobileNav}
+                {...ctaExternalProps}
               >
                 {cta.label}
                 <ArrowUpRight size={17} aria-hidden="true" />
