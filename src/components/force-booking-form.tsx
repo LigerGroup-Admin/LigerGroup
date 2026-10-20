@@ -37,12 +37,12 @@ function ForceFormStatus({ formState }: { formState?: string }) {
         <AlertCircle size={22} aria-hidden="true" />
       )}
       <div>
-        <strong>{success ? "Your request is with us." : "That did not go through."}</strong>
+        <strong>{success ? "Check your inbox to confirm." : "That did not go through."}</strong>
         <p>
           {success
             ? lastRoleLabel
-              ? `Thanks — we've received your ${lastRoleLabel} requirement and will be in touch within 1 business day to discuss fit and next steps.`
-              : "We will be in touch within 1 business day to discuss fit and next steps."
+              ? `We've sent a confirmation email for your ${lastRoleLabel} requirement — click the link inside, and we'll be in touch within 1 business day to discuss fit and next steps.`
+              : "We've sent a confirmation email — click the link inside, and we'll be in touch within 1 business day to discuss fit and next steps."
             : "Please check the required fields and try again. If the problem continues, contact us by email."}
         </p>
       </div>

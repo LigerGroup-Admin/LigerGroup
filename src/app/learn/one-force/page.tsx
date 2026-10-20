@@ -115,8 +115,8 @@ export default async function OneForcePage({
         <form className="lead-form one-force-form" action="/api/submissions" method="post">
           <FormStatus
             state={form}
-            successTitle="The overview is on its way."
-            successMessage="Please check your work inbox. Our team will follow up when the context is a fit."
+            successTitle="Almost there — confirm your email."
+            successMessage="Check your work inbox for a confirmation email and click the link inside — once verified, we'll send the overview and our team will follow up when the context is a fit."
           />
           <input type="hidden" name="site" value="learn" />
           <input type="hidden" name="type" value="one_force_download" />

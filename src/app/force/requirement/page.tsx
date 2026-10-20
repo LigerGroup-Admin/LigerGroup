@@ -48,7 +48,7 @@ export default async function RequirementPage({
           <FormStatus
             state={form}
             successTitle="Requirement received."
-            successMessage="A member of the LigerForce team will review it and respond within one business day."
+            successMessage="Check your inbox for a confirmation email and click the link inside — once verified, a member of the LigerForce team will review it and respond within one business day."
           />
           <input type="hidden" name="site" value="force" />
           <input type="hidden" name="type" value="requirement" />

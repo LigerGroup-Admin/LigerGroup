@@ -424,7 +424,7 @@ export default async function RemoteHomePage({
             <FormStatus
               state={form}
               successTitle="You are on the list."
-              successMessage="Check your inbox for the next application step and cohort details."
+              successMessage="Check your inbox for a confirmation email and click the link inside — once verified, we'll send the next application step and cohort details."
             />
             <input type="hidden" name="site" value="remote" />
             <input type="hidden" name="type" value="cohort_interest" />

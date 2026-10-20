@@ -68,7 +68,16 @@ export default function RootLayout({
       className={`${manrope.variable} ${instrumentSerif.variable} ${amaranth.variable} ${archivo.variable} ${playfairDisplay.variable}`}
     >
       <body>
-        <ClerkProvider>
+        <ClerkProvider
+          localization={{
+            signIn: {
+              start: {
+                title: "Continue to Liger Group Backend",
+                titleCombined: "Continue to Liger Group Backend",
+              },
+            },
+          }}
+        >
           <a className="skip-link" href="#main-content">
             Skip to content
           </a>
