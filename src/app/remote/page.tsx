@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -96,13 +97,7 @@ const mentors = [
   },
 ];
 
-export default async function RemoteHomePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ form?: string }>;
-}) {
-  const { form } = await searchParams;
-
+export default function RemoteHomePage() {
   return (
     <div className="remote-page poster-page">
       <ScrollReveal />
@@ -421,11 +416,12 @@ export default async function RemoteHomePage({
             </div>
           </div>
           <form className="lead-form" action="/api/submissions" method="post">
-            <FormStatus
-              state={form}
-              successTitle="You are on the list."
-              successMessage="Check your inbox for a confirmation email and click the link inside — once verified, we'll send the next application step and cohort details."
-            />
+            <Suspense fallback={null}>
+              <FormStatus
+                successTitle="You are on the list."
+                successMessage="Check your inbox for a confirmation email and click the link inside — once verified, we'll send the next application step and cohort details."
+              />
+            </Suspense>
             <input type="hidden" name="site" value="remote" />
             <input type="hidden" name="type" value="cohort_interest" />
             <label className="lead-form__hp" aria-hidden="true">

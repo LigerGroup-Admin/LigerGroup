@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { AlertCircle, ArrowRight, CheckCircle2 } from "lucide-react";
 import {
   FORCE_ROLE_OPTIONS,
@@ -10,7 +11,9 @@ import {
 
 const STORAGE_KEY = "force_last_role_label";
 
-function ForceFormStatus({ formState }: { formState?: string }) {
+function ForceFormStatus() {
+  const searchParams = useSearchParams();
+  const formState = searchParams.get("form") ?? undefined;
   const [lastRoleLabel, setLastRoleLabel] = useState<string | null>(null);
 
   useEffect(() => {
@@ -50,13 +53,9 @@ function ForceFormStatus({ formState }: { formState?: string }) {
   );
 }
 
-export function ForceBookingForm({
-  formState,
-  initialRole,
-}: {
-  formState?: string;
-  initialRole?: string;
-}) {
+export function ForceBookingForm() {
+  const searchParams = useSearchParams();
+  const initialRole = searchParams.get("role") ?? undefined;
   const validInitialRole =
     initialRole &&
     (initialRole === FORCE_ROLE_OTHER_SLUG || forceRoleLabel(initialRole))
@@ -76,7 +75,7 @@ export function ForceBookingForm({
 
   return (
     <form className="lead-form force-form" action="/api/submissions" method="post">
-      <ForceFormStatus formState={formState} />
+      <ForceFormStatus />
       <input type="hidden" name="site" value="force" />
       <input type="hidden" name="type" value="discovery_call" />
       <input type="hidden" name="requirement_role_label" value={forceRoleLabel(role) ?? ""} />

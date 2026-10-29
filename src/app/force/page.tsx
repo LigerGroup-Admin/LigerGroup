@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -114,13 +115,7 @@ const trustPoints = [
   },
 ];
 
-export default async function ForceHomePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ form?: string; role?: string }>;
-}) {
-  const { form, role } = await searchParams;
-
+export default function ForceHomePage() {
   return (
     <div className="force-page poster-page">
       <ScrollReveal />
@@ -346,7 +341,9 @@ export default async function ForceHomePage({
               </span>
             </div>
           </div>
-          <ForceBookingForm formState={form} initialRole={role} />
+          <Suspense fallback={null}>
+            <ForceBookingForm />
+          </Suspense>
         </section>
 
         <section className="force-ready ink-field ink-field--3">

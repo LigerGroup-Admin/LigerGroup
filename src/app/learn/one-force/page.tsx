@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
@@ -12,13 +13,7 @@ export const metadata: Metadata = {
     "A focused diagnostic and leadership intervention for business leaders navigating the human reality of an acquisition, merger, or takeover.",
 };
 
-export default async function OneForcePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ form?: string }>;
-}) {
-  const { form } = await searchParams;
-
+export default function OneForcePage() {
   return (
     <main id="main-content" className="one-force-page poster-page">
       <ScrollReveal />
@@ -113,11 +108,12 @@ export default async function OneForcePage({
           </div>
         </div>
         <form className="lead-form one-force-form" action="/api/submissions" method="post">
-          <FormStatus
-            state={form}
-            successTitle="Almost there — confirm your email."
-            successMessage="Check your work inbox for a confirmation email and click the link inside — once verified, we'll send the overview and our team will follow up when the context is a fit."
-          />
+          <Suspense fallback={null}>
+            <FormStatus
+              successTitle="Almost there — confirm your email."
+              successMessage="Check your work inbox for a confirmation email and click the link inside — once verified, we'll send the overview and our team will follow up when the context is a fit."
+            />
+          </Suspense>
           <input type="hidden" name="site" value="learn" />
           <input type="hidden" name="type" value="one_force_download" />
           <label className="lead-form__hp" aria-hidden="true">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
@@ -11,13 +12,7 @@ export const metadata: Metadata = {
     "Request the LigerRemote sponsor pack and explore funding practical remote-work pathways for African professionals.",
 };
 
-export default async function SponsorPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ form?: string }>;
-}) {
-  const { form } = await searchParams;
-
+export default function SponsorPage() {
   return (
     <main id="main-content" className="remote-sponsor-page poster-page">
       <header>
@@ -54,11 +49,12 @@ export default async function SponsorPage({
           action="/api/submissions"
           method="post"
         >
-          <FormStatus
-            state={form}
-            successTitle="Sponsorship enquiry received."
-            successMessage="Check your inbox for a confirmation email and click the link inside — once verified, a member of our team will follow up directly to discuss sponsorship."
-          />
+          <Suspense fallback={null}>
+            <FormStatus
+              successTitle="Sponsorship enquiry received."
+              successMessage="Check your inbox for a confirmation email and click the link inside — once verified, a member of our team will follow up directly to discuss sponsorship."
+            />
+          </Suspense>
           <input type="hidden" name="site" value="remote" />
           <input type="hidden" name="type" value="sponsor_pack" />
           <label className="lead-form__hp" aria-hidden="true">

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Clock3 } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
@@ -11,13 +12,7 @@ export const metadata: Metadata = {
     "Tell LigerForce what role or support you need and receive a response within one business day.",
 };
 
-export default async function RequirementPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ form?: string }>;
-}) {
-  const { form } = await searchParams;
-
+export default function RequirementPage() {
   return (
     <main id="main-content" className="force-requirement poster-page">
       <header>
@@ -45,11 +40,12 @@ export default async function RequirementPage({
           action="/api/submissions"
           method="post"
         >
-          <FormStatus
-            state={form}
-            successTitle="Requirement received."
-            successMessage="Check your inbox for a confirmation email and click the link inside — once verified, a member of the LigerForce team will review it and respond within one business day."
-          />
+          <Suspense fallback={null}>
+            <FormStatus
+              successTitle="Requirement received."
+              successMessage="Check your inbox for a confirmation email and click the link inside — once verified, a member of the LigerForce team will review it and respond within one business day."
+            />
+          </Suspense>
           <input type="hidden" name="site" value="force" />
           <input type="hidden" name="type" value="requirement" />
           <label className="lead-form__hp" aria-hidden="true">

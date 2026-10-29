@@ -1,12 +1,17 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
 import { AlertCircle, CheckCircle2 } from "lucide-react";
 
 type FormStatusProps = {
-  state?: string;
   successTitle: string;
   successMessage: string;
 };
 
-export function FormStatus({ state, successTitle, successMessage }: FormStatusProps) {
+export function FormStatus({ successTitle, successMessage }: FormStatusProps) {
+  const searchParams = useSearchParams();
+  const state = searchParams.get("form") ?? undefined;
+
   if (state !== "submitted" && state !== "error") return null;
 
   const success = state === "submitted";
