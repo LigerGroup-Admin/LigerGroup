@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Amaranth, Archivo, Instrument_Serif, Manrope, Playfair_Display } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 import { PostHogPageview } from "@/components/posthog-pageview";
 import { CookieConsentBanner } from "@/components/cookie-consent-banner";
 import "./globals.css";
@@ -68,23 +67,12 @@ export default function RootLayout({
       className={`${manrope.variable} ${instrumentSerif.variable} ${amaranth.variable} ${archivo.variable} ${playfairDisplay.variable}`}
     >
       <body>
-        <ClerkProvider
-          localization={{
-            signIn: {
-              start: {
-                title: "Continue to Liger Group Backend",
-                titleCombined: "Continue to Liger Group Backend",
-              },
-            },
-          }}
-        >
-          <a className="skip-link" href="#main-content">
-            Skip to content
-          </a>
-          {children}
-          <PostHogPageview />
-          <CookieConsentBanner />
-        </ClerkProvider>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        {children}
+        <PostHogPageview />
+        <CookieConsentBanner />
       </body>
     </html>
   );

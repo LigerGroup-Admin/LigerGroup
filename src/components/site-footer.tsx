@@ -97,7 +97,9 @@ export function SiteFooter({
         <div>
           <Link href={resolvedPrivacyHref}>Privacy</Link>
           <Link href={resolvedTermsHref}>Terms</Link>
-          <Link href="/">Liger Group</Link>
+          {/* Absolute URL: on branded domains (e.g. ligerlearn.org) the proxy
+              rewrites "/" to that brand's own home, not the group site. */}
+          <a href="https://theliger.group">Liger Group</a>
         </div>
       </div>
     </footer>
