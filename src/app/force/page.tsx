@@ -168,15 +168,6 @@ export default function ForceHomePage() {
           <p className="caption-bar__imperative">
             Add capacity. Not complexity.
           </p>
-          <Link
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="poster-button poster-button--warm"
-          >
-            Book a 30-minute call
-            <ArrowRight size={17} aria-hidden="true" />
-          </Link>
         </div>
 
         <ClientTrust
