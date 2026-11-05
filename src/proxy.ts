@@ -33,6 +33,7 @@ const passthroughSegments = new Set([
   "privacy",
   "images",
   "videos",
+  "verified",
 ]);
 
 const adminHosts = new Set(["admin.ligergroup.com", "admin.localhost"]);
