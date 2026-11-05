@@ -122,8 +122,8 @@ export default function ForceHomePage() {
       <SiteHeader
         brand="force"
         nav={[
-          { label: "How it works", href: "#how" },
           { label: "Roles", href: "#roles" },
+          { label: "How it works", href: "#how" },
           { label: "Why managed", href: "#managed" },
           { label: "Client note", href: "#client-note" },
         ]}
@@ -273,7 +273,7 @@ export default function ForceHomePage() {
         </section>
 
         <section className="force-note" id="client-note">
-          <p className="force-note__eyebrow">Client note / Local Insights</p>
+          <p className="force-note__eyebrow">No. 03 · Client note / Local Insights</p>
           <h2 className="poster-display force-note__heading">
             Dependable delivery capacity, without building another hiring
             function.
