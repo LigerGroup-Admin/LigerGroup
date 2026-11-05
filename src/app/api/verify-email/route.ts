@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
   try {
     const record = await verifyEmailByToken(token);
     destination.searchParams.set("status", record ? "confirmed" : "invalid");
+    if (record) destination.searchParams.set("site", record.site);
   } catch (error) {
     console.error("Failed to verify email token", error);
     destination.searchParams.set("status", "error");

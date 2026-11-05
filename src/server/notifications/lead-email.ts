@@ -18,8 +18,24 @@ const siteLabels: Record<string, string> = {
   group: "Liger Group",
 };
 
+// Public site each brand's applicant-facing links should land on — not the
+// group site, regardless of which brand the lead actually came from.
+const siteOrigins: Record<string, string> = {
+  remote: "https://www.ligerremote.com",
+  force: "https://www.ligerforce.com",
+  learn: "https://www.ligerlearn.org",
+  group: "https://theliger.group",
+};
+
 const ADMIN_EMAILS = ["oooshinowo@gmail.com", "hello@theliger.group"];
 const FROM_ADDRESS = "Liger Group <hello@theliger.group>";
+
+// Sends from the same verified address, but the display name matches the
+// brand the lead actually applied through — not a generic "Liger Group".
+function brandFromAddress(site: string) {
+  const siteLabel = siteLabels[site] ?? site;
+  return `${siteLabel} <hello@theliger.group>`;
+}
 
 function getResend() {
   const key = process.env.RESEND_API_KEY;
@@ -80,12 +96,13 @@ export async function sendSubmitterConfirmation(record: SubmissionRecord) {
   if (!resend) return;
 
   const siteLabel = siteLabels[record.site] ?? record.site;
-  const verifyUrl = `https://theliger.group/api/verify-email?token=${record.verificationToken}`;
+  const origin = siteOrigins[record.site] ?? siteOrigins.group;
+  const verifyUrl = `${origin}/api/verify-email?token=${record.verificationToken}`;
 
   try {
     await resend.emails.send(
       {
-        from: FROM_ADDRESS,
+        from: brandFromAddress(record.site),
         to: record.email,
         subject: `Please confirm your email — ${siteLabel}`,
         html: `
@@ -97,7 +114,7 @@ export async function sendSubmitterConfirmation(record: SubmissionRecord) {
             </a>
           </p>
           <p>Once confirmed, someone from our team will be in touch shortly.</p>
-          <p>— The Liger Group</p>
+          <p>— The ${siteLabel} Team</p>
         `,
       },
       { idempotencyKey: `lead-confirm/${record.id}` },
