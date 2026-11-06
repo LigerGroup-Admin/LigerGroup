@@ -113,7 +113,7 @@ export default function RequirementPage() {
       <SiteFooter
         brand="force"
         statement="Remote talent should create capacity—not complexity."
-        email="hello@ligerforce.com"
+        email="support@ligerremote.com"
       />
     </main>
   );
