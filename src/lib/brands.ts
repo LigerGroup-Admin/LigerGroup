@@ -64,29 +64,23 @@ export type SocialIconKey = "instagram" | "linkedin" | "x" | "facebook" | "teleg
 
 export type SocialLink = { label: string; href: string | null; icon: SocialIconKey };
 
-// Only LigerRemote has live social accounts today (captured from
-// ligerremote.com). The other businesses show the same platforms as
-// placeholders — not linked — until they stand up their own.
+// LigerRemote keeps its full set of live social accounts. The other
+// three brands show LinkedIn only, each linked to that business's real
+// company page.
 export const socialLinksByBrand: Record<BrandKey, SocialLink[]> = {
   remote: [
     { label: "Instagram", href: "https://www.instagram.com/ligerremote/", icon: "instagram" },
     { label: "LinkedIn", href: "https://www.linkedin.com/company/ligerremote", icon: "linkedin" },
     { label: "X", href: "https://x.com/ligerremote", icon: "x" },
-    { label: "Facebook", href: "https://www.facebook.com/Ligerremote", icon: "facebook" },
     { label: "Telegram", href: "https://t.me/+k2RrgPL84V84MTZk", icon: "telegram" },
   ],
   force: [
-    { label: "Instagram", href: null, icon: "instagram" },
-    { label: "LinkedIn", href: null, icon: "linkedin" },
-    { label: "X", href: null, icon: "x" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/ligerforce", icon: "linkedin" },
   ],
   learn: [
-    { label: "Instagram", href: null, icon: "instagram" },
-    { label: "LinkedIn", href: null, icon: "linkedin" },
-    { label: "X", href: null, icon: "x" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/ligerlearn", icon: "linkedin" },
   ],
   group: [
-    { label: "LinkedIn", href: null, icon: "linkedin" },
-    { label: "X", href: null, icon: "x" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/the-liger-group", icon: "linkedin" },
   ],
 };
