@@ -1,4 +1,4 @@
-export const CALENDLY_URL = "https://calendly.com/obafemi-oshinowo-ligerforce/30min";
+export const CALENDLY_URL = "https://calendly.com/obafemi-oshinowo-ligerforce/30-minute-discovery-call";
 
 // LigerLearn's event type is separate from LigerForce's and does not exist
 // yet — read from env rather than guessing a URL. Unset in dev/preview until
