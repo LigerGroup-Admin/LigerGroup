@@ -15,7 +15,6 @@ import {
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { ClientTrust } from "@/components/client-trust";
 import { ForceBookingForm } from "@/components/force-booking-form";
 import { LocalInsightsNote } from "@/components/local-insights-note";
 import { CALENDLY_URL } from "@/lib/calendly";
@@ -169,11 +168,6 @@ export default function ForceHomePage() {
             Add capacity. Not complexity.
           </p>
         </div>
-
-        <ClientTrust
-          label="Our leadership has supported and facilitated capability and leadership initiatives for organisations including:"
-          className="force-trust"
-        />
 
         <section className="force-roles" id="roles">
           <p className="series-label">Roles we place</p>

@@ -130,23 +130,8 @@
 
 .force-hero__caption {
   border-top: 3px solid var(--stock);
-}
-
-/* Backed by the group — trust strip */
-.force-trust {
-  padding: clamp(2rem, 4vw, 3rem) 4vw;
   border-bottom: 3px solid var(--ink-deep);
 }
-
-.force-trust > p {
-  margin: 0 0 1.2rem;
-  font-size: 0.64rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #47554d;
-}
-
 
 /* Roles we place */
 .force-roles {
