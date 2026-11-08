@@ -353,6 +353,7 @@ export default function RemoteHomePage() {
             <article className="remote-story">
               <VideoTestimonial
                 src="/videos/remote/wonder-hagan-testimonial.mp4"
+                poster="/images/remote/wonder-hagan-poster.jpg"
                 ariaLabel="Wonder Hagan, LigerRemote graduate, video testimonial with captions"
                 className="duotone remote-story__video"
               />
@@ -364,6 +365,7 @@ export default function RemoteHomePage() {
             <article className="remote-story">
               <VideoTestimonial
                 src="/videos/remote/ruth-adjetey-testimonial.mp4"
+                poster="/images/remote/ruth-adjetey-poster.jpg"
                 ariaLabel="Ruth Adjetey, LigerRemote graduate, video testimonial with captions"
                 className="duotone remote-story__video"
               />
