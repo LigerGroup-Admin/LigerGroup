@@ -3,7 +3,7 @@ import { z } from "zod";
 const allowedTypes = {
   remote: ["cohort_interest", "sponsor_pack", "contact"],
   force: ["discovery_call", "requirement", "contact"],
-  learn: ["one_force_download", "diagnostic_call", "contact"],
+  learn: ["one_force_download", "diagnostic_call", "contact", "learn-conversation"],
   group: ["contact"],
 } as const;
 

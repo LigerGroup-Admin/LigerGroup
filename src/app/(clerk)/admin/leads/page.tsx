@@ -12,6 +12,7 @@ const typeLabels: Record<string, string> = {
   one_force_download: "One Force overview",
   diagnostic_call: "Diagnostic call",
   contact: "Contact",
+  "learn-conversation": "Qualifying conversation",
 };
 
 function formatTime(value: string) {

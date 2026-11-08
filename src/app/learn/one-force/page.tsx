@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, ExternalLink } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { FormStatus } from "@/components/form-status";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
+import { LIGERLEARN_CALENDLY_URL } from "@/lib/calendly";
 
 export const metadata: Metadata = {
   title: "One Force | Post-merger workforce integration",
@@ -41,6 +42,17 @@ export default function OneForcePage() {
           Get the One Force overview
           <ArrowRight size={17} aria-hidden="true" />
         </a>
+        {LIGERLEARN_CALENDLY_URL ? (
+          <a
+            href={LIGERLEARN_CALENDLY_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="text-link one-force-hero__calendly"
+          >
+            Prefer to talk? Book a 30-minute conversation
+            <ExternalLink size={15} aria-hidden="true" />
+          </a>
+        ) : null}
       </section>
 
       <section className="one-force-problem">
@@ -85,6 +97,14 @@ export default function OneForcePage() {
         </div>
       </section>
 
+      {/*
+        TODO: One Force doesn't have a published proof point yet. Once a
+        client quote or outcome exists for this product specifically (not
+        borrowed from LigerLearn's general client list), add a testimonial
+        section here, ahead of the overview/CTA below. Do not fabricate one
+        in the meantime.
+      */}
+
       <section className="one-force-overview" id="overview">
         <div>
           <p className="series-label">The executive overview</p>
@@ -107,61 +127,74 @@ export default function OneForcePage() {
             </span>
           </div>
         </div>
-        <form className="lead-form one-force-form" action="/api/submissions" method="post">
-          <Suspense fallback={null}>
-            <FormStatus
-              successTitle="Almost there — confirm your email."
-              successMessage="Check your work inbox for a confirmation email and click the link inside — once verified, we'll send the overview and our team will follow up when the context is a fit."
-            />
-          </Suspense>
-          <input type="hidden" name="site" value="learn" />
-          <input type="hidden" name="type" value="one_force_download" />
-          <label className="lead-form__hp" aria-hidden="true">
-            Website
-            <input name="website" tabIndex={-1} autoComplete="off" />
-          </label>
-          <label>
-            Full name
-            <input name="name" autoComplete="name" required />
-          </label>
-          <label>
-            Work email
-            <input name="email" type="email" autoComplete="email" required />
-          </label>
-          <div className="lead-form__split">
-            <label>
-              Organisation
-              <input name="company" autoComplete="organization" required />
+        <div className="one-force-overview__form-group">
+          <form className="lead-form one-force-form" action="/api/submissions" method="post">
+            <Suspense fallback={null}>
+              <FormStatus
+                successTitle="Almost there — confirm your email."
+                successMessage="Check your work inbox for a confirmation email and click the link inside — once verified, we'll send the overview and our team will follow up when the context is a fit."
+              />
+            </Suspense>
+            <input type="hidden" name="site" value="learn" />
+            <input type="hidden" name="type" value="one_force_download" />
+            <label className="lead-form__hp" aria-hidden="true">
+              Website
+              <input name="website" tabIndex={-1} autoComplete="off" />
             </label>
             <label>
-              Role
-              <input name="role" autoComplete="organization-title" required />
+              Full name
+              <input name="name" autoComplete="name" required />
             </label>
-          </div>
-          <label>
-            Where are you in the merger journey?
-            <select name="merger_stage" defaultValue="" required>
-              <option value="" disabled>
-                Select one
-              </option>
-              <option>Pre-close planning</option>
-              <option>0–6 months post-close</option>
-              <option>6–18 months post-close</option>
-              <option>Longer-term integration challenge</option>
-            </select>
-          </label>
-          <label className="lead-form__consent">
-            <input type="checkbox" name="consent" required />
-            <span>
-              I agree that LigerLearn may email the overview and contact me about
-              this request.
-            </span>
-          </label>
-          <button type="submit" className="poster-button">
-            Send me the overview
-            <ArrowRight size={17} aria-hidden="true" />
-          </button>
-        </form>
+            <label>
+              Work email
+              <input name="email" type="email" autoComplete="email" required />
+            </label>
+            <div className="lead-form__split">
+              <label>
+                Organisation
+                <input name="company" autoComplete="organization" required />
+              </label>
+              <label>
+                Role
+                <input name="role" autoComplete="organization-title" required />
+              </label>
+            </div>
+            <label>
+              Where are you in the merger journey?
+              <select name="merger_stage" defaultValue="" required>
+                <option value="" disabled>
+                  Select one
+                </option>
+                <option>Pre-close planning</option>
+                <option>0–6 months post-close</option>
+                <option>6–18 months post-close</option>
+                <option>Longer-term integration challenge</option>
+              </select>
+            </label>
+            <label className="lead-form__consent">
+              <input type="checkbox" name="consent" required />
+              <span>
+                I agree that LigerLearn may email the overview and contact me about
+                this request.
+              </span>
+            </label>
+            <button type="submit" className="poster-button">
+              Send me the overview
+              <ArrowRight size={17} aria-hidden="true" />
+            </button>
+          </form>
+          {LIGERLEARN_CALENDLY_URL ? (
+            <a
+              href={LIGERLEARN_CALENDLY_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link one-force-overview__calendly"
+            >
+              Prefer to talk? Book a 30-minute conversation
+              <ExternalLink size={15} aria-hidden="true" />
+            </a>
+          ) : null}
+        </div>
       </section>
       <SiteFooter
         brand="learn"

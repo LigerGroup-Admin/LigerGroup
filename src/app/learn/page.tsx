@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Award, Check, ExternalLink } from "lucide-react";
@@ -6,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ClientTrust } from "@/components/client-trust";
+import { LearnConversationForm } from "@/components/learn-conversation-form";
 
 export const metadata: Metadata = {
   title: "LigerLearn | Corporate capability and leadership advisory",
@@ -328,10 +330,9 @@ export default function LearnHomePage() {
                 </p>
               ))}
             </div>
-            <a href="mailto:support@ligerlearn.org" className="poster-button">
-              Start a conversation
-              <ArrowRight size={17} aria-hidden="true" />
-            </a>
+            <Suspense fallback={null}>
+              <LearnConversationForm />
+            </Suspense>
           </div>
         </section>
       </main>

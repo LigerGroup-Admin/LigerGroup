@@ -12,6 +12,7 @@ const formAnchors: Record<string, string> = {
   one_force_download: "overview",
   diagnostic_call: "contact",
   contact: "contact",
+  "learn-conversation": "conversation",
 };
 
 function returnUrl(request: NextRequest, type: string, state: "submitted" | "error") {
