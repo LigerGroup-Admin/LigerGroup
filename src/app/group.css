@@ -338,6 +338,25 @@
   color: var(--ink-deep);
 }
 
+/* Deliberately understated — a bookmark-style way in for remote sign-in,
+   not a visible call to action. */
+.group-bottom__admin {
+  display: flex;
+  align-items: center;
+  opacity: 0.32;
+  transition: opacity 160ms ease;
+}
+
+.group-bottom__admin img {
+  display: block;
+  border-radius: 999px;
+}
+
+.group-bottom__admin:hover,
+.group-bottom__admin:focus-visible {
+  opacity: 0.9;
+}
+
 .group-bottom__social {
   display: flex;
   flex-wrap: wrap;

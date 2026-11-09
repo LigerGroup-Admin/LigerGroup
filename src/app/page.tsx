@@ -179,6 +179,15 @@ export default function GroupHomePage() {
           <a href="mailto:hello@theliger.group">hello@theliger.group</a>
           <Link href="/privacy">Privacy</Link>
           <Link href="/privacy#terms">Terms</Link>
+          <Link href="/admin" className="group-bottom__admin" aria-label="Admin sign-in">
+            <Image
+              src="/images/group/liger-group-badge-circle.png"
+              alt=""
+              width={14}
+              height={14}
+              aria-hidden="true"
+            />
+          </Link>
         </div>
       </footer>
     </main>
