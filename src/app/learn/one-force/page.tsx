@@ -6,6 +6,7 @@ import { BrandMark } from "@/components/brand-mark";
 import { FormStatus } from "@/components/form-status";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteFooter } from "@/components/site-footer";
+import { SubmitButton } from "@/components/submit-button";
 import { LIGERLEARN_CALENDLY_URL } from "@/lib/calendly";
 
 export const metadata: Metadata = {
@@ -178,10 +179,10 @@ export default function OneForcePage() {
                 this request.
               </span>
             </label>
-            <button type="submit" className="poster-button">
+            <SubmitButton className="poster-button">
               Send me the overview
               <ArrowRight size={17} aria-hidden="true" />
-            </button>
+            </SubmitButton>
           </form>
           {LIGERLEARN_CALENDLY_URL ? (
             <a

@@ -8,6 +8,7 @@ import {
   FORCE_ROLE_OTHER_SLUG,
   forceRoleLabel,
 } from "@/lib/force-roles";
+import { SubmitButton } from "@/components/submit-button";
 
 const STORAGE_KEY = "force_last_role_label";
 
@@ -149,10 +150,10 @@ export function ForceBookingForm() {
           I agree that LigerForce may contact me about this requirement.
         </span>
       </label>
-      <button className="poster-button" type="submit">
+      <SubmitButton className="poster-button">
         Book my 30-minute call
         <ArrowRight size={17} aria-hidden="true" />
-      </button>
+      </SubmitButton>
     </form>
   );
 }

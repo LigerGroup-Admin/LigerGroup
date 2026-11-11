@@ -20,6 +20,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { LinkedinIcon } from "@/components/social-icons";
 import { VideoTestimonial } from "@/components/video-testimonial";
 import { LocalInsightsNote } from "@/components/local-insights-note";
+import { SubmitButton } from "@/components/submit-button";
 
 export const metadata: Metadata = {
   title: "LigerRemote | Build a career the world can hire",
@@ -478,10 +479,10 @@ export default function RemoteHomePage() {
                 can unsubscribe at any time.
               </span>
             </label>
-            <button className="poster-button" type="submit">
+            <SubmitButton className="poster-button">
               Continue my application
               <ArrowRight size={17} aria-hidden="true" />
-            </button>
+            </SubmitButton>
           </form>
         </section>
 

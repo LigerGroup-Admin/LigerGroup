@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { FormStatus } from "@/components/form-status";
 import { SiteFooter } from "@/components/site-footer";
+import { SubmitButton } from "@/components/submit-button";
 
 export const metadata: Metadata = {
   title: "Sponsor a cohort | LigerRemote",
@@ -105,10 +106,10 @@ export default function SponsorPage() {
               about this request.
             </span>
           </label>
-          <button className="poster-button" type="submit">
+          <SubmitButton className="poster-button">
             Send me the sponsor pack
             <ArrowRight size={17} aria-hidden="true" />
-          </button>
+          </SubmitButton>
         </form>
       </section>
       <SiteFooter

@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { AlertCircle, ArrowRight, CheckCircle2 } from "lucide-react";
 import { LIGERLEARN_CALENDLY_URL } from "@/lib/calendly";
+import { SubmitButton } from "@/components/submit-button";
 
 // Not persisted anywhere except the browser's own sessionStorage — used only
 // to carry name/email across the full-page redirect so the Calendly widget
@@ -168,10 +169,10 @@ export function LearnConversationForm() {
           <input type="checkbox" name="consent" required />
           <span>I agree that LigerLearn may contact me about this conversation.</span>
         </label>
-        <button type="submit" className="poster-button">
+        <SubmitButton className="poster-button">
           Start a conversation
           <ArrowRight size={17} aria-hidden="true" />
-        </button>
+        </SubmitButton>
       </form>
       {fallbackLine}
     </>
