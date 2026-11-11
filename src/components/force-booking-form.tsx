@@ -45,8 +45,8 @@ function ForceFormStatus() {
         <p>
           {success
             ? lastRoleLabel
-              ? `We've sent a confirmation email for your ${lastRoleLabel} requirement — click the link inside, and we'll be in touch within 1 business day to discuss fit and next steps.`
-              : "We've sent a confirmation email — click the link inside, and we'll be in touch within 1 business day to discuss fit and next steps."
+              ? `We've sent a confirmation email for your ${lastRoleLabel} requirement — once you confirm by clicking the link inside, we'll be in touch within 1 business day to discuss fit and next steps.`
+              : "We've sent a confirmation email — once you confirm by clicking the link inside, we'll be in touch within 1 business day to discuss fit and next steps."
             : "Please check the required fields and try again. If the problem continues, contact us by email."}
         </p>
       </div>

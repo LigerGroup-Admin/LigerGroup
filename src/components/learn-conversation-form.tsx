@@ -91,8 +91,8 @@ export function LearnConversationForm() {
             <strong>Thanks — that{"'"}s with us.</strong>
             <p>
               {LIGERLEARN_CALENDLY_URL
-                ? "Check your inbox for a confirmation email, and pick a time below if you'd like to talk sooner."
-                : "We'll respond within one business day."}
+                ? "Check your inbox and confirm your email — once verified, we'll follow up, or pick a time below if you'd like to talk sooner."
+                : "Check your inbox and confirm your email — once verified, we'll respond within one business day."}
             </p>
           </div>
         </div>
