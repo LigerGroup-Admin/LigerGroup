@@ -1,5 +1,7 @@
+import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { listSubmissions } from "@/server/submissions/repository";
+import { matchesSubmissionFilters, parseSubmissionFilters } from "@/server/submissions/filters";
 import { requireAdminEmail } from "@/server/admin-auth";
 
 function csvField(value: string) {
@@ -24,13 +26,22 @@ const columns = [
   "createdAt",
 ] as const;
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   const email = await requireAdminEmail();
   if (!email) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const rows = await listSubmissions(1000);
+  const params = request.nextUrl.searchParams;
+  const filters = parseSubmissionFilters({
+    site: params.get("site") ?? undefined,
+    status: params.get("status") ?? undefined,
+    range: params.get("range") ?? undefined,
+    q: params.get("q") ?? undefined,
+  });
+
+  const allRows = await listSubmissions(1000);
+  const rows = allRows.filter((row) => matchesSubmissionFilters(row, filters));
 
   const header = columns.join(",");
   const body = rows
@@ -42,7 +53,14 @@ export async function GET() {
     .join("\r\n");
   const csv = `${header}\r\n${body}\r\n`;
 
-  const filename = `leads-${new Date().toISOString().slice(0, 10)}.csv`;
+  const filenameParts = [
+    "leads",
+    filters.site !== "all" ? filters.site : null,
+    filters.status !== "all" ? filters.status : null,
+    filters.range !== "all" ? filters.range : null,
+    new Date().toISOString().slice(0, 10),
+  ].filter(Boolean);
+  const filename = `${filenameParts.join("-")}.csv`;
 
   return new NextResponse(csv, {
     headers: {

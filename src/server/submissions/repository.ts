@@ -108,6 +108,14 @@ export async function listSubmissions(limit = 100): Promise<SubmissionRecord[]> 
   return (await readLocalRecords()).slice(0, limit);
 }
 
+export async function deleteSubmissions(ids: string[]) {
+  const supabase = getSupabaseAdmin();
+  if (!supabase) return;
+
+  const { error } = await supabase.from("submissions").delete().in("id", ids);
+  if (error) throw error;
+}
+
 // Called from /api/verify-email when someone clicks the confirmation link
 // in their submission email. Returns the now-verified record, or null if
 // the token doesn't match anything (expired link, tampered URL, etc.).

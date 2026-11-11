@@ -1735,13 +1735,63 @@
   gap: 0.4rem;
 }
 
-.admin-data-panel__footer button {
+.admin-data-panel__footer button,
+.admin-data-panel__footer a,
+.admin-data-panel__footer span[aria-disabled] {
+  display: inline-flex;
+  align-items: center;
   min-height: 2rem;
   padding: 0 0.7rem;
   border: 1px solid #d7dad6;
   background: white;
   color: #626c67;
   font-size: 0.55rem;
+  text-decoration: none;
+}
+
+.admin-data-panel__footer span[aria-disabled] {
+  color: #c2c6c1;
+  cursor: default;
+}
+
+.admin-banner {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #bad7c7;
+  background: #eef7f1;
+  color: #2c5d3f;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.admin-table-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #e2e4e1;
+}
+
+.admin-delete-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.1rem;
+  padding: 0 0.8rem;
+  border: 1px solid #e3b8b0;
+  background: #fbefec;
+  color: #9b3a2b;
+  font-size: 0.58rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-delete-button:hover {
+  background: #f5ddd6;
+}
+
+.admin-table td input[type="checkbox"],
+.admin-table th input[type="checkbox"] {
+  cursor: pointer;
 }
 
 .admin-owner {
