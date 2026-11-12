@@ -15,6 +15,7 @@ import {
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { HashNav } from "@/components/hash-nav";
 import { ForceBookingForm } from "@/components/force-booking-form";
 import { LocalInsightsNote } from "@/components/local-insights-note";
 import { CALENDLY_URL } from "@/lib/calendly";
@@ -118,6 +119,7 @@ export default function ForceHomePage() {
   return (
     <div className="force-page poster-page">
       <ScrollReveal />
+      <HashNav />
       <SiteHeader
         brand="force"
         nav={[

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BrandMark } from "@/components/brand-mark";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { HashNav } from "@/components/hash-nav";
 import { ClientTrust } from "@/components/client-trust";
 import { socialLinksByBrand } from "@/lib/brands";
 import {
@@ -76,6 +77,7 @@ export default function GroupHomePage() {
   return (
     <main id="main-content" className="group-page poster-page">
       <ScrollReveal />
+      <HashNav />
       <section className="group-hero poster-sheet ink-field ink-field--1">
         <nav className="group-nav" aria-label="Liger Group navigation">
           <BrandMark brand="group" framed />

@@ -17,6 +17,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { FormStatus } from "@/components/form-status";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { HashNav } from "@/components/hash-nav";
 import { LinkedinIcon } from "@/components/social-icons";
 import { VideoTestimonial } from "@/components/video-testimonial";
 import { LocalInsightsNote } from "@/components/local-insights-note";
@@ -102,6 +103,7 @@ export default function RemoteHomePage() {
   return (
     <div className="remote-page poster-page">
       <ScrollReveal />
+      <HashNav />
       <SiteHeader
         brand="remote"
         nav={[

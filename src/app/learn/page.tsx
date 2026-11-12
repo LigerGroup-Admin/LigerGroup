@@ -6,6 +6,7 @@ import { ArrowRight, Award, Check, ExternalLink } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { HashNav } from "@/components/hash-nav";
 import { ClientTrust } from "@/components/client-trust";
 import { LearnConversationForm } from "@/components/learn-conversation-form";
 
@@ -52,6 +53,7 @@ export default function LearnHomePage() {
   return (
     <div className="learn-page poster-page">
       <ScrollReveal />
+      <HashNav />
       <SiteHeader
         brand="learn"
         nav={[

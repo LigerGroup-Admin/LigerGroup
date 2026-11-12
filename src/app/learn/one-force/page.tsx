@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Check, ExternalLink } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
 import { FormStatus } from "@/components/form-status";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { HashNav } from "@/components/hash-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SubmitButton } from "@/components/submit-button";
 import { LIGERLEARN_CALENDLY_URL } from "@/lib/calendly";
@@ -19,6 +20,7 @@ export default function OneForcePage() {
   return (
     <main id="main-content" className="one-force-page poster-page">
       <ScrollReveal />
+      <HashNav />
       <header>
         <BrandMark brand="learn" href="/learn" framed />
         <Link href="/learn">
