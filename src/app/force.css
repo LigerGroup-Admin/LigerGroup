@@ -15,6 +15,13 @@
   background: var(--ink-2);
 }
 
+/* The mobile nav's CTA isn't a .poster-button, so it missed the override
+   above and stayed the generic ink-deep — same rust/orange as the desktop
+   "Book a 30-minute call" button it's standing in for. */
+.force-root .site-header__mobile-cta {
+  background: var(--ink-2);
+}
+
 /* Brick fields need cream text, not graphite */
 .force-root .poster-button--warm {
   color: var(--stock);
