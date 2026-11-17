@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
-import { publicBrands, socialLinksByBrand, type BrandKey } from "@/lib/brands";
+import { publicBrands, siteOrigins, socialLinksByBrand, type BrandKey } from "@/lib/brands";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -79,15 +79,19 @@ export function SiteFooter({
         <div className="site-footer__siblings">
           <span>Also part of Liger Group</span>
           <div>
+            {/* Absolute URLs: a relative href here would stay on the
+                current domain and render the other brand's pages under it
+                (e.g. ligerlearn.org/force) instead of taking the visitor to
+                that brand's own site. */}
             {siblingBrands.map((item) => (
-              <Link
+              <a
                 key={item.key}
-                href={item.path}
+                href={`${siteOrigins[item.key]}${item.path}`}
                 aria-label={item.name}
                 className="site-footer__sibling"
               >
                 <BrandMark brand={item.key} static />
-              </Link>
+              </a>
             ))}
           </div>
         </div>

@@ -60,6 +60,18 @@ export const brands: Record<BrandKey, Brand> = {
 
 export const publicBrands = [brands.remote, brands.force, brands.learn];
 
+// Each brand's real public domain. A relative link (e.g. href="/force")
+// only stays on-brand when it's already being rendered on that brand's own
+// domain — cross-brand links (sibling-brand footer cards, applicant-facing
+// email links) need the absolute origin or they silently render the other
+// brand's pages under the wrong domain instead of taking the visitor there.
+export const siteOrigins: Record<BrandKey, string> = {
+  remote: "https://www.ligerremote.com",
+  force: "https://www.ligerforce.com",
+  learn: "https://www.ligerlearn.org",
+  group: "https://theliger.group",
+};
+
 export type SocialIconKey = "instagram" | "linkedin" | "x" | "facebook" | "telegram";
 
 export type SocialLink = { label: string; href: string | null; icon: SocialIconKey };

@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import type { SubmissionRecord } from "@/server/submissions/schema";
+import { siteOrigins } from "@/lib/brands";
 
 const typeLabels: Record<string, string> = {
   cohort_interest: "Cohort interest",
@@ -17,15 +18,6 @@ const siteLabels: Record<string, string> = {
   force: "LigerForce",
   learn: "LigerLearn",
   group: "Liger Group",
-};
-
-// Public site each brand's applicant-facing links should land on — not the
-// group site, regardless of which brand the lead actually came from.
-const siteOrigins: Record<string, string> = {
-  remote: "https://www.ligerremote.com",
-  force: "https://www.ligerforce.com",
-  learn: "https://www.ligerlearn.org",
-  group: "https://theliger.group",
 };
 
 const ADMIN_EMAILS = ["oooshinowo@gmail.com", "hello@theliger.group"];
