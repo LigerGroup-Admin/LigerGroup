@@ -1,7 +1,7 @@
-export const CALENDLY_URL = "https://calendly.com/obafemi-oshinowo-ligerforce/30-minute-discovery-call";
+export const CALENDLY_URL = "https://calendly.com/ligerremote-support/30min";
 
-// LigerLearn's event type is separate from LigerForce's and does not exist
-// yet — read from env rather than guessing a URL. Unset in dev/preview until
-// the event is created and NEXT_PUBLIC_LIGERLEARN_CALENDLY_URL is set in Vercel.
+// LigerLearn's event type is separate from LigerForce's — read from env
+// rather than hardcoding, so it stays configurable per environment via
+// NEXT_PUBLIC_LIGERLEARN_CALENDLY_URL in Vercel.
 export const LIGERLEARN_CALENDLY_URL =
   process.env.NEXT_PUBLIC_LIGERLEARN_CALENDLY_URL || undefined;
