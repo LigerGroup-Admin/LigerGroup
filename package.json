@@ -11,8 +11,6 @@
   "dependencies": {
     "@clerk/nextjs": "^7.9.16",
     "@neondatabase/serverless": "^1.2.1",
-    "@supabase/ssr": "^0.12.3",
-    "@supabase/supabase-js": "^2.110.5",
     "lucide-react": "^1.24.0",
     "next": "16.2.10",
     "posthog-js": "^1.438.12",
@@ -28,7 +26,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
-    "supabase": "^2.116.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
