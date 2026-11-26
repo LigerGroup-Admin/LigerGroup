@@ -29,7 +29,7 @@ function formatTime(value: string) {
 export default async function AdminWebsitesPage() {
   const [sites, submissions] = await Promise.all([checkSiteHealth(), listSubmissions(1000)]);
   const allUp = sites.every((s) => s.up);
-  const supabaseConnected = Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL);
+  const databaseConnected = Boolean(process.env.DATABASE_URL);
   const posthogConnected = Boolean(process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN);
   const resendConnected = Boolean(process.env.RESEND_API_KEY);
   const calendlyConnected = CALENDLY_URL.startsWith("https://calendly.com/");
@@ -100,7 +100,7 @@ export default async function AdminWebsitesPage() {
         <div><p className="admin-kicker">Shared services</p><h2>Platform integrations</h2></div>
         <div>
           {[
-            ["Supabase", "Database for form submissions", supabaseConnected ? "Connected" : "Configuration required"],
+            ["Neon", "Database for form submissions", databaseConnected ? "Connected" : "Configuration required"],
             ["PostHog", "Consent-aware product and web analytics", posthogConnected ? "Connected" : "Configuration required"],
             ["Resend", "Form notifications and follow-up email", resendConnected ? "Connected" : "Configuration required"],
             ["Calendly", "LigerForce discovery call scheduling", calendlyConnected ? "Connected" : "Configuration required"],

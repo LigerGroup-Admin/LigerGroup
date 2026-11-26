@@ -1,20 +1,9 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { createClient } from "@supabase/supabase-js";
+import { getSql } from "@/server/db";
 import type { SubmissionRecord } from "@/server/submissions/schema";
 
 const localDataPath = path.join(process.cwd(), "data", "dev-submissions.json");
-
-function getSupabaseAdmin() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!url || !serviceRoleKey) return null;
-
-  return createClient(url, serviceRoleKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-}
 
 async function readLocalRecords(): Promise<SubmissionRecord[]> {
   try {
@@ -35,73 +24,59 @@ async function writeLocalRecord(record: SubmissionRecord) {
   await fs.rename(temporaryPath, localDataPath);
 }
 
+type Row = Record<string, unknown>;
+
+function toRecord(row: Row): SubmissionRecord {
+  return {
+    id: row.id as string,
+    site: row.site as SubmissionRecord["site"],
+    type: row.form_type as string,
+    name: row.name as string,
+    email: row.email as string,
+    phone: (row.phone as string | null) ?? undefined,
+    company: (row.company as string | null) ?? undefined,
+    consent: Boolean(row.consent) as true,
+    website: undefined,
+    status: row.status as SubmissionRecord["status"],
+    payload: (row.payload ?? {}) as Record<string, string>,
+    sourcePage: (row.source_page as string | null) ?? null,
+    referrer: (row.referrer as string | null) ?? null,
+    userAgent: (row.user_agent as string | null) ?? null,
+    emailVerified: Boolean(row.email_verified),
+    verificationToken: row.verification_token as string,
+    createdAt: new Date(row.created_at as string | Date).toISOString(),
+  };
+}
+
 export async function saveSubmission(record: SubmissionRecord) {
-  const supabase = getSupabaseAdmin();
+  const sql = getSql();
 
-  if (supabase) {
-    const { error } = await supabase.from("submissions").insert({
-      id: record.id,
-      site: record.site,
-      form_type: record.type,
-      name: record.name,
-      email: record.email,
-      phone: record.phone ?? null,
-      company: record.company ?? null,
-      consent: record.consent,
-      status: record.status,
-      payload: record.payload,
-      source_page: record.sourcePage,
-      referrer: record.referrer,
-      user_agent: record.userAgent,
-      email_verified: record.emailVerified,
-      verification_token: record.verificationToken,
-      created_at: record.createdAt,
-    });
-
-    if (error) throw error;
+  if (sql) {
+    await sql`insert into submissions (
+      id, site, form_type, name, email, phone, company, consent, status, payload,
+      source_page, referrer, user_agent, email_verified, verification_token, created_at
+    ) values (
+      ${record.id}, ${record.site}, ${record.type}, ${record.name}, ${record.email},
+      ${record.phone ?? null}, ${record.company ?? null}, ${record.consent}, ${record.status},
+      ${JSON.stringify(record.payload ?? {})}::jsonb, ${record.sourcePage}, ${record.referrer},
+      ${record.userAgent}, ${record.emailVerified}, ${record.verificationToken}, ${record.createdAt}
+    )`;
     return;
   }
 
   if (process.env.NODE_ENV === "production") {
-    throw new Error(
-      "Submission storage is not configured. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.",
-    );
+    throw new Error("Submission storage is not configured. Set DATABASE_URL.");
   }
 
   await writeLocalRecord(record);
 }
 
 export async function listSubmissions(limit = 100): Promise<SubmissionRecord[]> {
-  const supabase = getSupabaseAdmin();
+  const sql = getSql();
 
-  if (supabase) {
-    const { data, error } = await supabase
-      .from("submissions")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(limit);
-
-    if (error) throw error;
-
-    return (data ?? []).map((row) => ({
-      id: row.id as string,
-      site: row.site as SubmissionRecord["site"],
-      type: row.form_type as string,
-      name: row.name as string,
-      email: row.email as string,
-      phone: (row.phone as string | null) ?? undefined,
-      company: (row.company as string | null) ?? undefined,
-      consent: Boolean(row.consent) as true,
-      website: undefined,
-      status: row.status as SubmissionRecord["status"],
-      payload: (row.payload ?? {}) as Record<string, string>,
-      sourcePage: (row.source_page as string | null) ?? null,
-      referrer: (row.referrer as string | null) ?? null,
-      userAgent: (row.user_agent as string | null) ?? null,
-      emailVerified: Boolean(row.email_verified),
-      verificationToken: row.verification_token as string,
-      createdAt: row.created_at as string,
-    }));
+  if (sql) {
+    const rows = (await sql`select * from submissions order by created_at desc limit ${limit}`) as Row[];
+    return rows.map(toRecord);
   }
 
   if (process.env.NODE_ENV === "production") return [];
@@ -109,47 +84,21 @@ export async function listSubmissions(limit = 100): Promise<SubmissionRecord[]> 
 }
 
 export async function deleteSubmissions(ids: string[]) {
-  const supabase = getSupabaseAdmin();
-  if (!supabase) return;
-
-  const { error } = await supabase.from("submissions").delete().in("id", ids);
-  if (error) throw error;
+  const sql = getSql();
+  if (!sql) return;
+  await sql`delete from submissions where id = any(${ids}::uuid[])`;
 }
+
+const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 // Called from /api/verify-email when someone clicks the confirmation link
 // in their submission email. Returns the now-verified record, or null if
 // the token doesn't match anything (expired link, tampered URL, etc.).
 export async function verifyEmailByToken(token: string): Promise<SubmissionRecord | null> {
-  const supabase = getSupabaseAdmin();
-  if (!supabase) return null;
+  const sql = getSql();
+  if (!sql || !uuidPattern.test(token)) return null;
 
-  const { data, error } = await supabase
-    .from("submissions")
-    .update({ email_verified: true })
-    .eq("verification_token", token)
-    .select()
-    .maybeSingle();
-
-  if (error) throw error;
-  if (!data) return null;
-
-  return {
-    id: data.id as string,
-    site: data.site as SubmissionRecord["site"],
-    type: data.form_type as string,
-    name: data.name as string,
-    email: data.email as string,
-    phone: (data.phone as string | null) ?? undefined,
-    company: (data.company as string | null) ?? undefined,
-    consent: Boolean(data.consent) as true,
-    website: undefined,
-    status: data.status as SubmissionRecord["status"],
-    payload: (data.payload ?? {}) as Record<string, string>,
-    sourcePage: (data.source_page as string | null) ?? null,
-    referrer: (data.referrer as string | null) ?? null,
-    userAgent: (data.user_agent as string | null) ?? null,
-    emailVerified: Boolean(data.email_verified),
-    verificationToken: data.verification_token as string,
-    createdAt: data.created_at as string,
-  };
+  const rows = (await sql`update submissions set email_verified = true, updated_at = now()
+    where verification_token = ${token}::uuid returning *`) as Row[];
+  return rows[0] ? toRecord(rows[0]) : null;
 }
