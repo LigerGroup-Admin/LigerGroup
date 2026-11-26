@@ -15,13 +15,12 @@ import {
 } from "lucide-react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { FormStatus } from "@/components/form-status";
+import { RemoteApplyForm } from "@/components/remote-apply-form";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { HashNav } from "@/components/hash-nav";
 import { LinkedinIcon } from "@/components/social-icons";
 import { VideoTestimonial } from "@/components/video-testimonial";
 import { LocalInsightsNote } from "@/components/local-insights-note";
-import { SubmitButton } from "@/components/submit-button";
 
 export const metadata: Metadata = {
   title: "LigerRemote | Build a career the world can hire",
@@ -420,72 +419,9 @@ export default function RemoteHomePage() {
               <span>Your answers stay private</span>
             </div>
           </div>
-          <form className="lead-form" action="/api/submissions" method="post">
-            <Suspense fallback={null}>
-              <FormStatus
-                successTitle="You are on the list."
-                successMessage="Check your inbox for a confirmation email and click the link inside — once verified, we'll send the next application step and cohort details."
-              />
-            </Suspense>
-            <input type="hidden" name="site" value="remote" />
-            <input type="hidden" name="type" value="cohort_interest" />
-            <label className="lead-form__hp" aria-hidden="true">
-              Website
-              <input name="website" tabIndex={-1} autoComplete="off" />
-            </label>
-            <label>
-              Full name
-              <input name="name" autoComplete="name" required placeholder="Your full name" />
-            </label>
-            <label>
-              Email address
-              <input
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                placeholder="you@example.com"
-              />
-            </label>
-            <div className="lead-form__split">
-              <label>
-                Phone number
-                <input
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  placeholder="+ Country code and number"
-                />
-              </label>
-              <label>
-                Current city
-                <input name="city" autoComplete="address-level2" placeholder="e.g. Lagos" />
-              </label>
-            </div>
-            <label>
-              Where are you in your career?
-              <select name="career_stage" required defaultValue="">
-                <option value="" disabled>
-                  Select one
-                </option>
-                <option>Recent graduate</option>
-                <option>Early-career professional</option>
-                <option>Changing careers</option>
-                <option>Already freelancing remotely</option>
-              </select>
-            </label>
-            <label className="lead-form__consent">
-              <input type="checkbox" name="consent" required />
-              <span>
-                I agree to receive information about this cohort and understand I
-                can unsubscribe at any time.
-              </span>
-            </label>
-            <SubmitButton className="poster-button">
-              Continue my application
-              <ArrowRight size={17} aria-hidden="true" />
-            </SubmitButton>
-          </form>
+          <Suspense fallback={null}>
+            <RemoteApplyForm />
+          </Suspense>
         </section>
 
         <section className="remote-faq" id="faqs">

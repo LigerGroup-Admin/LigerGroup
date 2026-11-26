@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
-import { FormStatus } from "@/components/form-status";
+import { SponsorForm } from "@/components/sponsor-form";
 import { SiteFooter } from "@/components/site-footer";
-import { SubmitButton } from "@/components/submit-button";
 
 export const metadata: Metadata = {
   title: "Sponsor a cohort | LigerRemote",
@@ -44,73 +43,9 @@ export default function SponsorPage() {
             ))}
           </div>
         </div>
-        <form
-          id="sponsor-enquiry"
-          className="lead-form"
-          action="/api/submissions"
-          method="post"
-        >
-          <Suspense fallback={null}>
-            <FormStatus
-              successTitle="Sponsorship enquiry received."
-              successMessage="Check your inbox for a confirmation email and click the link inside — once verified, a member of our team will follow up directly to discuss sponsorship."
-            />
-          </Suspense>
-          <input type="hidden" name="site" value="remote" />
-          <input type="hidden" name="type" value="sponsor_pack" />
-          <label className="lead-form__hp" aria-hidden="true">
-            Website
-            <input name="website" tabIndex={-1} autoComplete="off" />
-          </label>
-          <div className="lead-form__split">
-            <label>
-              Full name
-              <input name="name" autoComplete="name" required />
-            </label>
-            <label>
-              Work email
-              <input name="email" type="email" autoComplete="email" required />
-            </label>
-          </div>
-          <div className="lead-form__split">
-            <label>
-              Organisation
-              <input name="company" autoComplete="organization" required />
-            </label>
-            <label>
-              Your role
-              <input name="role" autoComplete="organization-title" required />
-            </label>
-          </div>
-          <label>
-            What kind of sponsorship are you exploring?
-            <select name="sponsorship_interest" defaultValue="" required>
-              <option value="" disabled>
-                Select one
-              </option>
-              <option>Fund individual places</option>
-              <option>Sponsor a full cohort</option>
-              <option>CSR or foundation partnership</option>
-              <option>Employer talent partnership</option>
-              <option>Still exploring</option>
-            </select>
-          </label>
-          <label>
-            Anything we should know?
-            <textarea name="message" placeholder="Optional context" />
-          </label>
-          <label className="lead-form__consent">
-            <input type="checkbox" name="consent" required />
-            <span>
-              I agree that LigerRemote may send the sponsor pack and contact me
-              about this request.
-            </span>
-          </label>
-          <SubmitButton className="poster-button">
-            Send me the sponsor pack
-            <ArrowRight size={17} aria-hidden="true" />
-          </SubmitButton>
-        </form>
+        <Suspense fallback={null}>
+          <SponsorForm />
+        </Suspense>
       </section>
       <SiteFooter
         brand="remote"

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Clock3 } from "lucide-react";
+import { ArrowLeft, Clock3 } from "lucide-react";
 import { BrandMark } from "@/components/brand-mark";
-import { FormStatus } from "@/components/form-status";
+import { RequirementForm } from "@/components/requirement-form";
 import { SiteFooter } from "@/components/site-footer";
-import { SubmitButton } from "@/components/submit-button";
 
 export const metadata: Metadata = {
   title: "Submit a requirement | LigerForce",
@@ -35,81 +34,9 @@ export default function RequirementPage() {
             <Clock3 size={16} aria-hidden="true" /> Response within one business day
           </span>
         </div>
-        <form
-          id="requirement-form"
-          className="lead-form force-form"
-          action="/api/submissions"
-          method="post"
-        >
-          <Suspense fallback={null}>
-            <FormStatus
-              successTitle="Requirement received."
-              successMessage="Check your inbox for a confirmation email and click the link inside — once verified, a member of the LigerForce team will review it and respond within one business day."
-            />
-          </Suspense>
-          <input type="hidden" name="site" value="force" />
-          <input type="hidden" name="type" value="requirement" />
-          <label className="lead-form__hp" aria-hidden="true">
-            Website
-            <input name="website" tabIndex={-1} autoComplete="off" />
-          </label>
-          <div className="lead-form__split">
-            <label>
-              Your name
-              <input name="name" autoComplete="name" required />
-            </label>
-            <label>
-              Work email
-              <input name="email" type="email" autoComplete="email" required />
-            </label>
-          </div>
-          <div className="lead-form__split">
-            <label>
-              Company
-              <input name="company" autoComplete="organization" required />
-            </label>
-            <label>
-              When do you need someone?
-              <select name="timeline" defaultValue="" required>
-                <option value="" disabled>
-                  Select
-                </option>
-                <option>As soon as possible</option>
-                <option>Within 2–4 weeks</option>
-                <option>Within 1–3 months</option>
-                <option>Exploring for later</option>
-              </select>
-            </label>
-          </div>
-          <label>
-            Role or area of support
-            <input
-              name="role"
-              required
-              placeholder="e.g. Executive Assistant, Customer Operations"
-            />
-          </label>
-          <label>
-            What should this person own or improve?
-            <textarea
-              name="requirement"
-              required
-              placeholder="Describe the work and the outcome you need."
-            />
-          </label>
-          <label>
-            Preferred working hours or overlap
-            <input name="working_hours" placeholder="e.g. 09:00–17:00 UK time" />
-          </label>
-          <label className="lead-form__consent">
-            <input type="checkbox" name="consent" required />
-            <span>I agree that LigerForce may contact me about this requirement.</span>
-          </label>
-          <SubmitButton className="poster-button">
-            Submit my requirement
-            <ArrowRight size={17} aria-hidden="true" />
-          </SubmitButton>
-        </form>
+        <Suspense fallback={null}>
+          <RequirementForm />
+        </Suspense>
       </section>
       <SiteFooter
         brand="force"

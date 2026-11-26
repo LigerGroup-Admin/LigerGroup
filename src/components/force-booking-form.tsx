@@ -12,50 +12,9 @@ import { SubmitButton } from "@/components/submit-button";
 
 const STORAGE_KEY = "force_last_role_label";
 
-function ForceFormStatus() {
-  const searchParams = useSearchParams();
-  const formState = searchParams.get("form") ?? undefined;
-  const [lastRoleLabel, setLastRoleLabel] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (formState !== "submitted") return;
-    try {
-      setLastRoleLabel(window.sessionStorage.getItem(STORAGE_KEY));
-    } catch {
-      // Storage may be unavailable (private browsing); fall back to generic copy.
-    }
-  }, [formState]);
-
-  if (formState !== "submitted" && formState !== "error") return null;
-
-  const success = formState === "submitted";
-
-  return (
-    <div
-      className={`form-status form-status--${success ? "success" : "error"}`}
-      role="status"
-    >
-      {success ? (
-        <CheckCircle2 size={22} aria-hidden="true" />
-      ) : (
-        <AlertCircle size={22} aria-hidden="true" />
-      )}
-      <div>
-        <strong>{success ? "Check your inbox to confirm." : "That did not go through."}</strong>
-        <p>
-          {success
-            ? lastRoleLabel
-              ? `We've sent a confirmation email for your ${lastRoleLabel} requirement — once you confirm by clicking the link inside, we'll be in touch within 1 business day to discuss fit and next steps.`
-              : "We've sent a confirmation email — once you confirm by clicking the link inside, we'll be in touch within 1 business day to discuss fit and next steps."
-            : "Please check the required fields and try again. If the problem continues, contact us by email."}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export function ForceBookingForm() {
   const searchParams = useSearchParams();
+  const formState = searchParams.get("form") ?? undefined;
   const initialRole = searchParams.get("role") ?? undefined;
   const validInitialRole =
     initialRole &&
@@ -63,6 +22,7 @@ export function ForceBookingForm() {
       ? initialRole
       : "";
   const [role, setRole] = useState(validInitialRole);
+  const [lastRoleLabel, setLastRoleLabel] = useState<string | null>(null);
 
   useEffect(() => {
     const label = forceRoleLabel(role);
@@ -74,9 +34,44 @@ export function ForceBookingForm() {
     }
   }, [role]);
 
+  useEffect(() => {
+    if (formState !== "submitted") return;
+    try {
+      setLastRoleLabel(window.sessionStorage.getItem(STORAGE_KEY));
+    } catch {
+      // Storage may be unavailable (private browsing); fall back to generic copy.
+    }
+  }, [formState]);
+
+  if (formState === "submitted") {
+    return (
+      <div className="lead-form force-form">
+        <div className="form-status form-status--success" role="status">
+          <CheckCircle2 size={22} aria-hidden="true" />
+          <div>
+            <strong>Check your inbox to confirm.</strong>
+            <p>
+              {lastRoleLabel
+                ? `We've sent a confirmation email for your ${lastRoleLabel} requirement — once you confirm by clicking the link inside, we'll be in touch within 1 business day to discuss fit and next steps.`
+                : "We've sent a confirmation email — once you confirm by clicking the link inside, we'll be in touch within 1 business day to discuss fit and next steps."}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <form className="lead-form force-form" action="/api/submissions" method="post">
-      <ForceFormStatus />
+      {formState === "error" ? (
+        <div className="form-status form-status--error" role="status">
+          <AlertCircle size={22} aria-hidden="true" />
+          <div>
+            <strong>That did not go through.</strong>
+            <p>Please check the required fields and try again. If the problem continues, contact us by email.</p>
+          </div>
+        </div>
+      ) : null}
       <input type="hidden" name="site" value="force" />
       <input type="hidden" name="type" value="discovery_call" />
       <input type="hidden" name="requirement_role_label" value={forceRoleLabel(role) ?? ""} />
