@@ -345,7 +345,7 @@ export default function ForceHomePage() {
       <SiteFooter
         brand="force"
         statement="Remote talent should create capacity—not complexity."
-        email="support@ligerremote.com"
+        email="hello@ligerforce.com"
       />
     </div>
   );
