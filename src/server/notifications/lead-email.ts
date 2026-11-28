@@ -20,14 +20,28 @@ const siteLabels: Record<string, string> = {
   group: "Liger Group",
 };
 
-const ADMIN_EMAILS = ["oooshinowo@gmail.com", "hello@theliger.group"];
-const FROM_ADDRESS = "Liger Group <hello@theliger.group>";
+const ADMIN_OWNER_EMAIL = "oooshinowo@gmail.com";
+const DEFAULT_ADMIN_EMAIL = "hello@theliger.group";
+const DEFAULT_SEND_DOMAIN = "theliger.group";
 
-// Sends from the same verified address, but the display name matches the
-// brand the lead actually applied through — not a generic "Liger Group".
+// Brands with their own verified Resend sending domain send (and notify)
+// from their own address instead of the shared hello@theliger.group.
+const brandSendDomains: Partial<Record<string, string>> = {
+  force: "ligerforce.com",
+};
+
+// Sends from a verified domain, with the display name and address matching
+// the brand the lead actually applied through where that brand has its own
+// verified domain — otherwise falls back to the shared Liger Group address.
 function brandFromAddress(site: string) {
   const siteLabel = siteLabels[site] ?? site;
-  return `${siteLabel} <hello@theliger.group>`;
+  const domain = brandSendDomains[site] ?? DEFAULT_SEND_DOMAIN;
+  return `${siteLabel} <hello@${domain}>`;
+}
+
+function adminRecipients(site: string) {
+  const domain = brandSendDomains[site];
+  return [ADMIN_OWNER_EMAIL, domain ? `hello@${domain}` : DEFAULT_ADMIN_EMAIL];
 }
 
 function getResend() {
@@ -60,8 +74,8 @@ export async function notifyAdminsOfNewLead(record: SubmissionRecord) {
   try {
     await resend.emails.send(
       {
-        from: FROM_ADDRESS,
-        to: ADMIN_EMAILS,
+        from: brandFromAddress(record.site),
+        to: adminRecipients(record.site),
         subject: `New lead: ${record.name} — ${siteLabel} (${typeLabel})`,
         html: `
           <h2 style="margin:0 0 12px;">New ${typeLabel.toLowerCase()} on ${siteLabel}</h2>
